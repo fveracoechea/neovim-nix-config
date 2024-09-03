@@ -1,4 +1,4 @@
-local settings = require "config.lsp.settings"
+local settings = require "lsp-settings"
 local lspconfig = require "lspconfig"
 
 --LSP configurations

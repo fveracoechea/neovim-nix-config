@@ -62,51 +62,51 @@ inputs: {
       withConfig = with pkgs.vimPlugins; [
         {
           plugin = alpha;
-          config = lib.fileContents ../lua/lua/plugins/alpha.lua;
+          config = lib.fileContents ../lua/plugins/alpha.lua;
         }
         {
           plugin = auto-session;
-          config = lib.fileContents ../lua/lua/plugins/auto-session.lua;
+          config = lib.fileContents ../lua/plugins/auto-session.lua;
         }
         {
           plugin = nvim-autopairs;
-          config = lib.fileContents ../lua/lua/plugins/autopairs.lua;
+          config = lib.fileContents ../lua/plugins/autopairs.lua;
         }
         {
           plugin = bufferline-nvim;
-          config = lib.fileContents ../lua/lua/plugins/bufferline.lua;
+          config = lib.fileContents ../lua/plugins/bufferline.lua;
         }
         {
           plugin = catppuccin-nvim;
-          config = lib.fileContents ../lua/lua/plugins/catppuccin.lua;
+          config = lib.fileContents ../lua/plugins/catppuccin.lua;
         }
         {
           plugin = nvim-cmp;
-          config = lib.fileContents ../lua/lua/plugins/cmp.lua;
+          config = lib.fileContents ../lua/plugins/cmp.lua;
         }
         {
           plugin = codesnap-nvim;
-          config = lib.fileContents ../lua/lua/plugins/codesnap.lua;
+          config = lib.fileContents ../lua/plugins/codesnap.lua;
         }
         {
           plugin = comment-nvim;
-          config = lib.fileContents ../lua/lua/plugins/comments.lua;
+          config = lib.fileContents ../lua/plugins/comments.lua;
         }
         {
           plugin = conform-nvim;
-          config = lib.fileContents ../lua/lua/plugins/conform.lua;
+          config = lib.fileContents ../lua/plugins/conform.lua;
         }
         {
           plugin = hover-nvim;
-          config = lib.fileContents ../lua/lua/plugins/hover.lua;
+          config = lib.fileContents ../lua/plugins/hover.lua;
         }
         {
           plugin = indent-blankline-nvim;
-          config = lib.fileContents ../lua/lua/plugins/indent-blankline.lua;
+          config = lib.fileContents ../lua/plugins/indent-blankline.lua;
         }
         {
           plugin = nvim-lint;
-          config = lib.fileContents ../lua/lua/plugins/lint.lua;
+          config = lib.fileContents ../lua/plugins/lint.lua;
         }
       ];
     in
