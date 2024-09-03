@@ -7,6 +7,8 @@ inputs: {
     (import ./overlays.nix {inherit inputs;})
   ];
 
+  home.packages = [pkgs.lazygit];
+
   # Enable management of XDG base directories
   xdg.enable = lib.mkDefault true;
 
@@ -41,17 +43,20 @@ inputs: {
         # CMP
         nvim-path
         cmp-buffer
-        cpm-nvim-lsp
+        cmp-nvim-lsp
         luasnip
         cmp_luasnip
         friendly-snippets
         lspkind-nvim
+        lsp-file-operations-nvim
 
         nvim-ts-context-commentstring
 
         which-key-nvim
+        lazygit-nvim
 
         import_cost-nivm
+        lazydev-nvim
       ];
 
       withConfig = with pkgs.vimPlugins; [
@@ -98,6 +103,10 @@ inputs: {
         {
           plugin = indent-blankline-nvim;
           config = lib.fileContents ../lua/lua/plugins/indent-blankline.lua;
+        }
+        {
+          plugin = nvim-lint;
+          config = lib.fileContents ../lua/lua/plugins/lint.lua;
         }
       ];
     in

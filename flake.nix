@@ -9,6 +9,16 @@
       url = "github:barrett-ruth/import-cost.nvim";
       flake = false;
     };
+
+    lazydev-nvim = {
+      url = "github:folke/lazydev.nvim";
+      flake = false;
+    };
+
+    lsp-file-operations-nvim = {
+      url = "github:antosha417/nvim-lsp-file-operations";
+      flake = false;
+    };
   };
 
   outputs = {...} @ inputs: {

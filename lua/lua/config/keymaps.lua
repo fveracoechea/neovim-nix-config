@@ -51,6 +51,9 @@ map("v", "<leader>cs", "<CMD>CodeSnapSave<CR>", { mode = "x", desc = "Save selec
 map("n", "<leader>wr", "<CMD>SessionRestore<CR>", { desc = "Restore session for cwd" })
 map("n", "<leader>ws", "<CMD>SessionSave<CR>", { desc = "Save session for auto session root dir" })
 
+-- Lazygit
+map("n", "<leader>lg", "<CMD>LazyGit<CR>", { desc = "Open Lazygit" })
+
 -- Format file
 vim.keymap.set({ "n", "v" }, "<leader>mp", function()
   require("conform").format {

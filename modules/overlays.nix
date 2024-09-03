@@ -11,6 +11,26 @@
             };
           };
       })
+      (final: prev: {
+        vimPlugins =
+          prev.vimPlugins
+          // {
+            lazydev-nvim = prev.vimUtils.buildVimPlugin {
+              name = "lazydev-nvim";
+              src = inputs.lazydev-nvim;
+            };
+          };
+      })
+      (final: prev: {
+        vimPlugins =
+          prev.vimPlugins
+          // {
+            lsp-file-operations-nvim = prev.vimUtils.buildVimPlugin {
+              name = "lsp-file-operations-nvim";
+              src = inputs.lsp-file-operations-nvim;
+            };
+          };
+      })
     ];
   };
 }
