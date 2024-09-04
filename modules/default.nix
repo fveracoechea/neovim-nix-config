@@ -9,6 +9,8 @@ inputs: {
   xdg.enable = lib.mkDefault true;
   xdg.configFile."nvim/lua/lsp-servers.lua".source = ../lua/lsp-servers.lua;
   xdg.configFile."nvim/lua/lsp-settings.lua".source = ../lua/lsp-settings.lua;
+  xdg.configFile."nvim/lua/keymaps.lua".source = ../lua/keymaps.lua;
+  xdg.configFile."nvim/lua/options.lua".source = ../lua/options.lua;
 
   programs.neovim = {
     enable = true;
@@ -18,8 +20,8 @@ inputs: {
     vimdiffAlias = true;
 
     extraLuaConfig = ''
-      ${lib.fileContents ../lua/options.lua}
-      ${lib.fileContents ../lua/keymaps.lua}
+      require "options";
+      require "keymaps";
     '';
 
     extraPackages = with pkgs; [
@@ -28,7 +30,7 @@ inputs: {
       wl-clipboard
       # # LSP --
       nil
-      luajitPackages.lua-lsp
+      lua-language-server
       typescript
       typescript-language-server
       vscode-langservers-extracted # html, css, json and eslint
