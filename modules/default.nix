@@ -64,7 +64,7 @@ inputs: {
         vim-tmux-navigator
 
         # CMP
-        nvim-path
+        cmp-path
         cmp-buffer
         cmp-nvim-lsp
         luasnip
