@@ -7,10 +7,10 @@ inputs: {
 
   # Enable management of XDG base directories
   xdg.enable = lib.mkDefault true;
-  xdg.configFile."nvim/lua/lsp-servers.lua".source = ../lua/lsp-servers.lua;
-  xdg.configFile."nvim/lua/lsp-settings.lua".source = ../lua/lsp-settings.lua;
-  xdg.configFile."nvim/lua/keymaps.lua".source = ../lua/keymaps.lua;
-  xdg.configFile."nvim/lua/options.lua".source = ../lua/options.lua;
+  xdg.configFile."nvim/lua/lsp-servers.lua".source = ./lua/lsp-servers.lua;
+  xdg.configFile."nvim/lua/lsp-settings.lua".source = ./lua/lsp-settings.lua;
+  xdg.configFile."nvim/lua/keymaps.lua".source = ./lua/keymaps.lua;
+  xdg.configFile."nvim/lua/options.lua".source = ./lua/options.lua;
 
   programs.neovim = {
     enable = true;
@@ -106,75 +106,75 @@ inputs: {
       withConfig = with pkgs.vimPlugins; [
         {
           plugin = alpha-nvim;
-          config = lib.fileContents ../lua/plugins/alpha.lua;
+          config = lib.fileContents ./lua/plugins/alpha.lua;
         }
         {
           plugin = auto-session;
-          config = lib.fileContents ../lua/plugins/auto-session.lua;
+          config = lib.fileContents ./lua/plugins/auto-session.lua;
         }
         {
           plugin = nvim-autopairs;
-          config = lib.fileContents ../lua/plugins/autopairs.lua;
+          config = lib.fileContents ./lua/plugins/autopairs.lua;
         }
         {
           plugin = bufferline-nvim;
-          config = lib.fileContents ../lua/plugins/bufferline.lua;
+          config = lib.fileContents ./lua/plugins/bufferline.lua;
         }
         {
           plugin = catppuccin-nvim;
-          config = lib.fileContents ../lua/plugins/catppuccin.lua;
+          config = lib.fileContents ./lua/plugins/catppuccin.lua;
         }
         {
           plugin = nvim-cmp;
-          config = lib.fileContents ../lua/plugins/cmp.lua;
+          config = lib.fileContents ./lua/plugins/cmp.lua;
         }
         {
           plugin = codesnap-nvim;
-          config = lib.fileContents ../lua/plugins/codesnap.lua;
+          config = lib.fileContents ./lua/plugins/codesnap.lua;
         }
         {
           plugin = comment-nvim;
-          config = lib.fileContents ../lua/plugins/comments.lua;
+          config = lib.fileContents ./lua/plugins/comments.lua;
         }
         {
           plugin = conform-nvim;
-          config = lib.fileContents ../lua/plugins/conform.lua;
+          config = lib.fileContents ./lua/plugins/conform.lua;
         }
         {
           plugin = hover-nvim;
-          config = lib.fileContents ../lua/plugins/hover.lua;
+          config = lib.fileContents ./lua/plugins/hover.lua;
         }
         {
           plugin = indent-blankline-nvim;
-          config = lib.fileContents ../lua/plugins/indent-blankline.lua;
+          config = lib.fileContents ./lua/plugins/indent-blankline.lua;
         }
         {
           plugin = nvim-lint;
-          config = lib.fileContents ../lua/plugins/lint.lua;
+          config = lib.fileContents ./lua/plugins/lint.lua;
         }
         {
           plugin = nvim-lspconfig;
-          config = lib.fileContents ../lua/plugins/lspconfig.lua;
+          config = lib.fileContents ./lua/plugins/lspconfig.lua;
         }
         {
           plugin = lualine-nvim;
-          config = lib.fileContents ../lua/plugins/lualine.lua;
+          config = lib.fileContents ./lua/plugins/lualine.lua;
         }
         {
           plugin = none-ls-nvim;
-          config = lib.fileContents ../lua/plugins/none-ls.lua;
+          config = lib.fileContents ./lua/plugins/none-ls.lua;
         }
         {
           plugin = telescope-nvim;
-          config = lib.fileContents ../lua/plugins/telescope.lua;
+          config = lib.fileContents ./lua/plugins/telescope.lua;
         }
         {
           plugin = todo-comments-nvim;
-          config = lib.fileContents ../lua/plugins/todo-comments.lua;
+          config = lib.fileContents ./lua/plugins/todo-comments.lua;
         }
         {
           plugin = nvim-tree-lua;
-          config = lib.fileContents ../lua/plugins/nvim-tree.lua;
+          config = lib.fileContents ./lua/plugins/nvim-tree.lua;
         }
         {
           plugin = nvim-treesitter.withPlugins (p: [
@@ -209,7 +209,7 @@ inputs: {
               src = inputs.tree-sitter-nginx;
             })
           ]);
-          config = lib.fileContents ../lua/plugins/treesitter.lua;
+          config = lib.fileContents ./lua/plugins/treesitter.lua;
         }
       ];
     in

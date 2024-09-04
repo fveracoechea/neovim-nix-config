@@ -1,5 +1,5 @@
 {
-  description = "Neovim cofigurations";
+  description = "Neovim Home Manager configurations";
 
   inputs = {
     # NixOS official package sources
@@ -27,6 +27,6 @@
   };
 
   outputs = {...} @ inputs: {
-    homeManagerModules.neovim = {...} @ args: (import ./modules inputs args);
+    homeManagerModules.neovim = {...} @ args: (import ./neovim.nix inputs args);
   };
 }
