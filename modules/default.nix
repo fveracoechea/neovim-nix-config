@@ -204,7 +204,7 @@ inputs: {
               src = inputs.tree-sitter-nginx;
             })
           ]);
-          config = lib.fileContents ./lua/plugins/treesitter.lua;
+          config = lib.fileContents ../lua/plugins/treesitter.lua;
         }
       ];
     in
