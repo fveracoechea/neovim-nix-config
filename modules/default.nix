@@ -3,41 +3,6 @@ inputs: {
   pkgs,
   ...
 }: {
-  nixpkgs = {
-    overlays = [
-      (final: prev: {
-        vimPlugins =
-          prev.vimPlugins
-          // {
-            import_cost-nvim = prev.vimUtils.buildVimPlugin {
-              name = "import_cost-nvim";
-              src = inputs.import_cost-nvim;
-            };
-          };
-      })
-      (final: prev: {
-        vimPlugins =
-          prev.vimPlugins
-          // {
-            lazydev-nvim = prev.vimUtils.buildVimPlugin {
-              name = "lazydev-nvim";
-              src = inputs.lazydev-nvim;
-            };
-          };
-      })
-      (final: prev: {
-        vimPlugins =
-          prev.vimPlugins
-          // {
-            lsp-file-operations-nvim = prev.vimUtils.buildVimPlugin {
-              name = "lsp-file-operations-nvim";
-              src = inputs.lsp-file-operations-nvim;
-            };
-          };
-      })
-    ];
-  };
-
   home.packages = [pkgs.lazygit];
 
   # Enable management of XDG base directories
@@ -87,6 +52,21 @@ inputs: {
     plugins = let
       toLuaType = builtins.map (plugin: plugin // {type = "lua";});
 
+      import_cost-nvim = pkgs.vimUtils.buildVimPlugin {
+        name = "import_cost-nvim";
+        src = inputs.import_cost-nvim;
+      };
+
+      lazydev-nvim = pkgs.vimUtils.buildVimPlugin {
+        name = "lazydev-nvim";
+        src = inputs.lazydev-nvim;
+      };
+
+      lsp-file-operations-nvim = pkgs.vimUtils.buildVimPlugin {
+        name = "lsp-file-operations-nvim";
+        src = inputs.lsp-file-operations-nvim;
+      };
+
       plain = with pkgs.vimPlugins; [
         # Utils
         plenary-nvim
@@ -114,7 +94,7 @@ inputs: {
         telescope-fzf-native-nvim
 
         lsp-file-operations-nvim
-        import_cost-nivm
+        import_cost-nvim
         lazydev-nvim
       ];
 
