@@ -100,7 +100,7 @@ inputs: {
 
       withConfig = with pkgs.vimPlugins; [
         {
-          plugin = alpha;
+          plugin = alpha-nvim;
           config = lib.fileContents ../lua/plugins/alpha.lua;
         }
         {
