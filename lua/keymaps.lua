@@ -44,8 +44,8 @@ map(
 )
 
 -- CodeSnap
-map("v", "<leader>cc", "<CMD>CodeSnap<CR>", { mode = "x", desc = "Save selected code snapshot into clipboard" })
-map("v", "<leader>cs", "<CMD>CodeSnapSave<CR>", { mode = "x", desc = "Save selected code snapshot in ~/Pictures" })
+map("v", "<leader>cc", "<CMD>CodeSnap<CR>", { desc = "Save selected code snapshot into clipboard" })
+map("v", "<leader>cs", "<CMD>CodeSnapSave<CR>", { desc = "Save selected code snapshot in ~/Pictures" })
 
 -- Sessions
 map("n", "<leader>wr", "<CMD>SessionRestore<CR>", { desc = "Restore session for cwd" })
