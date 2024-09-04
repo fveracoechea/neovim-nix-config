@@ -3,9 +3,40 @@ inputs: {
   pkgs,
   ...
 }: {
-  imports = [
-    (import ./overlays.nix {inherit inputs;})
-  ];
+  nixpkgs = {
+    overlays = [
+      (final: prev: {
+        vimPlugins =
+          prev.vimPlugins
+          // {
+            import_cost-nvim = prev.vimUtils.buildVimPlugin {
+              name = "import_cost-nvim";
+              src = inputs.import_cost-nvim;
+            };
+          };
+      })
+      (final: prev: {
+        vimPlugins =
+          prev.vimPlugins
+          // {
+            lazydev-nvim = prev.vimUtils.buildVimPlugin {
+              name = "lazydev-nvim";
+              src = inputs.lazydev-nvim;
+            };
+          };
+      })
+      (final: prev: {
+        vimPlugins =
+          prev.vimPlugins
+          // {
+            lsp-file-operations-nvim = prev.vimUtils.buildVimPlugin {
+              name = "lsp-file-operations-nvim";
+              src = inputs.lsp-file-operations-nvim;
+            };
+          };
+      })
+    ];
+  };
 
   home.packages = [pkgs.lazygit];
 
@@ -71,7 +102,6 @@ inputs: {
         cmp_luasnip
         friendly-snippets
         lspkind-nvim
-        lsp-file-operations-nvim
         lualine-lsp-progress
 
         # Treesitter
@@ -83,6 +113,7 @@ inputs: {
         nvim-surround
         telescope-fzf-native-nvim
 
+        lsp-file-operations-nvim
         import_cost-nivm
         lazydev-nvim
       ];
