@@ -1,3 +1,4 @@
+-- TODO: not in use
 return {
   "gbprod/substitute.nvim",
   enabled = false,

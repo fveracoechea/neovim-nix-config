@@ -9,8 +9,7 @@ vim.filetype.add {
   },
 }
 
-
-o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 -- disable netrw at the very start of your init.lua
 -- recommended settings from nvim-tree documentation
@@ -72,3 +71,7 @@ o.shiftwidth = 2
 o.smartindent = true
 o.tabstop = 2
 o.softtabstop = 2
+
+-- timeout
+vim.o.timeout = true
+vim.o.timeoutlen = 500

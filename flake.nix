@@ -19,6 +19,11 @@
       url = "github:antosha417/nvim-lsp-file-operations";
       flake = false;
     };
+
+    tree-sitter-nginx = {
+      url = "gitlab:joncoole/tree-sitter-nginx";
+      flake = false;
+    };
   };
 
   outputs = {...} @ inputs: {
