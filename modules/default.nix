@@ -94,6 +94,7 @@ inputs: {
         lazygit-nvim
         nvim-surround
         telescope-fzf-native-nvim
+        trouble-nvim
 
         lsp-file-operations-nvim
         import_cost-nvim
