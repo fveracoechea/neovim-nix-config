@@ -7,6 +7,8 @@ inputs: {
 
   # Enable management of XDG base directories
   xdg.enable = lib.mkDefault true;
+  xdg.configFile."nvim/lsp-servers.lua".source = ../lua/lsp-servers.lua;
+  xdg.configFile."nvim/lsp-settings.lua".source = ../lua/lsp-settings.lua;
 
   programs.neovim = {
     enable = true;
