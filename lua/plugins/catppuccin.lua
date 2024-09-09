@@ -2,7 +2,7 @@ local catppuccin = require "catppuccin"
 
 catppuccin.setup {
   flavour = "mocha",
-  transparent_background = false,
+  transparent_background = true,
   integrations = {
     which_key = true,
     lsp_trouble = true,
