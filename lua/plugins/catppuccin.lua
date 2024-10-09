@@ -14,6 +14,7 @@ catppuccin.setup {
     },
     telescope = {
       enabled = true,
+      style = "border",
     },
   },
 }
