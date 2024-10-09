@@ -25,8 +25,8 @@ o.hlsearch = true
 -- optionally enable 24-bit colour
 opt.termguicolors = true
 
--- colorschemes that can be light or dark will be made dark
-opt.background = "dark"
+-- set catppuccin color-scheme - must be called before loading theme
+vim.cmd.colorscheme "catppuccin"
 
 -- save undo history
 vim.o.undofile = true
