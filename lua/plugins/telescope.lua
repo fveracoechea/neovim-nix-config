@@ -21,6 +21,7 @@ telescope.setup {
     sorting_strategy = "ascending",
     layout_config = {
       horizontal = {
+        prompt_position = "top",
         preview_width = 0.60,
       },
       width = 0.90,
@@ -32,8 +33,8 @@ telescope.setup {
         ["<C-k>"] = actions.move_selection_previous,
         -- move to next result
         ["<C-j>"] = actions.move_selection_next,
-        ["<C-q>"] = actions.send_selected_to_qflist + custom_actions.open_trouble_qflist,
-        ["<C-t>"] = trouble_telescope.open,
+        -- ["<C-q>"] = actions.send_selected_to_qflist + custom_actions.open_trouble_qflist,
+        -- ["<C-t>"] = trouble_telescope.open,
         ["<C-h>"] = "which_key",
       },
     },
