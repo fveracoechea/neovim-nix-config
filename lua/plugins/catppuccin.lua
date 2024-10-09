@@ -13,8 +13,7 @@ catppuccin.setup {
       colored_indent_levels = true,
     },
     telescope = {
-      enabled = true,
-      style = "border",
+      enabled = false,
     },
   },
 }
