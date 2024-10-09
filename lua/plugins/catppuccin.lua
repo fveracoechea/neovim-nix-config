@@ -12,6 +12,9 @@ catppuccin.setup {
       scope_color = "lavender", -- catppuccin color (eg. `lavender`) Default: text
       colored_indent_levels = true,
     },
+    telescope = {
+      enabled = true,
+    },
   },
 }
 
