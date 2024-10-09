@@ -42,6 +42,10 @@ map(
   "<CMD>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
   { desc = "Find all files" }
 )
+-- Hover
+local hover = require "hover"
+map("n", "K", hover.hover, { desc = "Hover" })
+map("n", "gK", hover.hover_select, { desc = "hover.nvim (select)" })
 
 -- CodeSnap
 map("v", "<leader>cc", "<CMD>CodeSnap<CR>", { desc = "Save selected code snapshot into clipboard" })

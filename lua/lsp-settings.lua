@@ -12,8 +12,6 @@ end
 
 -- Callback invoked when attaching a buffer to a language server.
 M.on_attach = function(__client, bufnr)
-  local hover = require "hover"
-
   local function opts(desc)
     return { buffer = bufnr, silent = true, desc = "LSP - " .. desc }
   end
@@ -38,9 +36,6 @@ M.on_attach = function(__client, bufnr)
   map("n", "[d", vim.diagnostic.goto_prev, opts "Go to previous diagnostic")
   map("n", "]d", vim.diagnostic.goto_next, opts "Go to next diagnostic")
 
-  map("n", "K", hover.hover, { desc = "Hover" })
-  map("n", "gK", hover.hover_select, { desc = "hover.nvim (select)" })
-
   -- TODO: do I really need these?
   map("n", "<leader>sh", vim.lsp.buf.signature_help, opts "Show signature help")
 
@@ -54,23 +49,5 @@ end
 -- Used to enable autocompletion (assign to every lsp server config)
 M.capabilities =
   vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(), cmp_nvim_lsp.default_capabilities())
-
--- M.capabilities.textDocument.completion.completionItem = {
---   documentationFormat = { "markdown", "plaintext" },
---   snippetSupport = true,
---   preselectSupport = true,
---   insertReplaceSupport = true,
---   labelDetailsSupport = true,
---   deprecatedSupport = true,
---   commitCharactersSupport = true,
---   tagSupport = { valueSet = { 1 } },
---   resolveSupport = {
---     properties = {
---       "documentation",
---       "detail",
---       "additionalTextEdits",
---     },
---   },
--- }
 
 return M

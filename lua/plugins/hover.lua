@@ -1,6 +1,4 @@
-local hover = require "hover"
-
-hover.setup {
+require("hover").setup {
   init = function()
     require "hover.providers.lsp"
     require "hover.providers.diagnostic"
