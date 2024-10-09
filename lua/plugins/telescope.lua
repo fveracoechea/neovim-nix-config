@@ -1,18 +1,43 @@
 local telescope = require "telescope"
 local actions = require "telescope.actions"
-local transform_mod = require("telescope.actions.mt").transform_mod
+-- local transform_mod = require("telescope.actions.mt").transform_mod
 
-local trouble = require "trouble"
-local trouble_telescope = require "trouble.sources.telescope"
+-- local trouble = require "trouble"
+-- local trouble_telescope = require "trouble.sources.telescope"
 
 -- or create your custom action
-local custom_actions = transform_mod {
-  open_trouble_qflist = function()
-    trouble.toggle "quickfix"
-  end,
-}
+-- local custom_actions = transform_mod {
+--   open_trouble_qflist = function()
+--     trouble.toggle "quickfix"
+--   end,
+-- }
 
 telescope.setup {
+  defaults = {
+    layout_strategy = "horizontal",
+    border = true,
+    path_display = { "smart" },
+    prompt_prefix = "   ",
+    sorting_strategy = "ascending",
+    layout_config = {
+      horizontal = {
+        preview_width = 0.60,
+      },
+      width = 0.90,
+      height = 0.90,
+    },
+    mappings = {
+      i = {
+        -- move to prev result
+        ["<C-k>"] = actions.move_selection_previous,
+        -- move to next result
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-q>"] = actions.send_selected_to_qflist + custom_actions.open_trouble_qflist,
+        ["<C-t>"] = trouble_telescope.open,
+        ["<C-h>"] = "which_key",
+      },
+    },
+  },
   extensions = {
     fzf = {
       fuzzy = true, -- false will only do exact matching
@@ -29,33 +54,6 @@ telescope.setup {
           -- If you'd prefer Telescope not to enter a normal mode when hitting escape and instead exiting.
           ["<ESC>"] = actions.close,
         },
-      },
-    },
-  },
-  defaults = {
-    path_display = { "smart" },
-    prompt_prefix = "   ",
-    test = "should break",
-    -- selection_caret = " ",
-    -- entry_prefix = " ",
-    sorting_strategy = "ascending",
-    layout_config = {
-      horizontal = {
-        prompt_position = "top",
-        preview_width = 0.60,
-      },
-      width = 0.90,
-      height = 0.90,
-    },
-    mappings = {
-      i = {
-        -- move to prev result
-        ["<C-k>"] = actions.move_selection_previous,
-        -- move to next result
-        ["<C-j>"] = actions.move_selection_next,
-        ["<C-q>"] = actions.send_selected_to_qflist + custom_actions.open_trouble_qflist,
-        ["<C-t>"] = trouble_telescope.open,
-        ["<C-h>"] = "which_key",
       },
     },
   },

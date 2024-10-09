@@ -62,7 +62,7 @@ local servers = {
     root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
   },
   -- TYPESCRIPT
-  tsserver = {
+  ts_ls = {
     on_attach = function(client, bufnr)
       if lspconfig.util.root_pattern("deno.json", "deno.jsonc")(vim.fn.getcwd()) then
         if client.name == "tsserver" then
