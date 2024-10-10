@@ -20,7 +20,7 @@ telescope.setup {
     layout_config = {
       horizontal = {
         prompt_position = "top",
-        preview_width = 0.60,
+        preview_width = 0.65,
       },
       width = 0.90,
       height = 0.90,
