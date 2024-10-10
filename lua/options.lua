@@ -25,9 +25,6 @@ o.hlsearch = true
 -- optionally enable 24-bit colour
 opt.termguicolors = true
 
--- set catppuccin color-scheme - must be called before loading theme
-vim.cmd.colorscheme "catppuccin"
-
 -- save undo history
 vim.o.undofile = true
 
