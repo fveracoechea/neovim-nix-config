@@ -8,6 +8,8 @@ require("catppuccin").setup {
     which_key = true,
     lsp_trouble = true,
     nvim_surround = true,
+    notify = true,
+    noice = true,
     indent_blankline = {
       enabled = true,
       scope_color = "lavender",
