@@ -14,8 +14,6 @@ local actions = require "telescope.actions"
 
 telescope.setup {
   defaults = {
-    layout_strategy = "horizontal",
-    border = true,
     path_display = { "smart" },
     prompt_prefix = "   ",
     sorting_strategy = "ascending",
