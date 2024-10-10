@@ -77,6 +77,8 @@ inputs: {
         dressing-nvim
         nvim-web-devicons
         vim-tmux-navigator
+        nui-nvim
+        nvim-notify
 
         # CMP
         cmp-path
@@ -101,6 +103,7 @@ inputs: {
         lsp-file-operations-nvim
         import_cost-nvim
         lazydev-nvim
+        noice-nvim
       ];
 
       withConfig = with pkgs.vimPlugins; [
@@ -167,6 +170,10 @@ inputs: {
         {
           plugin = telescope-nvim;
           config = lib.fileContents ./lua/plugins/telescope.lua;
+        }
+        {
+          plugin = noice-nvim;
+          config = lib.fileContents ./lua/plugins/noice.lua;
         }
         {
           plugin = todo-comments-nvim;
