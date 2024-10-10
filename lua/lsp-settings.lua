@@ -19,12 +19,12 @@ M.on_attach = function(__client, bufnr)
   local map = vim.keymap.set
 
   map("n", "<leader>lr", "<CMD>Telescope lsp_references<CR>", opts "References")
-  map("n", "<leader>ld", "<CMD>Telescope lsp_definitions<CR>", opts "Definition")
+  map("n", "gd", "<CMD>Telescope lsp_definitions<CR>", opts "Definition")
   map("n", "<leader>li", "<CMD>Telescope lsp_implementations<CR>", opts "Implementation")
   map("n", "<leader>lt", "<CMD>Telescope lsp_type_definitions<CR>", opts "Type definition")
 
-  map("n", "gD", vim.lsp.buf.declaration, opts "Go to declaration")
-  map("n", "gd", vim.lsp.buf.definition, opts "Go to definition")
+  -- map("n", "gD", vim.lsp.buf.declaration, opts "Go to declaration")
+  -- map("n", "gd", vim.lsp.buf.definition, opts "Go to definition")
 
   map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts "Code Actions")
 

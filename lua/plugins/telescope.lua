@@ -20,7 +20,7 @@ telescope.setup {
     layout_config = {
       horizontal = {
         prompt_position = "top",
-        preview_width = 0.65,
+        preview_width = 0.60,
       },
       width = 0.90,
       height = 0.90,
@@ -46,6 +46,9 @@ telescope.setup {
     },
   },
   pickers = {
+    diagnostics = {
+      previewer = false,
+    },
     buffers = {
       mappings = {
         i = {
