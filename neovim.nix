@@ -19,10 +19,12 @@ inputs: {
     vimAlias = true;
     vimdiffAlias = true;
 
-    extraLuaConfig = ''
-      require "options";
-      require "keymaps";
-    '';
+    extraLuaConfig =
+      # lua
+      ''
+        require "options";
+        require "keymaps";
+      '';
 
     extraPackages = with pkgs; [
       # # Tools --
