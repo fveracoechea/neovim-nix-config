@@ -37,7 +37,15 @@ local servers = {
     },
   },
   -- CSS
-  cssls = {},
+  cssls = {
+    settings = {
+      css = {
+        lint = {
+          unknownAtRules = "ignore",
+        },
+      },
+    },
+  },
   -- NGINX
   nginx_language_server = {},
   -- GRAPHQL
