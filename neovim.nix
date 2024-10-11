@@ -37,6 +37,7 @@ inputs: {
       tailwindcss-language-server
       nodePackages.graphql-language-service-cli
       emmet-language-server
+      emmet-ls
       nginx-language-server
       bash-language-server
       # # Formatters --
@@ -78,7 +79,6 @@ inputs: {
         nvim-web-devicons
         vim-tmux-navigator
         nui-nvim
-        nvim-notify
 
         # CMP
         cmp-path
@@ -114,6 +114,10 @@ inputs: {
         {
           plugin = auto-session;
           config = lib.fileContents ./lua/plugins/auto-session.lua;
+        }
+        {
+          plugin = nvim-notify;
+          config = lib.fileContents ./lua/plugins/notify.lua;
         }
         {
           plugin = nvim-autopairs;
