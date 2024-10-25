@@ -1,4 +1,10 @@
-inputs: {
+{
+  # flake inputs
+  import_cost-nvim,
+  lazydev-nvim,
+  tree-sitter-nginx,
+  lsp-file-operations-nvim,
+}: {
   lib,
   pkgs,
   ...
@@ -61,17 +67,17 @@ inputs: {
 
       import_cost-nvim = pkgs.vimUtils.buildVimPlugin {
         name = "import_cost-nvim";
-        src = inputs.import_cost-nvim;
+        src = import_cost-nvim;
       };
 
       lazydev-nvim = pkgs.vimUtils.buildVimPlugin {
         name = "lazydev-nvim";
-        src = inputs.lazydev-nvim;
+        src = lazydev-nvim;
       };
 
       lsp-file-operations-nvim = pkgs.vimUtils.buildVimPlugin {
         name = "lsp-file-operations-nvim";
-        src = inputs.lsp-file-operations-nvim;
+        src = lsp-file-operations-nvim;
       };
 
       plain = with pkgs.vimPlugins; [
@@ -219,7 +225,7 @@ inputs: {
             (pkgs.tree-sitter.buildGrammar {
               language = "nginx";
               version = "unstable-2024-10-04";
-              src = inputs.tree-sitter-nginx;
+              src = tree-sitter-nginx;
             })
           ]);
           config = lib.fileContents ./lua/plugins/treesitter.lua;

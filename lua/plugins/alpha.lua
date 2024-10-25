@@ -44,29 +44,7 @@ local logo = [[
 
 ]]
 
-local userName = "Lazy"
-local greeting = getGreeting(userName)
-local marginBottom = 0
 dashboard.section.header.val = vim.split(logo, "\n")
--- Split logo into lines
-local logoLines = {}
-for line in logo:gmatch "[^\r\n]+" do
-  table.insert(logoLines, line)
-end
-
--- Calculate padding for centering the greeting
-local logoWidth = logo:find "\n" - 1 -- Assuming the logo width is the width of the first line
-local greetingWidth = #greeting
-local padding = math.floor((logoWidth - greetingWidth) / 2)
-
--- Generate spaces for padding
-local paddedGreeting = string.rep(" ", padding) .. greeting
-
--- Add margin lines below the padded greeting
-local margin = string.rep("\n", marginBottom)
-
--- Concatenate logo, padded greeting, and margin
-local adjustedLogo = logo .. "\n" .. paddedGreeting .. margin
 
 dashboard.section.buttons.val = {
   dashboard.button("n", "  New file", ":ene <BAR> startinsert <CR>"),
@@ -74,8 +52,6 @@ dashboard.section.buttons.val = {
   dashboard.button("s", "󰁯  Restore session", "<cmd>SessionRestore<CR>"),
   dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),
   dashboard.button("r", "󰄉  Recent files", ":Telescope oldfiles <CR>"),
-  dashboard.button("u", "󱐥  Update plugins", "<cmd>Lazy update<CR>"),
-  dashboard.button("c", "  Settings", ":e $HOME/.config/nvim <CR>"),
   dashboard.button("p", "  Projects", ":e $HOME/Code <CR>"),
   dashboard.button("d", "󱗼  Dotfiles", ":e $HOME/dotfiles <CR>"),
   dashboard.button("q", "󰿅  Quit", "<cmd>qa<CR>"),
@@ -86,7 +62,7 @@ vim.api.nvim_create_autocmd("User", {
   desc = "Add Alpha dashboard footer",
   once = true,
   callback = function()
-    dashboard.section.footer.val = vim.split("\n\n" .. getGreeting "Neovim.", "\n")
+    dashboard.section.footer.val = vim.split("\n\n" .. getGreeting "Happy Coding...", "\n")
     -- dashboard.section.footer.val = { " ", " ", " ", "  When it does not exist, design it. " }
     dashboard.section.header.opts.hl = "DashboardFooter"
     dashboard.section.buttons.opts.hl = "Keyword"
