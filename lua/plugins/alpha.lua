@@ -3,9 +3,9 @@ local dashboard = require "alpha.themes.dashboard"
 
 -- DASHBOARD HEADER
 
-local function getGreeting(name)
+local function getGreeting()
   local tableTime = os.date "*t"
-  local datetime = os.date " %Y-%m-%d-%A   %H:%M:%S "
+  local datetime = os.date " %A %b %m %Y  -   %I:%M %p"
   local hour = tableTime.hour
   local greetingsTable = {
     [1] = "  Sleep well",
@@ -26,7 +26,7 @@ local function getGreeting(name)
   elseif hour >= 21 then
     greetingIndex = 5
   end
-  return datetime .. "  " .. greetingsTable[greetingIndex] .. ", " .. name
+  return datetime .. "  -  " .. greetingsTable[greetingIndex]
 end
 
 local logo = [[
@@ -59,7 +59,7 @@ dashboard.section.buttons.val = {
   dashboard.button("q", "󰿅  Quit", "<cmd>qa<CR>"),
 }
 
-dashboard.section.footer.val = vim.split("\n\n" .. getGreeting "Happy Coding...", "\n")
+dashboard.section.footer.val = vim.split("\n\n" .. getGreeting(), "\n")
 
 -- vim.api.nvim_create_autocmd("User", {
 --   pattern = "LazyVimStarted",
