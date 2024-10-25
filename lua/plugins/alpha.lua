@@ -45,7 +45,9 @@ local logo = [[
 ]]
 
 dashboard.section.header.val = vim.split(logo, "\n")
+dashboard.section.header.opts.hl = "DashboardFooter"
 
+dashboard.section.buttons.opts.hl = "Keyword"
 dashboard.section.buttons.val = {
   dashboard.button("n", "  New file", ":ene <BAR> startinsert <CR>"),
   dashboard.button("f", "  Find file", ":cd $HOME | silent Telescope find_files hidden=true no_ignore=true <CR>"),
@@ -57,19 +59,16 @@ dashboard.section.buttons.val = {
   dashboard.button("q", "󰿅  Quit", "<cmd>qa<CR>"),
 }
 
-vim.api.nvim_create_autocmd("User", {
-  pattern = "LazyVimStarted",
-  desc = "Add Alpha dashboard footer",
-  once = true,
-  callback = function()
-    dashboard.section.footer.val = vim.split("\n\n" .. getGreeting "Happy Coding...", "\n")
-    -- dashboard.section.footer.val = { " ", " ", " ", "  When it does not exist, design it. " }
-    dashboard.section.header.opts.hl = "DashboardFooter"
-    dashboard.section.buttons.opts.hl = "Keyword"
+dashboard.section.footer.val = vim.split("\n\n" .. getGreeting "Happy Coding...", "\n")
 
-    pcall(vim.cmd.AlphaRedraw)
-  end,
-})
+-- vim.api.nvim_create_autocmd("User", {
+--   pattern = "LazyVimStarted",
+--   desc = "Add Alpha dashboard footer",
+--   once = true,
+--   callback = function()
+--     pcall(vim.cmd.AlphaRedraw)
+--   end,
+-- })
 
 dashboard.opts.opts.noautocmd = true
 alpha.setup(dashboard.opts)
