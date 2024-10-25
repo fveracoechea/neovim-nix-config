@@ -3,7 +3,7 @@
 
   inputs = {
     # NixOS official package sources
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     import_cost-nvim = {
       url = "github:barrett-ruth/import-cost.nvim";
@@ -26,7 +26,7 @@
     };
   };
 
-  outputs = {...} @ inputs: {
-    homeManagerModules.neovim = {...} @ args: (import ./neovim.nix inputs args);
+  outputs = inputs: {
+    homeManagerModules.default = import ./neovim.nix inputs;
   };
 }
