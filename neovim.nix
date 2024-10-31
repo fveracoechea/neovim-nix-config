@@ -10,6 +10,7 @@ inputs: {
   xdg.configFile."nvim/lua/lsp-servers.lua".source = ./lua/lsp-servers.lua;
   xdg.configFile."nvim/lua/lsp-settings.lua".source = ./lua/lsp-settings.lua;
   xdg.configFile."nvim/lua/keymaps.lua".source = ./lua/keymaps.lua;
+  xdg.configFile."nvim/lua/options.lua".source = ./lua/options.lua;
   xdg.configFile."nvim/lua/buffer-bar.lua".source = ./lua/buffer-bar.lua;
 
   programs.neovim = {
