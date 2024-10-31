@@ -1,3 +1,5 @@
+-- NOTE: Not in use
+
 local bufferline = require "bufferline"
 local catppucin_bufferline = require "catppuccin.groups.integrations.bufferline"
 

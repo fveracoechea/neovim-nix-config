@@ -48,8 +48,16 @@ telescope.setup {
   pickers = {
     diagnostics = {
       previewer = false,
+      theme = "ivy",
+      layout_config = {
+        height = 0.50,
+      },
     },
     buffers = {
+      theme = "ivy",
+      layout_config = {
+        height = 0.50,
+      },
       mappings = {
         i = {
           ["<C-x>"] = actions.delete_buffer + actions.move_to_top,

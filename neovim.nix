@@ -10,7 +10,7 @@ inputs: {
   xdg.configFile."nvim/lua/lsp-servers.lua".source = ./lua/lsp-servers.lua;
   xdg.configFile."nvim/lua/lsp-settings.lua".source = ./lua/lsp-settings.lua;
   xdg.configFile."nvim/lua/keymaps.lua".source = ./lua/keymaps.lua;
-  xdg.configFile."nvim/lua/options.lua".source = ./lua/options.lua;
+  xdg.configFile."nvim/lua/buffer-bar.lua".source = ./lua/buffer-bar.lua;
 
   programs.neovim = {
     enable = true;
@@ -23,6 +23,7 @@ inputs: {
       # lua
       ''
         require "options";
+        require "buffer-bar";
         require "keymaps";
       '';
 
@@ -125,10 +126,10 @@ inputs: {
           plugin = nvim-autopairs;
           config = lib.fileContents ./lua/plugins/autopairs.lua;
         }
-        {
-          plugin = bufferline-nvim;
-          config = lib.fileContents ./lua/plugins/bufferline.lua;
-        }
+        # {
+        #   plugin = bufferline-nvim;
+        #   config = lib.fileContents ./lua/plugins/bufferline.lua;
+        # }
         {
           plugin = catppuccin-nvim;
           config = lib.fileContents ./lua/plugins/catppuccin.lua;
