@@ -11,6 +11,13 @@ local actions = require "telescope.actions"
 --     trouble.toggle "quickfix"
 --   end,
 -- }
+--
+local lsp_picker_settings = {
+  theme = "ivy",
+  layout_config = {
+    height = 0.55,
+  },
+}
 
 telescope.setup {
   defaults = {
@@ -22,8 +29,6 @@ telescope.setup {
         prompt_position = "top",
         preview_width = 0.60,
       },
-      width = 0.90,
-      height = 0.90,
     },
     mappings = {
       i = {
@@ -50,13 +55,16 @@ telescope.setup {
       previewer = false,
       theme = "ivy",
       layout_config = {
-        height = 0.50,
+        height = 0.55,
       },
     },
+    lsp_references = lsp_picker_settings,
+    lsp_definitions = lsp_picker_settings,
+    lsp_implementations = lsp_picker_settings,
     buffers = {
       theme = "ivy",
       layout_config = {
-        height = 0.50,
+        height = 0.55,
       },
       mappings = {
         i = {
