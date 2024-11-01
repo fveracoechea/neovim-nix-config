@@ -41,7 +41,7 @@ local function update_winbar()
     .. buffer_count
     .. ") "
     .. "%#WinBarPath#"
-    .. "%f"
+    .. "%f "
     .. "%#WinBarModified#%m "
     .. "%*%=%#WinBar2#"
 end
@@ -70,4 +70,5 @@ M.active_indicator = function()
   end
 end
 
+_G.winbar = M
 return M
