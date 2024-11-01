@@ -53,6 +53,10 @@ vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
 
 local M = {}
 
+local isempty = function(s)
+  return s == nil or s == ""
+end
+
 local is_current = function()
   local winid = vim.g.actual_curwin
   if isempty(winid) then
