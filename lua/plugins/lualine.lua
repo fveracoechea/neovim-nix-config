@@ -1,4 +1,16 @@
 local lualine = require "lualine"
+local lualine_mode = require("lualine.utils.mode").get_mode
+local noice_mode = require("noice").api.statusline.mode.get
+
+local mode = function()
+  local mode = noice_mode()
+
+  if mode then
+    return mode
+  else
+    return lualine_mode()
+  end
+end
 
 lualine.setup {
   options = {
@@ -9,7 +21,7 @@ lualine.setup {
   sections = {
     lualine_a = {
       -- "mode",
-      require("noice").api.statusline.mode.get,
+      mode,
     },
     lualine_b = { "branch", "diff", "diagnostics" },
     lualine_c = { "filename" },
