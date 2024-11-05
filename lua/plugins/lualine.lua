@@ -9,7 +9,7 @@ lualine.setup {
   sections = {
     lualine_a = {
       -- "mode",
- ,     require("noice").api.statusline.mode.get,
+      require("noice").api.statusline.mode.get,
     },
     lualine_b = { "branch", "diff", "diagnostics" },
     lualine_c = { "filename" },
