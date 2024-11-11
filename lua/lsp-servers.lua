@@ -1,6 +1,11 @@
 local settings = require "lsp-settings"
 local lspconfig = require "lspconfig"
 
+-- appropriately highlight codefences returned from denols
+vim.g.markdown_fenced_languages = {
+  "ts=typescript",
+}
+
 --LSP configurations
 local servers = {
   -- BASH
@@ -73,7 +78,7 @@ local servers = {
   ts_ls = {
     on_attach = function(client, bufnr)
       if lspconfig.util.root_pattern("deno.json", "deno.jsonc")(vim.fn.getcwd()) then
-        if client.name == "tsserver" then
+        if client.name == "ts_ls" then
           client.stop()
           return
         end
