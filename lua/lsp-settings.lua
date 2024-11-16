@@ -32,7 +32,6 @@ M.on_attach = function(__client, bufnr)
 
   map("n", "<leader>d", "<CMD>Telescope diagnostics bufnr=0<CR>", opts "Show buffer diagnostics")
   map("n", "<leader>D", "<CMD>Telescope diagnostics bufnr=nill<CR>", opts "Show buffer diagnostics (all buffers)")
-  -- map("n", "<leader>D", vim.diagnostic.open_float, opts "Show line diagnostics")
   map("n", "[d", vim.diagnostic.goto_prev, opts "Go to previous diagnostic")
   map("n", "]d", vim.diagnostic.goto_next, opts "Go to next diagnostic")
 
