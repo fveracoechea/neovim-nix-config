@@ -16,7 +16,7 @@ local function get_buffer_count()
     end
   end
 
-  return count
+  return " " .. count
 end
 
 -- Integrates Nocice notifications with lua line mode
@@ -43,7 +43,7 @@ local get_clients_lsp = function()
   for _, client in pairs(clients) do
     table.insert(c, client.name)
   end
-  return "  " .. table.concat(c, " | ")
+  return table.concat(c, "  ") .. " "
 end
 
 lualine.setup {
@@ -51,6 +51,7 @@ lualine.setup {
     theme = "catppuccin",
     globalstatus = true,
     section_separators = { left = "", right = "" },
+    disabled_filetypes = { statusline = { "NvimTree" }, winbar = { "NvimTree" } },
   },
 
   sections = {
@@ -64,23 +65,21 @@ lualine.setup {
     },
     lualine_x = {
       get_clients_lsp,
+      "fileformat",
     },
     lualine_y = { "filesize" },
     lualine_z = {
       "location",
-      "fileformat",
     },
   },
 
   winbar = {
-    lualine_a = {
-      get_buffer_count,
-    },
+    lualine_a = {},
     lualine_b = {
+      get_buffer_count,
       "filetype",
     },
     lualine_c = {
-
       {
         "filename",
         file_status = true,
