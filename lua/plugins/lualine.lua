@@ -19,6 +19,7 @@ local function get_buffer_count()
   return "(" .. count .. ")"
 end
 
+-- Integrates Nocice notifications with lua line mode
 local get_mode = function()
   local mode = noice_mode()
 
@@ -42,7 +43,7 @@ local get_clients_lsp = function()
   for _, client in pairs(clients) do
     table.insert(c, client.name)
   end
-  return "\u{f085} " .. table.concat(c, "|")
+  return "  " .. table.concat(c, " | ")
 end
 
 lualine.setup {
@@ -72,12 +73,10 @@ lualine.setup {
 
   winbar = {
     lualine_a = {},
-    lualine_b = {},
+    lualine_b = {
+      get_buffer_count,
+    },
     lualine_c = {
-      {
-        get_buffer_count,
-        color = { fg = colors.peach },
-      },
       {
         "filename",
         file_status = true,
