@@ -2,7 +2,24 @@ local lualine = require "lualine"
 local lualine_mode = require("lualine.utils.mode").get_mode
 local noice_mode = require("noice").api.statusline.mode.get
 
-local mode = function()
+local colors = require "catppuccin.palettes.mocha"
+
+-- Function to get the number of open buffers using the :ls command
+local function get_buffer_count()
+  local buffers = vim.fn.execute "ls"
+  local count = 0
+
+  -- Match only lines that represent buffers, typically starting with a number followed by a space
+  for line in string.gmatch(buffers, "[^\r\n]+") do
+    if string.match(line, "^%s*%d+") then
+      count = count + 1
+    end
+  end
+
+  return "(" .. count .. ")"
+end
+
+local get_mode = function()
   local mode = noice_mode()
 
   if mode then
@@ -10,6 +27,22 @@ local mode = function()
   else
     return lualine_mode()
   end
+end
+
+-- LSP clients attached to buffer
+local get_clients_lsp = function()
+  local bufnr = vim.api.nvim_get_current_buf()
+
+  local clients = vim.lsp.buf_get_clients(bufnr)
+  if next(clients) == nil then
+    return ""
+  end
+
+  local c = {}
+  for _, client in pairs(clients) do
+    table.insert(c, client.name)
+  end
+  return "\u{f085} " .. table.concat(c, "|")
 end
 
 lualine.setup {
@@ -20,13 +53,14 @@ lualine.setup {
   },
 
   sections = {
-    lualine_a = { mode },
+    lualine_a = { get_mode },
     lualine_b = { "branch", "diff", "diagnostics" },
     lualine_c = {
       {
         "lsp_progress",
-        display_components = { "lsp_client_name", "spinner", { "title", "percentage" } },
+        display_components = { "lsp_client_name", { "title", "percentage" } },
       },
+      get_clients_lsp,
     },
     lualine_x = {
       "fileformat",
@@ -41,10 +75,15 @@ lualine.setup {
     lualine_b = {},
     lualine_c = {
       {
+        get_buffer_count,
+        color = { fg = colors.peach },
+      },
+      {
         "filename",
         file_status = true,
         newfile_status = true,
         path = 1,
+        color = { fg = colors.rosewater },
       },
     },
     lualine_x = {},
