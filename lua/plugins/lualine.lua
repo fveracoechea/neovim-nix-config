@@ -43,7 +43,7 @@ local get_clients_lsp = function()
   for _, client in pairs(clients) do
     table.insert(c, client.name)
   end
-  return table.concat(c, " ") .. " "
+  return table.concat(c, " ") .. " "
 end
 
 lualine.setup {
@@ -58,28 +58,24 @@ lualine.setup {
     lualine_a = { get_mode },
     lualine_b = { "branch", "diff", "diagnostics" },
     lualine_c = {
+      "windows",
       {
         "lsp_progress",
         display_components = { "lsp_client_name", { "title", "percentage" } },
       },
     },
-    lualine_x = {
-      get_clients_lsp,
-      "fileformat",
-    },
-    lualine_y = { "filesize" },
-    lualine_z = {
-      "location",
-    },
+    lualine_x = { "filesize", "fileformat" },
+    lualine_y = { get_clients_lsp },
+    lualine_z = { "location" },
   },
 
   winbar = {
     lualine_a = {},
     lualine_b = {
       get_buffer_count,
-      "filetype",
     },
     lualine_c = {
+      "filetype",
       {
         "filename",
         file_status = true,
