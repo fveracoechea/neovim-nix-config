@@ -54,7 +54,6 @@ dashboard.section.buttons.val = {
   dashboard.button("s", "󰁯  Restore session", "<cmd>SessionRestore<CR>"),
   dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),
   dashboard.button("r", "󰄉  Recent files", ":Telescope oldfiles <CR>"),
-  -- dashboard.button("p", "  Projects", ":e $HOME/Code <CR>"), TODO: open with yazi
   dashboard.button("d", "󱗼  Dotfiles", ":e $HOME/dotfiles <CR>"),
   dashboard.button("q", "󰿅  Quit", "<cmd>qa<CR>"),
 }

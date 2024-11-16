@@ -11,7 +11,6 @@ inputs: {
   xdg.configFile."nvim/lua/lsp-settings.lua".source = ./lua/lsp-settings.lua;
   xdg.configFile."nvim/lua/keymaps.lua".source = ./lua/keymaps.lua;
   xdg.configFile."nvim/lua/options.lua".source = ./lua/options.lua;
-  xdg.configFile."nvim/lua/winbar.lua".source = ./lua/winbar.lua;
 
   programs.neovim = {
     enable = true;
@@ -24,7 +23,6 @@ inputs: {
       # lua
       ''
         require "options";
-        -- require "winbar";
         require "keymaps";
       '';
 

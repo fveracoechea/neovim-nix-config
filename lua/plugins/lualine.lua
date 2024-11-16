@@ -43,7 +43,7 @@ local get_clients_lsp = function()
   for _, client in pairs(clients) do
     table.insert(c, client.name)
   end
-  return table.concat(c, "  ") .. " "
+  return table.concat(c, " ") .. " "
 end
 
 lualine.setup {
@@ -51,7 +51,7 @@ lualine.setup {
     theme = "catppuccin",
     globalstatus = true,
     section_separators = { left = "", right = "" },
-    disabled_filetypes = { statusline = { "NvimTree" }, winbar = { "NvimTree" } },
+    disabled_filetypes = { winbar = { "NvimTree" } },
   },
 
   sections = {
