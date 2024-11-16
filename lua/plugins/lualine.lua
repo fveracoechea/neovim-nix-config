@@ -22,7 +22,7 @@ lualine.setup {
   sections = {
     lualine_a = { mode },
     lualine_b = { "branch", "diff", "diagnostics" },
-    lualine_c = { "filename" },
+    lualine_c = { "require'lsp-status'.status()" },
     lualine_x = {
       "lsp_progress",
       "fileformat",
@@ -35,7 +35,9 @@ lualine.setup {
   winbar = {
     lualine_a = {},
     lualine_b = {},
-    lualine_c = { "filename" },
+    lualine_c = { "filename", {
+      "buffers",
+    } },
     lualine_x = {},
     lualine_y = {},
     lualine_z = {},
