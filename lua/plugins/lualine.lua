@@ -16,7 +16,7 @@ local function get_buffer_count()
     end
   end
 
-  return "(" .. count .. ")"
+  return count
 end
 
 -- Integrates Nocice notifications with lua line mode
@@ -61,22 +61,26 @@ lualine.setup {
         "lsp_progress",
         display_components = { "lsp_client_name", { "title", "percentage" } },
       },
-      get_clients_lsp,
     },
     lualine_x = {
-      "fileformat",
-      "filetype",
+      get_clients_lsp,
     },
-    lualine_y = { "progress" },
-    lualine_z = { "location" },
+    lualine_y = { "filesize" },
+    lualine_z = {
+      "location",
+      "fileformat",
+    },
   },
 
   winbar = {
-    lualine_a = {},
-    lualine_b = {
+    lualine_a = {
       get_buffer_count,
     },
+    lualine_b = {
+      "filetype",
+    },
     lualine_c = {
+
       {
         "filename",
         file_status = true,
@@ -93,7 +97,15 @@ lualine.setup {
   inactive_winbar = {
     lualine_a = {},
     lualine_b = {},
-    lualine_c = {},
+    lualine_c = {
+      {
+        "filename",
+        file_status = true,
+        newfile_status = true,
+        path = 1,
+        color = { fg = colors.subtext1 },
+      },
+    },
     lualine_x = {},
     lualine_y = {},
     lualine_z = {},
