@@ -24,7 +24,7 @@ inputs: {
       # lua
       ''
         require "options";
-        require "winbar";
+        -- require "winbar";
         require "keymaps";
       '';
 
