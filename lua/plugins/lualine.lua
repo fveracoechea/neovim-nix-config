@@ -43,7 +43,7 @@ local get_clients_lsp = function()
   for _, client in pairs(clients) do
     table.insert(c, client.name)
   end
-  return table.concat(c, "  ")
+  return table.concat(c, "  ")
 end
 
 lualine.setup {
@@ -51,7 +51,7 @@ lualine.setup {
     theme = "catppuccin",
     globalstatus = true,
     section_separators = { left = "", right = "" },
-    disabled_filetypes = { winbar = { "NvimTree" } },
+    disabled_filetypes = { winbar = { "NvimTree", "alpha" } },
   },
 
   sections = {
@@ -64,7 +64,7 @@ lualine.setup {
         display_components = { "lsp_client_name", { "title", "percentage" } },
       },
     },
-    lualine_x = { "encoding", "fileformat", "filetype" },
+    lualine_x = { "encoding", "fileformat" },
     lualine_y = { "filesize" },
     lualine_z = { "location" },
   },
@@ -75,7 +75,11 @@ lualine.setup {
       get_buffer_count,
     },
     lualine_c = {
-      "filetype",
+      {
+
+        "filetype",
+        color = { fg = colors.rosewater },
+      },
       {
         "filename",
         file_status = true,
