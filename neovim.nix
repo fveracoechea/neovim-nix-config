@@ -2,7 +2,12 @@ inputs: {
   lib,
   pkgs,
   ...
-}: {
+}: let
+  pkgs-24_05 = import inputs.nixpkgs-24_05 {
+    system = pkgs.system;
+    config.allowUnfree = true;
+  };
+in {
   home.packages = [pkgs.lazygit];
 
   # Enable management of XDG base directories
@@ -37,8 +42,7 @@ inputs: {
       typescript-language-server
       vscode-langservers-extracted # html, css, json and eslint
       tailwindcss-language-server
-      nodePackages_latest.graphql-language-service-cli
-      # nodePackages.graphql-language-service-cli
+      pkgs-24_05.nodePackages.graphql-language-service-cli
       emmet-language-server
       emmet-ls
       nginx-language-server
