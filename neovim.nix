@@ -111,6 +111,7 @@ in {
         import_cost-nvim
         lazydev-nvim
         noice-nvim
+        otter-nvim
       ];
 
       withConfig = with pkgs.vimPlugins; [
