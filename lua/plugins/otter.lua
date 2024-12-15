@@ -1,6 +1,4 @@
-local otter = require "otter"
-
-otter.setup {
+require("otter").setup {
   lsp = {
     -- `:h events` that cause the diagnostics to update. Set to:
     -- { "BufWritePost", "InsertLeave", "TextChanged" } for less performant
