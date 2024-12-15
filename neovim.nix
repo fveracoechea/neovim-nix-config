@@ -130,10 +130,6 @@ in {
           plugin = nvim-autopairs;
           config = lib.fileContents ./lua/plugins/autopairs.lua;
         }
-        # {
-        #   plugin = bufferline-nvim;
-        #   config = lib.fileContents ./lua/plugins/bufferline.lua;
-        # }
         {
           plugin = catppuccin-nvim;
           config = lib.fileContents ./lua/plugins/catppuccin.lua;
@@ -184,7 +180,11 @@ in {
         }
         {
           plugin = noice-nvim;
-          config = lib.fileContents ./lua/plugins/noice.lua;
+          config =
+            # lua
+            ''
+              require("otter").activate()
+            '';
         }
         {
           plugin = todo-comments-nvim;

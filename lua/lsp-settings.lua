@@ -43,9 +43,6 @@ M.on_attach = function(__client, bufnr)
   map("n", "<leader>wl", function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, opts "List workspace folders")
-
-  -- Acitave otter-nvim
-  require("otter").activate()
 end
 
 -- Used to enable autocompletion (assign to every lsp server config)
