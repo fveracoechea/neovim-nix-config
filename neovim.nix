@@ -111,7 +111,6 @@ in {
         import_cost-nvim
         lazydev-nvim
         noice-nvim
-        otter-nvim
       ];
 
       withConfig = with pkgs.vimPlugins; [
@@ -194,6 +193,10 @@ in {
         {
           plugin = nvim-tree-lua;
           config = lib.fileContents ./lua/plugins/nvim-tree.lua;
+        }
+        {
+          plugin = otter-nvim;
+          config = lib.fileContents ./lua/plugins/otter.lua;
         }
         {
           plugin = nvim-treesitter.withPlugins (p: [
