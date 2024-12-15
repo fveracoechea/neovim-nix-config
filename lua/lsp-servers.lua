@@ -53,6 +53,8 @@ local servers = {
   },
   -- NGINX
   nginx_language_server = {},
+  -- ESLint
+  eslint = {},
   -- GRAPHQL
   graphql = {
     filetypes = {
