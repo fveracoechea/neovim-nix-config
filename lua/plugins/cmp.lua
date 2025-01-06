@@ -60,6 +60,7 @@ cmp.setup {
     { name = "luasnip" }, -- snippets
     { name = "buffer" }, -- text within current buffer
     { name = "path" }, -- file system paths
+    { name = "otter" },
     {
       name = "lazydev",
       -- set group index to 0 to skip loading LuaLS completions

@@ -1,9 +1,3 @@
-local otter = require "otter"
+local otter = require("otter").setup()
 
 otter.setup()
-
-vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
-  callback = function()
-    otter.activate()
-  end,
-})

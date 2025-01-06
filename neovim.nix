@@ -96,6 +96,7 @@ in {
         friendly-snippets
         lspkind-nvim
         lualine-lsp-progress
+        otter-nvim
 
         # Treesitter
         nvim-ts-context-commentstring
@@ -194,10 +195,10 @@ in {
           plugin = nvim-tree-lua;
           config = lib.fileContents ./lua/plugins/nvim-tree.lua;
         }
-        {
-          plugin = otter-nvim;
-          config = lib.fileContents ./lua/plugins/otter.lua;
-        }
+        # {
+        #   plugin = otter-nvim;
+        #   config = lib.fileContents ./lua/plugins/otter.lua;
+        # }
         {
           plugin = nvim-treesitter.withPlugins (p: [
             p.tree-sitter-nix
