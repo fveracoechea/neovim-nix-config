@@ -2,8 +2,7 @@ inputs: {
   lib,
   pkgs,
   ...
-}: let
-in {
+}: {
   home.packages = [pkgs.lazygit];
 
   # Enable management of XDG base directories
@@ -65,16 +64,6 @@ in {
         src = inputs.import_cost-nvim;
       };
 
-      lazydev-nvim = pkgs.vimUtils.buildVimPlugin {
-        name = "lazydev-nvim";
-        src = inputs.lazydev-nvim;
-      };
-
-      lsp-file-operations-nvim = pkgs.vimUtils.buildVimPlugin {
-        name = "lsp-file-operations-nvim";
-        src = inputs.lsp-file-operations-nvim;
-      };
-
       plain = with pkgs.vimPlugins; [
         # Utils
         plenary-nvim
@@ -104,7 +93,7 @@ in {
         telescope-fzf-native-nvim
         trouble-nvim
 
-        lsp-file-operations-nvim
+        nvim-lsp-file-operations
         import_cost-nvim
         lazydev-nvim
         noice-nvim
@@ -127,10 +116,6 @@ in {
           plugin = nvim-autopairs;
           config = lib.fileContents ./lua/plugins/autopairs.lua;
         }
-        # {
-        #   plugin = bufferline-nvim;
-        #   config = lib.fileContents ./lua/plugins/bufferline.lua;
-        # }
         {
           plugin = catppuccin-nvim;
           config = lib.fileContents ./lua/plugins/catppuccin.lua;
@@ -191,10 +176,6 @@ in {
           plugin = nvim-tree-lua;
           config = lib.fileContents ./lua/plugins/nvim-tree.lua;
         }
-        # {
-        #   plugin = otter-nvim;
-        #   config = lib.fileContents ./lua/plugins/otter.lua;
-        # }
         {
           plugin = nvim-treesitter.withPlugins (p: [
             p.tree-sitter-nix
