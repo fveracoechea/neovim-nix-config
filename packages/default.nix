@@ -21,4 +21,14 @@ in
   {
     # example = pkgs.callPackage ./example { };
   }
-  // (pkgs.callPackage ./node-packages.nix {inherit nodeEnv;})
+  // import ./node-packages.nix {
+    inherit
+      (pkgs)
+      fetchurl
+      nix-gitignore
+      stdenv
+      lib
+      fetchgit
+      ;
+    inherit nodeEnv;
+  }
