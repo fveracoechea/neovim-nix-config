@@ -38,6 +38,7 @@ inputs: {
       vscode-langservers-extracted # html, css, json and eslint
       tailwindcss-language-server
       nodePackages.graphql-language-service-cli
+      nodePackages.graphql-language-service-server
       emmet-language-server
       emmet-ls
       nginx-language-server
@@ -81,7 +82,7 @@ inputs: {
         friendly-snippets
         lspkind-nvim
         lualine-lsp-progress
-        otter-nvim
+        # otter-nvim
 
         # Treesitter
         nvim-ts-context-commentstring

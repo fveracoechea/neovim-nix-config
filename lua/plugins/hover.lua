@@ -4,7 +4,7 @@ require("hover").setup {
     require "hover.providers.diagnostic"
   end,
   preview_opts = {
-    border = "single",
+    border = "rounded",
   },
   preview_window = false,
   title = true,
