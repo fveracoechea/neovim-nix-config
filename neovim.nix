@@ -3,7 +3,11 @@ inputs: {
   pkgs,
   ...
 }: {
-  home.packages = [pkgs.lazygit];
+  home.packages = [
+    pkgs.lazygit
+    # relay-compiler package package
+    pkgs.myNodePackages.relay-compiler
+  ];
 
   # Enable management of XDG base directories
   xdg.enable = lib.mkDefault true;
@@ -38,7 +42,6 @@ inputs: {
       vscode-langservers-extracted # html, css, json and eslint
       tailwindcss-language-server
       nodePackages.graphql-language-service-cli
-      myNodePackages.relay-compiler
       emmet-language-server
       emmet-ls
       nginx-language-server
