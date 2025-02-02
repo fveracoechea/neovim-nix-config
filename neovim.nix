@@ -38,7 +38,6 @@ inputs: {
       vscode-langservers-extracted # html, css, json and eslint
       tailwindcss-language-server
       nodePackages.graphql-language-service-cli
-      nodePackages.graphql-language-service-server
       emmet-language-server
       emmet-ls
       nginx-language-server
