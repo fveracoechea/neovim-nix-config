@@ -26,35 +26,39 @@ inputs: {
         require "keymaps";
       '';
 
-    extraPackages = with pkgs; [
-      # # Tools --
-      xclip
-      wl-clipboard
-      # # LSP --
-      nil
-      lua-language-server
-      typescript
-      typescript-language-server
-      vscode-langservers-extracted # html, css, json and eslint
-      tailwindcss-language-server
-      nodePackages.graphql-language-service-cli
-      emmet-language-server
-      emmet-ls
-      nginx-language-server
-      bash-language-server
-      # # Formatters --
-      prettierd
-      stylua
-      isort
-      black
-      shfmt
-      alejandra
-      # # Linters --
-      pylint
-      pyright
-      eslint_d
-      codespell
-    ];
+    extraPackages = let
+      customNodePacakges = import ./packages/default.nix pkgs;
+    in
+      with pkgs; [
+        # # Tools --
+        xclip
+        wl-clipboard
+        # # LSP --
+        nil
+        lua-language-server
+        typescript
+        typescript-language-server
+        vscode-langservers-extracted # html, css, json and eslint
+        tailwindcss-language-server
+        nodePackages.graphql-language-service-cli
+        customNodePacakges.relay-compiler
+        emmet-language-server
+        emmet-ls
+        nginx-language-server
+        bash-language-server
+        # # Formatters --
+        prettierd
+        stylua
+        isort
+        black
+        shfmt
+        alejandra
+        # # Linters --
+        pylint
+        pyright
+        eslint_d
+        codespell
+      ];
 
     plugins = let
       toLuaType = builtins.map (plugin: plugin // {type = "lua";});
