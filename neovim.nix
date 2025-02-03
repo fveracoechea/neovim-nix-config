@@ -3,19 +3,7 @@ inputs: {
   pkgs,
   ...
 }: {
-  home.packages = [
-    pkgs.lazygit
-    # relay-compiler package package
-
-    (pkgs.myNodePackages.relay-compiler.override
-      {
-        nativeBuildInputs = [pkgs.buildPackages.makeWrapper];
-        postInstall = ''
-          wrapProgram "$out/bin/relay-compiler" \
-            --prefix NODE_PATH : ${pkgs.nodePackages.graphql}/lib/node_modules
-        '';
-      })
-  ];
+  home.packages = [pkgs.lazygit];
 
   # Enable management of XDG base directories
   xdg.enable = lib.mkDefault true;
@@ -50,6 +38,8 @@ inputs: {
       vscode-langservers-extracted # html, css, json and eslint
       tailwindcss-language-server
       nodePackages.graphql-language-service-cli
+      # relay-compiler package overlay
+      myNodePackages.relay-compiler
       emmet-language-server
       emmet-ls
       nginx-language-server
