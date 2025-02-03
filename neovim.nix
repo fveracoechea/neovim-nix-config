@@ -6,9 +6,14 @@ inputs: {
   home.packages = [
     pkgs.lazygit
     # relay-compiler package package
+
     (pkgs.myNodePackages.relay-compiler.override
       {
-        npmFlags = builtins.toString ["-g"];
+        nativeBuildInputs = [pkgs.buildPackages.makeWrapper];
+        postInstall = ''
+          wrapProgram "$out/bin/relay-compiler" \
+            --prefix NODE_PATH : ${pkgs.graphql}/lib/node_modules
+        '';
       })
   ];
 
