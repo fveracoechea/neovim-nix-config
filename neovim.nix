@@ -8,7 +8,7 @@ inputs: {
     # relay-compiler package package
     (pkgs.myNodePackages.relay-compiler.override
       {
-        npmFlags = builtins.toString ["--ignore-scripts"];
+        npmFlags = builtins.toString ["-g"];
       })
   ];
 
