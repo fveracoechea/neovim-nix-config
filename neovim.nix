@@ -12,7 +12,7 @@ inputs: {
         nativeBuildInputs = [pkgs.buildPackages.makeWrapper];
         postInstall = ''
           wrapProgram "$out/bin/relay-compiler" \
-            --prefix NODE_PATH : ${pkgs.graphql}/lib/node_modules
+            --prefix NODE_PATH : ${pkgs.nodePackages.graphql}/lib/node_modules
         '';
       })
   ];
