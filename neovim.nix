@@ -103,6 +103,10 @@ inputs: {
 
       withConfig = with pkgs.vimPlugins; [
         {
+          plugin = gitsings-nvim;
+          config = lib.fileContents ./lua/plugins/gitsigns.lua;
+        }
+        {
           plugin = alpha-nvim;
           config = lib.fileContents ./lua/plugins/alpha.lua;
         }
