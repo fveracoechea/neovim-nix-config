@@ -103,10 +103,6 @@ inputs: {
 
       withConfig = with pkgs.vimPlugins; [
         {
-          plugin = gitsings-nvim;
-          config = lib.fileContents ./lua/plugins/gitsigns.lua;
-        }
-        {
           plugin = alpha-nvim;
           config = lib.fileContents ./lua/plugins/alpha.lua;
         }
@@ -181,6 +177,10 @@ inputs: {
         {
           plugin = nvim-tree-lua;
           config = lib.fileContents ./lua/plugins/nvim-tree.lua;
+        }
+        {
+          plugin = gitsigns-nvim;
+          config = lib.fileContents ./lua/plugins/gitsigns.lua;
         }
         {
           plugin = nvim-treesitter.withPlugins (p: [
