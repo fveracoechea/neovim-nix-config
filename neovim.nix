@@ -38,8 +38,6 @@ inputs: {
       vscode-langservers-extracted # html, css, json and eslint
       tailwindcss-language-server
       nodePackages.graphql-language-service-cli
-      # relay-compiler package overlay
-      myNodePackages.relay-compiler
       emmet-language-server
       emmet-ls
       nginx-language-server
