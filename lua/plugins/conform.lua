@@ -26,10 +26,9 @@ conform.setup {
     lua = { "stylua" },
     python = { "isort", "black" },
     nix = { "alejandra" },
-    ["*"] = { "codespell" },
   },
   format_on_save = {
-    lsp_format = "fallback",
+    lsp_format = "never",
     timeout_ms = 1000,
   },
 }
