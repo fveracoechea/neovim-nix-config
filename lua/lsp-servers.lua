@@ -73,15 +73,7 @@ local servers = {
   },
   -- DENO
   denols = {
-    root_markers = { "deno.json", "deno.jsonc", ".git" },
-    init_options = {
-      lint = true,
-      fmt = false,
-    },
-    settings = {
-      lint = true,
-      fmt = false,
-    },
+    root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
   },
   -- TYPESCRIPT
   ts_ls = {
