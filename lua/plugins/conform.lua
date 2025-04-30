@@ -1,6 +1,12 @@
 local conform = require "conform"
 
-local js_formatters = { "deno_fmt", "prettier", stop_after_first = true }
+local js_formatters = function()
+  if require("lspconfig").util.root_pattern("deno.json", "deno.jsonc")(vim.fn.getcwd()) then
+    return { "deno_fmt" }
+  end
+
+  return { "prettier" }
+end
 
 conform.setup {
   formatters_by_ft = {
@@ -24,7 +30,6 @@ conform.setup {
   },
   format_on_save = {
     lsp_format = "fallback",
-    async = true,
     timeout_ms = 1000,
   },
 }
