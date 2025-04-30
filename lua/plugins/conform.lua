@@ -1,26 +1,30 @@
 local conform = require "conform"
 
+local js_formatters = { "deno_fmt", "prettier", stop_after_first = true }
+
 conform.setup {
   formatters_by_ft = {
-    javascript = { "prettier" },
-    typescript = { "prettier" },
-    javascriptreact = { "prettier" },
-    typescriptreact = { "prettier" },
+    javascript = js_formatters,
+    typescript = js_formatters,
+    javascriptreact = js_formatters,
+    typescriptreact = js_formatters,
+    css = js_formatters,
+    html = js_formatters,
+    json = js_formatters,
+    jsonc = js_formatters,
+    yaml = js_formatters,
+    markdown = js_formatters,
     svelte = { "prettier" },
-    css = { "prettier" },
-    html = { "prettier" },
-    json = { "prettier" },
-    yaml = { "prettier" },
-    markdown = { "prettier" },
     graphql = { "prettier" },
     liquid = { "prettier" },
     lua = { "stylua" },
     python = { "isort", "black" },
     nix = { "alejandra" },
+    ["*"] = { "codespell" },
   },
   format_on_save = {
-    lsp_fallback = true,
-    async = false,
+    lsp_format = "fallback",
+    async = true,
     timeout_ms = 1000,
   },
 }

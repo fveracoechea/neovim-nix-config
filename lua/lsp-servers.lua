@@ -75,6 +75,15 @@ local servers = {
   denols = {
     lint = true,
     root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+    filetypes = {
+      "javascript",
+      "javascriptreact",
+      "javascript.jsx",
+      "typescript",
+      "typescriptreact",
+      "typescript.tsx",
+      "markdown",
+    },
   },
   -- TYPESCRIPT
   ts_ls = {

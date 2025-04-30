@@ -42,8 +42,8 @@ inputs: {
       emmet-ls
       nginx-language-server
       bash-language-server
+      proselint
       # # Formatters --
-      prettierd
       stylua
       isort
       black
@@ -100,6 +100,10 @@ inputs: {
       ];
 
       withConfig = with pkgs.vimPlugins; [
+        {
+          plugin = refactoring-nvim;
+          config = lib.fileContents ./lua/plugins/refactoring.lua;
+        }
         {
           plugin = alpha-nvim;
           config = lib.fileContents ./lua/plugins/alpha.lua;
