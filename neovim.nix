@@ -49,7 +49,6 @@ inputs: {
       black
       shfmt
       alejandra
-      prettierd
       # # Linters --
       pylint
       pyright
