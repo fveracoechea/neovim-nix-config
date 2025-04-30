@@ -73,16 +73,14 @@ local servers = {
   },
   -- DENO
   denols = {
-    lint = true,
-    root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-    filetypes = {
-      "javascript",
-      "javascriptreact",
-      "javascript.jsx",
-      "typescript",
-      "typescriptreact",
-      "typescript.tsx",
-      "markdown",
+    root_markers = { "deno.json", "deno.jsonc", ".git" },
+    init_options = {
+      lint = true,
+      fmt = false,
+    },
+    settings = {
+      lint = true,
+      fmt = false,
     },
   },
   -- TYPESCRIPT
