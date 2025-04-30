@@ -1,9 +1,13 @@
 local conform = require "conform"
 
-local js_formatters = { "prettier" }
+local js_formatters = { "deno_fmt", "prettier", stop_after_first = true }
 
 conform.setup {
   formatters = {
+    deno_fmt = {
+      -- When cwd is not found, don't run the formatter (default false)
+      require_cwd = true,
+    },
     prettier = {
       -- When cwd is not found, don't run the formatter (default false)
       require_cwd = true,
@@ -28,7 +32,7 @@ conform.setup {
     nix = { "alejandra" },
   },
   format_on_save = {
-    lsp_format = "never",
+    lsp_format = "fallback",
     timeout_ms = 1000,
   },
 }
