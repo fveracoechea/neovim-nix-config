@@ -1,6 +1,6 @@
 local conform = require "conform"
 
-local js_formatters = { "deno_fmt", "prettier", stop_after_first = true }
+local js_formatters = { "prettier", "deno_fmt", stop_after_first = true }
 
 conform.setup {
   formatters = {
