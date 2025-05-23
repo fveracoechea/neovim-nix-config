@@ -101,6 +101,10 @@ inputs: {
 
       withConfig = with pkgs.vimPlugins; [
         {
+          plugin = neoscroll-nvim;
+          config = lib.fileContents ./lua/plugins/neoscroll.lua;
+        }
+        {
           plugin = tailwind-tools-nvim;
           config = lib.fileContents ./lua/plugins/tailwind-tools.lua;
         }

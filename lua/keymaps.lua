@@ -42,6 +42,10 @@ map(
   "<CMD>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
   { desc = "Find all files" }
 )
+
+-- Dismiss noice notification
+map("n", "<leader>nd", "<CMD>NoiceDismiss<CR>", { desc = "Dismiss notification" })
+
 -- Hover
 local hover = require "hover"
 map("n", "K", hover.hover, { desc = "Hover" })
