@@ -16,6 +16,9 @@ o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,term
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 
+-- Enable nodejs integration
+g.loaded_node_provider = 1
+
 -- mouse mode (disabled)
 o.mouse = ""
 
