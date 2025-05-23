@@ -57,6 +57,7 @@ cmp.setup {
   -- sources for autocompletion
   sources = cmp.config.sources {
     { name = "nvim_lsp" },
+    { name = "copilot" },
     { name = "luasnip" }, -- snippets
     { name = "buffer" }, -- text within current buffer
     { name = "path" }, -- file system paths
@@ -66,6 +67,10 @@ cmp.setup {
       -- set group index to 0 to skip loading LuaLS completions
       group_index = 0,
     },
+  },
+
+  sorting = {
+    priority_weight = 2,
   },
 
   -- configure lspkind for vs-code like pictograms in completion menu
@@ -121,3 +126,5 @@ cmp.setup {
     },
   },
 }
+
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })

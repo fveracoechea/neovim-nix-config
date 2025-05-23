@@ -101,6 +101,18 @@ inputs: {
 
       withConfig = with pkgs.vimPlugins; [
         {
+          plugin = tailwind-tools-nvim;
+          config = lib.fileContents ./lua/plugins/tailwind-tools.lua;
+        }
+        {
+          plugin = copilot-cmp;
+          config = lib.fileContents ./lua/plugins/copilot-cmp.lua;
+        }
+        {
+          plugin = copilot-lua;
+          config = lib.fileContents ./lua/plugins/copilot.lua;
+        }
+        {
           plugin = refactoring-nvim;
           config = lib.fileContents ./lua/plugins/refactoring.lua;
         }

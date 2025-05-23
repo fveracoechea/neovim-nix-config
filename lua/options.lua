@@ -38,9 +38,8 @@ opt.relativenumber = true
 -- highlight the text line of the cursor
 opt.cursorline = true
 
--- lines longer than the width of the window will wrap
--- and displaying continues on the next line.
-opt.wrap = true
+-- lines longer than the width of the window will not wrap
+opt.wrap = false
 
 -- copy indent from current line when starting new one
 opt.autoindent = true
