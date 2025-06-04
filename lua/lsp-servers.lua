@@ -8,8 +8,6 @@ vim.g.markdown_fenced_languages = {
 
 --LSP configurations
 local servers = {
-  -- BASH
-  bashls = {},
   -- HTML
   html = {},
   -- NIX
