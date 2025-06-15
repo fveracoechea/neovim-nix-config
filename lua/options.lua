@@ -71,3 +71,7 @@ o.softtabstop = 2
 -- timeout
 vim.o.timeout = true
 vim.o.timeoutlen = 500
+
+-- lazygit
+vim.g.lazygit_floating_window_scaling_factor = 0.8 -- scaling factor for floating window
+vim.g.lazygit_floating_window_use_plenary = 1 -- use plenary.nvim to manage floating window if available
