@@ -8,10 +8,9 @@ local map = vim.keymap.set
 -- Save file
 map("n", "<C-s>", "<CMD>w<CR>", { desc = "file save" })
 
--- Nvim Tree
-map("n", "<C-n>", "<CMD>NvimTreeToggle<CR>", { desc = "NvimTree toggle window" })
-map("n", "<leader>t", "<CMD>NvimTreeFocus<CR>", { desc = "NvimTree focus window" })
-map("n", "<leader>e", "<CMD>NvimTreeFindFile<CR>", { desc = "Focus current buffer in NvimTree." })
+-- Yazi
+map("n", "<C-n>", "<CMD>Yazi cwd<CR>", { desc = "Open the file manager in nvim's working directory" })
+map("n", "<leader>e", "<CMD>Yazi<CR>", { desc = "Open yazi at the current file" })
 
 -- Comment
 map("n", "<leader>/", "gcc", { desc = "comment toggle", remap = true })
@@ -43,7 +42,7 @@ map(
   { desc = "Find all files" }
 )
 
--- Dismiss noice notification
+-- Dismiss notifications
 map("n", "<leader>nd", "<CMD>NoiceDismiss<CR>", { desc = "Dismiss notification" })
 
 -- Hover
@@ -61,12 +60,3 @@ map("n", "<leader>ws", "<CMD>SessionSave<CR>", { desc = "Save session for auto s
 
 -- Lazygit
 map("n", "<leader>lg", "<CMD>LazyGit<CR>", { desc = "Open Lazygit" })
-
--- Format file
-vim.keymap.set({ "n", "v" }, "<leader>mp", function()
-  require("conform").format {
-    lsp_fallback = true,
-    async = false,
-    timeout_ms = 1000,
-  }
-end, { desc = "Format file or range (in visual mode)" })

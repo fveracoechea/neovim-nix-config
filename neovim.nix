@@ -71,6 +71,7 @@ inputs: {
         nvim-web-devicons
         vim-tmux-navigator
         nui-nvim
+        snacks-nvim
 
         # CMP
         cmp-path
@@ -100,6 +101,10 @@ inputs: {
       ];
 
       withConfig = with pkgs.vimPlugins; [
+        {
+          plugin = yazi-nvim;
+          config = lib.fileContents ./lua/plugins/yazi.lua;
+        }
         {
           plugin = neoscroll-nvim;
           config = lib.fileContents ./lua/plugins/neoscroll.lua;
@@ -192,10 +197,10 @@ inputs: {
           plugin = todo-comments-nvim;
           config = lib.fileContents ./lua/plugins/todo-comments.lua;
         }
-        {
-          plugin = nvim-tree-lua;
-          config = lib.fileContents ./lua/plugins/nvim-tree.lua;
-        }
+        # {
+        #   plugin = nvim-tree-lua;
+        #   config = lib.fileContents ./lua/plugins/nvim-tree.lua;
+        # }
         {
           plugin = gitsigns-nvim;
           config = lib.fileContents ./lua/plugins/gitsigns.lua;
