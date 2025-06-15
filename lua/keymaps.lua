@@ -41,7 +41,6 @@ map(
   "<CMD>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
   { desc = "Find all files" }
 )
-
 -- Dismiss notifications
 map("n", "<leader>nd", "<CMD>NoiceDismiss<CR>", { desc = "Dismiss notification" })
 
