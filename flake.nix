@@ -5,7 +5,7 @@
     # NixOS official package sources
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    import_cost-nvim = {
+    import-cost-nvim = {
       url = "github:barrett-ruth/import-cost.nvim";
       flake = false;
     };

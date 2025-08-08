@@ -78,12 +78,12 @@ inputs: {
 
     plugins = let
       cmp-mini-snippets = pkgs.vimUtils.buildVimPlugin {
-        name = "cmp-mini-snippets";
+        name = "cmp_mini_snippets";
         src = inputs.cmp-mini-snippets;
       };
       import-cost-nvim = pkgs.vimUtils.buildVimPlugin {
-        name = "import_cost-nvim";
-        src = inputs.import_cost-nvim;
+        name = "import-cost";
+        src = inputs.import-cost-nvim;
       };
 
       # Tree-sitter grammars configuration
