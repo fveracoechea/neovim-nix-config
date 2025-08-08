@@ -15,36 +15,18 @@ snacks.setup {
         indent = 4,
         height = 16,
       },
-      function()
-        local cmds = {
-          {
-            icon = " ",
-            title = "Git Status",
-            cmd = "git --no-pager diff --stat -B -M -C",
-            height = 6,
-          },
-          {
-            icon = " ",
-            title = "Open PRs",
-            cmd = "gh pr list -L 5",
-            key = "P",
-            action = function()
-              vim.fn.jobstart("gh pr list --web", { detach = true })
-            end,
-            height = 10,
-          },
-        }
-        return vim.tbl_map(function(cmd)
-          return vim.tbl_extend("force", {
-            pane = 2,
-            indent = 2,
-            padding = 1,
-            ttl = 5 * 60,
-            section = "terminal",
-            enabled = Snacks.git.get_root() ~= nil,
-          }, cmd)
-        end, cmds)
-      end,
+      {
+        section = "terminal",
+        pane = 2,
+        indent = 2,
+        padding = 1,
+        icon = " ",
+        title = "Git Status",
+        cmd = "git --no-pager diff --stat -B -M -C",
+        height = 10,
+        ttl = 5 * 60,
+        enabled = Snacks.git.get_root() ~= nil,
+      },
     },
   },
   preset = {
