@@ -1,11 +1,15 @@
 -- Mini.nvim configuration - consolidate multiple plugins into mini modules
 -- Each module is independent and can be configured separately
 
+require("mini.sessions").setup {
+  directory = vim.fn.stdpath "data" .. "/sessions",
+  file = "",
+}
+
 require("mini.completion").setup {}
 require("mini.pairs").setup {}
 require("mini.surround").setup {}
 require("mini.comment").setup {}
-require("mini.sessions").setup {}
 require("mini.statusline").setup {}
 require("mini.diff").setup {}
 
