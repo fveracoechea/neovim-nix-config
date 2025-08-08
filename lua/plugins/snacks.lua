@@ -13,10 +13,16 @@ snacks.setup {
         cmd = "zeitfetch --no-logo;",
         pane = 2,
         indent = 4,
-        height = 30,
+        height = 16,
       },
       function()
         local cmds = {
+          {
+            icon = " ",
+            title = "Git Status",
+            cmd = "git --no-pager diff --stat -B -M -C",
+            height = 6,
+          },
           {
             icon = " ",
             title = "Open PRs",
@@ -25,13 +31,7 @@ snacks.setup {
             action = function()
               vim.fn.jobstart("gh pr list --web", { detach = true })
             end,
-            height = 5,
-          },
-          {
-            icon = " ",
-            title = "Git Status",
-            cmd = "git --no-pager diff --stat -B -M -C",
-            height = 5,
+            height = 10,
           },
         }
         return vim.tbl_map(function(cmd)
