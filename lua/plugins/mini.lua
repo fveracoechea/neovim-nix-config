@@ -6,7 +6,13 @@ require("mini.sessions").setup {
   file = "",
 }
 
-require("mini.completion").setup {}
+require("mini.completion").setup {
+  window = {
+    info = { height = 25, width = 75, border = "rounded" },
+    signature = { height = 25, width = 75, border = "rounded" },
+  },
+}
+
 require("mini.pairs").setup {}
 require("mini.surround").setup {}
 require("mini.comment").setup {}
