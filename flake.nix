@@ -11,7 +11,7 @@
     };
 
     cmp-mini-snippets = {
-      url = "https://github.com/abeldekat/cmp-mini-snippets";
+      url = "github:abeldekat/cmp-mini-snippets";
       flake = false;
     };
 
