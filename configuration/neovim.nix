@@ -34,17 +34,15 @@ inputs: {
         require "plugins.yazi";
         require "plugins.catppuccin";
         require "plugins.noice";
-        require "plugins.copilot";
-        require "plugins.lspconfig";
-        require "plugins.hover";
-        require "plugins.tailwind-tools";
         require "plugins.conform";
         require "plugins.lint";
         require "plugins.none-ls";
-        require "plugins.refactoring";
-        require "plugins.gitsigns";
         require "plugins.codesnap";
         require "plugins.treesitter";
+        require "plugins.lspconfig";
+        require "plugins.cmp";
+        require "plugins.hover";
+        require "plugins.tailwind-tools";
       '';
 
     extraPackages = with pkgs; [
@@ -79,8 +77,11 @@ inputs: {
     ];
 
     plugins = let
-      # Custom plugin from external input
-      import_cost-nvim = pkgs.vimUtils.buildVimPlugin {
+      cmp-mini-snippets = pkgs.vimUtils.buildVimPlugin {
+        name = "cmp-mini-snippets";
+        src = inputs.cmp-mini-snippets;
+      };
+      import-cost-nvim = pkgs.vimUtils.buildVimPlugin {
         name = "import_cost-nvim";
         src = inputs.import_cost-nvim;
       };
@@ -137,7 +138,15 @@ inputs: {
         plenary-nvim
         nui-nvim
         which-key-nvim
+
+        ## Completion System
+        cmp-path
+        cmp-buffer
+        cmp-nvim-lsp
+        cmp-mini-snippets
         lspkind-nvim
+        copilot-lua
+        cpopilot-cmp
 
         ## Navigation & Movement
         vim-tmux-navigator
@@ -162,9 +171,6 @@ inputs: {
         catppuccin-nvim
         noice-nvim
 
-        ## AI Integration
-        copilot-lua
-
         ## Language Support & LSP
         nvim-lspconfig
         hover-nvim
@@ -186,9 +192,7 @@ inputs: {
 
         ## Syntax Highlighting
         (nvim-treesitter.withPlugins treeSitterGrammars)
-
-        ## Custom Plugins
-        import_cost-nvim
+        import-cost-nvim
       ];
   };
 }

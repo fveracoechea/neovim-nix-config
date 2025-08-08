@@ -54,8 +54,10 @@ M.on_attach = function(_, bufnr)
   map("n", "]d", vim.diagnostic.goto_next, opts "Go to next diagnostic")
 end
 
--- Used to enable autocompletion for mini.completion
--- Mini.completion works with default LSP capabilities
-M.capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities = vim.tbl_deep_extend(
+  "force",
+  vim.lsp.protocol.make_client_capabilities(),
+  require("cmp_nvim_lsp").default_capabilities()
+)
 
 return M

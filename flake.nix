@@ -10,6 +10,11 @@
       flake = false;
     };
 
+    cmp-mini-snippets = {
+      url = "https://github.com/abeldekat/cmp-mini-snippets";
+      flake = false;
+    };
+
     tree-sitter-nginx = {
       url = "gitlab:joncoole/tree-sitter-nginx";
       flake = false;
