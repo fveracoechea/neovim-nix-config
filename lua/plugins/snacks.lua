@@ -86,7 +86,30 @@ snacks.setup {
   -- Dashboard (replaces alpha.nvim)
   dashboard = {
     enabled = true,
-    example = "github", -- Use the GitHub example preset
+    sections = {
+      { section = "header" },
+      { section = "keys", gap = 1, padding = 1 },
+      { section = "recent_files", gap = 1, cwd = true, limit = 5, padding = 1 },
+      { section = "projects", gap = 1, limit = 8, padding = 1 },
+      { section = "terminal" },
+    },
+    preset = {
+      keys = {
+        { icon = " ", key = "f", desc = "Find File", action = ":Snacks picker files" },
+        { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+        { icon = " ", key = "r", desc = "Recent Files", action = ":Snacks picker recent" },
+        { icon = " ", key = "g", desc = "Find Text", action = ":Snacks picker grep" },
+        { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy" },
+        { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+      },
+      header = [[
+███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
+████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
+██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
+██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
+██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
+╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝]],
+    },
   },
 
   -- Debug utilities

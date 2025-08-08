@@ -121,7 +121,7 @@ inputs: {
         # Removed nvim-web-devicons - replaced by mini.icons
 
         ## UI Enhancements
-        dressing-nvim
+        # Removed dressing-nvim - replaced by snacks.input + snacks.picker (ui_select)
         which-key-nvim
 
         ## Navigation & Movement

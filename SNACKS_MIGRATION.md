@@ -39,6 +39,11 @@ This document outlines the plugins that have been replaced by snacks.nvim and th
   - Consider keeping todo-comments if you heavily use TODO highlighting
   - Note: `<leader>ft` keymap for TodoTelescope is no longer available
 
+- **dressing.nvim** → `snacks.input` + `snacks.picker`
+  - Better `vim.ui.input` prompts handled by snacks.input
+  - Better `vim.ui.select` menus handled by snacks.picker (ui_select=true)
+  - Consistent UI styling with other snacks components
+
 ### 🔄 Migration Notes
 
 #### Key Mappings
