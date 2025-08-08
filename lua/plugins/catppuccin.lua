@@ -1,6 +1,10 @@
 require("catppuccin").setup {
   flavour = "mocha",
   transparent_background = true,
+  float = {
+    transparent = true,
+    solid = "rounded",
+  },
   integrations = {
     telescope = {
       enabled = true,
