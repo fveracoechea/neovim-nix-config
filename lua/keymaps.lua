@@ -187,6 +187,59 @@ map("n", "[h", function()
   require("mini.diff").goto_hunk "prev"
 end, { desc = "Prev hunk" })
 
+-- Mini.completion keymaps
+local MiniSnippets = require "mini.snippets"
+
+map("i", "<C-j>", function()
+  if vim.fn.pumvisible() == 1 then
+    return "<C-n>"
+  else
+    return "<C-j>"
+  end
+end, { desc = "Next completion item", expr = true })
+
+map("i", "<C-k>", function()
+  if vim.fn.pumvisible() == 1 then
+    return "<C-p>"
+  else
+    return "<C-k>"
+  end
+end, { desc = "Previous completion item", expr = true })
+
+map("i", "<C-e>", function()
+  if vim.fn.pumvisible() == 1 then
+    return "<C-e>"
+  else
+    return "<C-e>"
+  end
+end, { desc = "Close completion menu", expr = true })
+
+-- Fixed Tab and Shift-Tab for completion navigation and snippet expansion
+map("i", "<Tab>", function()
+  if vim.fn.pumvisible() == 1 then
+    return "<C-n>"
+  elseif MiniSnippets.can_expand() then
+    MiniSnippets.expand()
+    return ""
+  elseif MiniSnippets.can_jump "next" then
+    MiniSnippets.jump "next"
+    return ""
+  else
+    return "<Tab>"
+  end
+end, { desc = "Next completion, expand snippet, or Tab", expr = true })
+
+map("i", "<S-Tab>", function()
+  if vim.fn.pumvisible() == 1 then
+    return "<C-p>"
+  elseif MiniSnippets.can_jump "prev" then
+    MiniSnippets.jump "prev"
+    return ""
+  else
+    return "<S-Tab>"
+  end
+end, { desc = "Previous completion, jump prev, or Shift-Tab", expr = true })
+
 -- ============================================================================
 -- REFACTORING PLUGIN MAPPINGS
 -- ============================================================================
