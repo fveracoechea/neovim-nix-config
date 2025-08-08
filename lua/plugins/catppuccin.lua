@@ -2,12 +2,13 @@ require("catppuccin").setup {
   flavour = "mocha",
   transparent_background = true,
   float = {
-    transparent = false,
-    solid = "rounded",
+    transparent = true,
+    solid = true,
   },
   integrations = {
     telescope = {
       enabled = true,
+      style = "nvchad",
     },
     which_key = true,
     lsp_trouble = true,
