@@ -7,17 +7,8 @@ snacks.setup {
     sections = {
       { section = "header" },
       { section = "keys", gap = 1, padding = 1 },
-      { icon = " ", title = "Recent Files", section = "recent_files", height = 16, indent = 2, padding = 1 },
       {
         section = "terminal",
-        cmd = "zeitfetch --no-logo;",
-        pane = 2,
-        indent = 2,
-        height = 18,
-      },
-      {
-        section = "terminal",
-        pane = 2,
         indent = 2,
         padding = 1,
         icon = " ",
@@ -26,6 +17,13 @@ snacks.setup {
         height = 10,
         ttl = 5 * 60,
         enabled = Snacks.git.get_root() ~= nil,
+      },
+      {
+        section = "terminal",
+        cmd = "zeitfetch --no-logo;",
+        pane = 2,
+        indent = 2,
+        height = 18,
       },
     },
   },
@@ -36,12 +34,17 @@ snacks.setup {
       { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
       { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
       { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
-      { icon = " ", key = "s", desc = "Restore Session", section = ':lua require("mini.sessions").read()' },
+      { icon = " ", key = "s", desc = "Restore Session", section = ":lua require('mini.sessions').read()" },
       { icon = " ", key = "q", desc = "Quit", action = ":qa" },
     },
   },
 
   indent = {
+    enabled = true,
+    char = "┊",
+  },
+
+  scope = {
     enabled = true,
     char = "┊",
   },
@@ -58,7 +61,6 @@ snacks.setup {
   quickfile = { enabled = true },
   input = { enabled = true },
   rename = { enabled = true },
-  scope = { enabled = true },
   scroll = { enabled = true },
   statuscolumn = { enabled = true },
   toggle = { enabled = true },
