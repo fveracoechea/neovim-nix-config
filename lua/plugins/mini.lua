@@ -1,11 +1,16 @@
 -- Mini.nvim configuration - consolidate multiple plugins into mini modules
 -- Each module is independent and can be configured separately
 
-require("mini.icons").setup {
-  style = "glyph",
-}
+require("mini.completion").setup {}
+require("mini.pairs").setup {}
+require("mini.surround").setup {}
+require("mini.comment").setup {}
+require("mini.sessions").setup {}
+require("mini.statusline").setup {}
+require("mini.diff").setup {}
 
 local gen_loader = require("mini.snippets").gen_loader
+
 require("mini.snippets").setup {
   snippets = {
     -- Load custom file with global snippets first (adjust for Windows)
@@ -16,10 +21,8 @@ require("mini.snippets").setup {
   },
 }
 
-require("mini.completion").setup {}
-require("mini.pairs").setup {}
-require("mini.surround").setup {}
-require("mini.comment").setup {}
-require("mini.sessions").setup {}
-require("mini.statusline").setup {}
-require("mini.diff").setup {}
+require("mini.icons").setup {
+  style = "glyph",
+}
+
+MiniIcons.tweak_lsp_kind()

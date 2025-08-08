@@ -137,6 +137,7 @@ inputs: {
         plenary-nvim
         nui-nvim
         which-key-nvim
+        lspkind-nvim
 
         ## Navigation & Movement
         vim-tmux-navigator
