@@ -1,4 +1,4 @@
 {...}: {
   # TODO: ADD glolbal snippets
-  xdg.configFile."nvim/snippets/global.json".source = builtins.toJSON {};
+  xdg.configFile."nvim/snippets/global.json".text = builtins.toJSON {};
 }
