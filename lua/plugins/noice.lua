@@ -15,4 +15,11 @@ require("noice").setup {
     inc_rename = false, -- enables an input dialog for inc-rename.nvim
     lsp_doc_border = false, -- add a border to hover docs and signature help
   },
+  -- Route notifications to snacks.notifier instead of noice's built-in notifier
+  routes = {
+    {
+      filter = { event = "notify" },
+      view = "notify_send", -- This will use vim.notify which snacks.notifier handles
+    },
+  },
 }

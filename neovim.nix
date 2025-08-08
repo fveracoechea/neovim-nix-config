@@ -3,7 +3,7 @@ inputs: {
   pkgs,
   ...
 }: {
-  home.packages = [pkgs.lazygit];
+  home.packages = [pkgs.lazygit pkgs.gh pkgs.fzf];
 
   # Enable management of XDG base directories
   xdg.enable = lib.mkDefault true;
@@ -118,46 +118,24 @@ inputs: {
         ## Core Dependencies
         plenary-nvim
         nui-nvim
-        nvim-web-devicons
+        # Removed nvim-web-devicons - replaced by mini.icons
 
         ## UI Enhancements
         dressing-nvim
-        snacks-nvim
         which-key-nvim
 
         ## Navigation & Movement
         vim-tmux-navigator
-        nvim-surround
-
-        ## Completion System
-        cmp-path
-        cmp-buffer
-        cmp-nvim-lsp
-        luasnip
-        cmp_luasnip
-        friendly-snippets
-        lspkind-nvim
+        # Removed nvim-surround - replaced by mini.surround
 
         ## Treesitter Extensions
         nvim-ts-context-commentstring
         nvim-ts-autotag
 
-        ## Telescope Extensions
-        telescope-fzf-native-nvim
-
         ## LSP & Development
         nvim-lsp-file-operations
         lazydev-nvim
         trouble-nvim
-
-        ## Git Integration
-        lazygit-nvim
-
-        ## Status Line
-        lualine-lsp-progress
-
-        ## Notifications
-        noice-nvim
 
         ## Custom Plugins
         import_cost-nvim
@@ -165,6 +143,18 @@ inputs: {
 
       # Plugins that require configuration
       withConfig = with pkgs.vimPlugins; [
+        ## Mini.nvim - Swiss Army knife plugin collection
+        {
+          plugin = mini-nvim;
+          config = lib.fileContents ./lua/plugins/mini.lua;
+        }
+
+        ## Snacks.nvim - Multi-plugin library
+        {
+          plugin = snacks-nvim;
+          config = lib.fileContents ./lua/plugins/snacks.lua;
+        }
+
         ## File Management
         {
           plugin = yazi-nvim;
@@ -173,58 +163,18 @@ inputs: {
 
         ## UI & Theme
         {
-          plugin = alpha-nvim;
-          config = lib.fileContents ./lua/plugins/alpha.lua;
-        }
-        {
           plugin = catppuccin-nvim;
           config = lib.fileContents ./lua/plugins/catppuccin.lua;
         }
         {
-          plugin = lualine-nvim;
-          config = lib.fileContents ./lua/plugins/lualine.lua;
-        }
-        {
-          plugin = nvim-notify;
-          config = lib.fileContents ./lua/plugins/notify.lua;
-        }
-        {
           plugin = noice-nvim;
           config = lib.fileContents ./lua/plugins/noice.lua;
-        }
-        {
-          plugin = neoscroll-nvim;
-          config = lib.fileContents ./lua/plugins/neoscroll.lua;
-        }
-        {
-          plugin = indent-blankline-nvim;
-          config = lib.fileContents ./lua/plugins/indent-blankline.lua;
-        }
-
-        ## Session Management
-        {
-          plugin = auto-session;
-          config = lib.fileContents ./lua/plugins/auto-session.lua;
-        }
-
-        ## Completion & Snippets
-        {
-          plugin = nvim-cmp;
-          config = lib.fileContents ./lua/plugins/cmp.lua;
-        }
-        {
-          plugin = nvim-autopairs;
-          config = lib.fileContents ./lua/plugins/autopairs.lua;
         }
 
         ## AI Integration
         {
           plugin = copilot-lua;
           config = lib.fileContents ./lua/plugins/copilot.lua;
-        }
-        {
-          plugin = copilot-cmp;
-          config = lib.fileContents ./lua/plugins/copilot-cmp.lua;
         }
 
         ## Language Support & LSP
@@ -262,25 +212,12 @@ inputs: {
         }
 
         ## Comments & Documentation
-        {
-          plugin = comment-nvim;
-          config = lib.fileContents ./lua/plugins/comments.lua;
-        }
-        {
-          plugin = todo-comments-nvim;
-          config = lib.fileContents ./lua/plugins/todo-comments.lua;
-        }
+        # Removed comment-nvim - replaced by mini.comment
 
         ## Git Integration
         {
           plugin = gitsigns-nvim;
           config = lib.fileContents ./lua/plugins/gitsigns.lua;
-        }
-
-        ## Telescope (Fuzzy Finder)
-        {
-          plugin = telescope-nvim;
-          config = lib.fileContents ./lua/plugins/telescope.lua;
         }
 
         ## Screenshots
