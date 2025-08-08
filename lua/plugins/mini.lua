@@ -28,7 +28,7 @@ require("mini.surround").setup {
   highlight_duration = 500,
   mappings = {
     add = "sa",
-    delete = "sd", 
+    delete = "sd",
     find = "sf",
     find_left = "sF",
     highlight = "sh",
@@ -144,7 +144,7 @@ require("mini.diff").setup {
 }
 
 -- Snippets (provides snippet functionality for completion)
-local MiniSnippets = require("mini.snippets")
+local MiniSnippets = require "mini.snippets"
 MiniSnippets.setup {
   mappings = {
     expand = "",
@@ -168,7 +168,7 @@ require("mini.completion").setup {
     auto_setup = true,
     process_items = function(items, base)
       local res = vim.tbl_filter(function(item)
-        return item.kind ~= 1 or base:match("^%s*%-%-") or base:match("^%s*//") or base:match("^%s*#")
+        return item.kind ~= 1 or base:match "^%s*%-%-" or base:match "^%s*//" or base:match "^%s*#"
       end, items)
       return MiniCompletion.default_process_items(res, base)
     end,
@@ -186,28 +186,6 @@ require("mini.completion").setup {
   },
   set_vim_settings = true,
 }
-
--- Set up keymaps that integrate with your existing workflow
-local map = vim.keymap.set
-
--- Session management keymaps
-map("n", "<leader>wr", function()
-  MiniSessions.read()
-end, { desc = "Read session" })
-map("n", "<leader>ws", function()
-  MiniSessions.write()
-end, { desc = "Write session" })
-map("n", "<leader>wd", function()
-  MiniSessions.delete()
-end, { desc = "Delete session" })
-
--- Mini.diff keymaps
-map("n", "]h", function()
-  require("mini.diff").goto_hunk "next"
-end, { desc = "Next hunk" })
-map("n", "[h", function()
-  require("mini.diff").goto_hunk "prev"
-end, { desc = "Prev hunk" })
 
 -- Completion keymaps
 map("i", "<C-j>", function()
@@ -241,8 +219,8 @@ map("i", "<Tab>", function()
   elseif MiniSnippets.can_expand() then
     MiniSnippets.expand()
     return ""
-  elseif MiniSnippets.can_jump("next") then
-    MiniSnippets.jump("next")
+  elseif MiniSnippets.can_jump "next" then
+    MiniSnippets.jump "next"
     return ""
   else
     return "<Tab>"
@@ -252,10 +230,11 @@ end, { desc = "Next completion, expand snippet, or Tab", expr = true })
 map("i", "<S-Tab>", function()
   if vim.fn.pumvisible() == 1 then
     return "<C-p>"
-  elseif MiniSnippets.can_jump("prev") then
-    MiniSnippets.jump("prev")
+  elseif MiniSnippets.can_jump "prev" then
+    MiniSnippets.jump "prev"
     return ""
   else
     return "<S-Tab>"
   end
 end, { desc = "Previous completion, jump prev, or Shift-Tab", expr = true })
+
