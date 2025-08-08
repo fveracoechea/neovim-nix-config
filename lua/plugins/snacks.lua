@@ -29,23 +29,25 @@ snacks.setup {
     sections = {
       { section = "header" },
       { section = "keys", gap = 1, padding = 1 },
-      { section = "recent_files", gap = 1, cwd = true, limit = 5, padding = 1 },
-    },
-    preset = {
-      keys = {
-        { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.picker.files()" },
-        { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-        { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.picker.recent()" },
-        { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.picker.grep()" },
-        { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+      { section = "startup" },
+      {
+        section = "terminal",
+        cmd = "zeitfetch --no-logo;",
+        pane = 2,
+        indent = 4,
+        height = 30,
       },
-      header = [[
-███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
-████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
-██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
-██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
-██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
-╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝]],
+      { icon = " ", title = "Recent Files", pane = 2, section = "recent_files", indent = 2, padding = { 2, 2 } },
+    },
+  },
+  preset = {
+    keys = {
+      { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+      { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+      { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+      { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+      { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+      { icon = " ", key = "q", desc = "Quit", action = ":qa" },
     },
   },
 
@@ -216,4 +218,3 @@ snacks.setup {
 }
 
 -- Note: Keymaps are now centralized in lua/keymaps.lua
-
