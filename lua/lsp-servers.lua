@@ -26,19 +26,6 @@ local servers = {
       },
     },
   },
-  -- EMMET
-  emmet_ls = {
-    filetypes = {
-      "html",
-      "typescriptreact",
-      "javascriptreact",
-      "css",
-      "sass",
-      "scss",
-      "less",
-      "svelte",
-    },
-  },
   -- CSS
   cssls = {
     settings = {
