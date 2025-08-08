@@ -143,47 +143,17 @@ require("mini.diff").setup {
   source = nil,
 }
 
--- Snippets (provides snippet functionality for completion)
-local MiniSnippets = require "mini.snippets"
-MiniSnippets.setup {
-  mappings = {
-    expand = "",
-    jump_next = "",
-    jump_prev = "",
-    stop = "<C-c>",
+local gen_loader = require("mini.snippets").gen_loader
+
+require("mini.snippets").setup {
+  snippets = {
+    -- Load custom file with global snippets first (adjust for Windows)
+    gen_loader.from_file "~/.config/nvim/snippets/global.json",
+
+    -- Load snippets based on current language by reading files from
+    -- "snippets/" subdirectories from 'runtimepath' directories.
+    gen_loader.from_lang(),
   },
-  snippets = {},
-  gen_loader = {},
 }
 
--- Completion (replaces nvim-cmp)
-require("mini.completion").setup {
-  delay = { completion = 100, info = 100, signature = 50 },
-  window = {
-    info = { height = 25, width = 80, border = "none" },
-    signature = { height = 25, width = 80, border = "none" },
-  },
-  lsp_completion = {
-    source_func = "completefunc",
-    auto_setup = true,
-    process_items = function(items, base)
-      local res = vim.tbl_filter(function(item)
-        return item.kind ~= 1 or base:match "^%s*%-%-" or base:match "^%s*//" or base:match "^%s*#"
-      end, items)
-      return MiniCompletion.default_process_items(res, base)
-    end,
-  },
-  fallback_action = function()
-    if MiniSnippets.can_expand() then
-      return MiniSnippets.expand()
-    else
-      return vim.api.nvim_replace_termcodes("<C-x><C-n>", true, false, true)
-    end
-  end,
-  mappings = {
-    force_twostep = "<C-Space>",
-    force_fallback = "<A-Space>",
-  },
-  set_vim_settings = true,
-}
-
+require("mini.completion").setup {}

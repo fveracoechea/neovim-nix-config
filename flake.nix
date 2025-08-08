@@ -17,6 +17,6 @@
   };
 
   outputs = inputs: {
-    homeManagerModules.default = import ./neovim.nix inputs;
+    homeManagerModules.default = import ./configuration inputs;
   };
 }

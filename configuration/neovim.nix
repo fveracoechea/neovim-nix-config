@@ -7,13 +7,13 @@ inputs: {
 
   # Enable management of XDG base directories
   xdg.enable = lib.mkDefault true;
-  xdg.configFile."nvim/lua/options.lua".source = ./lua/options.lua;
-  xdg.configFile."nvim/lua/keymaps.lua".source = ./lua/keymaps.lua;
-  xdg.configFile."nvim/lua/lsp-servers.lua".source = ./lua/lsp-servers.lua;
-  xdg.configFile."nvim/lua/lsp-settings.lua".source = ./lua/lsp-settings.lua;
+  xdg.configFile."nvim/lua/options.lua".source = ../lua/options.lua;
+  xdg.configFile."nvim/lua/keymaps.lua".source = ../lua/keymaps.lua;
+  xdg.configFile."nvim/lua/lsp-servers.lua".source = ../lua/lsp-servers.lua;
+  xdg.configFile."nvim/lua/lsp-settings.lua".source = ../lua/lsp-settings.lua;
   xdg.configFile."nvim/lua/plugins" = {
     recursive = true;
-    source = ./lua/plugins;
+    source = ../lua/plugins;
   };
 
   programs.neovim = {
