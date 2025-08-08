@@ -5,55 +5,55 @@ snacks.setup {
   -- stylua: ignore
   keys = {
     -- Dashboard 
-    { "<leader>;", function() Snacks.dashboard() end, desc = "Dashboard" },
+    { "<leader>;", function() snacks.dashboard() end, desc = "Dashboard" },
     -- File and text finding (replacing telescope keymaps)
-    { "<leader>ff", function() Snacks.picker.files() end, desc = "Find files in cwd" },
-    { "<leader>fr", function() Snacks.picker.recent() end, desc = "Find recent files" },
-    { "<leader>fs", function() Snacks.picker.grep() end, desc = "Find string in cwd" },
-    { "<leader>fc", function() Snacks.picker.grep_buffers() end, desc = "Find in current buffer" },
-    { "<leader>fw", function() Snacks.picker.grep_word() end, desc = "Find string under cursor in Workspace" },
-    { "<leader>b", function() Snacks.picker.buffers() end, desc = "Find open buffers" },
-    { "<leader>fa", function() Snacks.picker.files({ hidden = true, no_ignore = true }) end, desc = "Find all files" },
-    -- LSP pickers (replacing telescope LSP integrations)  
-    { "<leader>lr", function() Snacks.picker.lsp_references() end, desc = "References" },
-    { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Definition" },
-    { "<leader>li", function() Snacks.picker.lsp_implementations() end, desc = "Implementation" },
-    { "<leader>lt", function() Snacks.picker.lsp_type_definitions() end, desc = "Type definition" },
-    { "<leader>d", function() Snacks.picker.diagnostics() end, desc = "Show buffer diagnostics" },
-    { "<leader>D", function() Snacks.picker.diagnostics_buffer() end, desc = "Show buffer diagnostics (all buffers)" },
+    { "<leader>ff", function() snacks.picker.files() end, desc = "Find files in cwd" },
+    { "<leader>fr", function() snacks.picker.recent() end, desc = "Find recent files" },
+    { "<leader>fs", function() snacks.picker.grep() end, desc = "Find string in cwd" },
+    { "<leader>fc", function() snacks.picker.grep_buffers() end, desc = "Find in current buffer" },
+    { "<leader>fw", function() snacks.picker.grep_word() end, desc = "Find string under cursor in Workspace" },
+    { "<leader>b", function() snacks.picker.buffers() end, desc = "Find open buffers" },
+    { "<leader>fa", function() snacks.picker.files({ hidden = true, no_ignore = true }) end, desc = "Find all files" },
+    -- LSP pickers
+    { "<leader>lr", function() snacks.picker.lsp_references() end, desc = "References" },
+    { "gd", function() snacks.picker.lsp_definitions() end, desc = "Definition" },
+    { "<leader>li", function() snacks.picker.lsp_implementations() end, desc = "Implementation" },
+    { "<leader>lt", function() snacks.picker.lsp_type_definitions() end, desc = "Type definition" },
+    { "<leader>d", function() snacks.picker.diagnostics() end, desc = "Show buffer diagnostics" },
+    { "<leader>D", function() snacks.picker.diagnostics_buffer() end, desc = "Show buffer diagnostics (all buffers)" },
     -- Buffer management 
-    { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
-    { "<leader>bo", function() Snacks.bufdelete.other() end, desc = "Delete Other Buffers" },
+    { "<leader>bd", function() snacks.bufdelete() end, desc = "Delete Buffer" },
+    { "<leader>bo", function() snacks.bufdelete.other() end, desc = "Delete Other Buffers" },
     -- Git integration
-    { "<leader>gb", function() Snacks.git.blame_line() end, desc = "Git Blame Line" },
-    { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse" },
-    { "<leader>gf", function() Snacks.lazygit.log_file() end, desc = "Lazygit Current File History" },
-    { "<leader>lg", function() Snacks.lazygit() end, desc = "Open Lazygit" }, -- Keep your existing shortcut
-    { "<leader>gl", function() Snacks.lazygit.log() end, desc = "Lazygit Log (cwd)" },
+    { "<leader>gb", function() snacks.git.blame_line() end, desc = "Git Blame Line" },
+    { "<leader>gB", function() snacks.gitbrowse() end, desc = "Git Browse" },
+    { "<leader>gf", function() snacks.lazygit.log_file() end, desc = "Lazygit Current File History" },
+    { "<leader>lg", function() snacks.lazygit() end, desc = "Open Lazygit" },
+    { "<leader>gl", function() snacks.lazygit.log() end, desc = "Lazygit Log (cwd)" },
     -- Notifications 
-    { "<leader>n", function() Snacks.notifier.show_history() end, desc = "Notification History" },
-    { "<leader>nd", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" }, -- Keep your existing shortcut
+    { "<leader>n", function() snacks.notifier.show_history() end, desc = "Notification History" },
+    { "<leader>nd", function() snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
     -- LSP rename
-    { "<leader>rn", function() Snacks.rename() end, desc = "LSP Rename" },
-    -- Terminal (using standard terminal shortcuts)
-    { "<c-/>", function() Snacks.terminal() end, desc = "Toggle Terminal" },
-    { "<c-_>", function() Snacks.terminal() end, desc = "Toggle Terminal (which-key workaround)" },
+    { "<leader>rn", function() snacks.rename() end, desc = "LSP Rename" },
+    -- Terminal
+    { "<c-/>", function() snacks.terminal() end, desc = "Toggle Terminal" },
+    { "<c-_>", function() snacks.terminal() end, desc = "Toggle Terminal (which-key workaround)" },
     { "<c-/>", "<cmd>close<cr>", desc = "Hide Terminal", mode = "t" },
     { "<c-_>", "<cmd>close<cr>", desc = "Hide Terminal (which-key workaround)", mode = "t" },
-    -- Word references (replacing todo-comments navigation)
-    { "]]", function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference" },
-    { "[[", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference" },
+    -- Word references
+    { "]]", function() snacks.words.jump(vim.v.count1) end, desc = "Next Reference" },
+    { "[[", function() snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference" },
     -- Zen mode
-    { "<leader>z", function() Snacks.zen() end, desc = "Toggle Zen Mode" },
-    { "<leader>Z", function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
+    { "<leader>z", function() snacks.zen() end, desc = "Toggle Zen Mode" },
+    { "<leader>Z", function() snacks.zen.zoom() end, desc = "Toggle Zoom" },
     -- Scratch buffer
-    { "<leader>.", function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
-    { "<leader>S", function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
+    { "<leader>.", function() snacks.scratch() end, desc = "Toggle Scratch Buffer" },
+    { "<leader>S", function() snacks.scratch.select() end, desc = "Select Scratch Buffer" },
     -- Toggle utilities 
-    { "<leader>ul", function() Snacks.toggle.line_number() end, desc = "Toggle Line Numbers" },
-    { "<leader>uL", function() Snacks.toggle.option("relativenumber", { name = "Relative Numbers" }) end, desc = "Toggle Relative Numbers" },
-    { "<leader>uw", function() Snacks.toggle.option("wrap", { name = "Wrap" }) end, desc = "Toggle Line Wrap" },
-    { "<leader>us", function() Snacks.toggle.option("spell", { name = "Spelling" }) end, desc = "Toggle Spelling" },
+    { "<leader>ul", function() snacks.toggle.line_number() end, desc = "Toggle Line Numbers" },
+    { "<leader>uL", function() snacks.toggle.option("relativenumber", { name = "Relative Numbers" }) end, desc = "Toggle Relative Numbers" },
+    { "<leader>uw", function() snacks.toggle.option("wrap", { name = "Wrap" }) end, desc = "Toggle Line Wrap" },
+    { "<leader>us", function() snacks.toggle.option("spell", { name = "Spelling" }) end, desc = "Toggle Spelling" },
   },
 
   -- Enable animations for various UI elements
@@ -93,10 +93,10 @@ snacks.setup {
     },
     preset = {
       keys = {
-        { icon = " ", key = "f", desc = "Find File", action = ":Snacks picker files" },
+        { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.picker.files()" },
         { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-        { icon = " ", key = "r", desc = "Recent Files", action = ":Snacks picker recent" },
-        { icon = " ", key = "g", desc = "Find Text", action = ":Snacks picker grep" },
+        { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.picker.recent()" },
+        { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.picker.grep()" },
         { icon = " ", key = "q", desc = "Quit", action = ":qa" },
       },
       header = [[
