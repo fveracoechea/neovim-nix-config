@@ -146,7 +146,7 @@ inputs: {
         cmp-mini-snippets
         lspkind-nvim
         copilot-lua
-        cpopilot-cmp
+        copilot-cmp
 
         ## Navigation & Movement
         vim-tmux-navigator
