@@ -89,7 +89,6 @@ snacks.setup {
     sections = {
       { section = "header" },
       { section = "keys", gap = 1, padding = 1 },
-      { section = "recent_files", gap = 1, cwd = true, limit = 5, padding = 1 },
     },
     preset = {
       keys = {
@@ -175,78 +174,10 @@ snacks.setup {
   -- Picker configuration (replaces telescope.nvim)
   picker = {
     enabled = true,
-    -- Match your telescope prompt configuration
-    prompt = " ",
-    -- Configure picker behavior similar to your telescope setup
-    sort = { "score", "created" },
-    layout = {
-      position = "top",
-      preview_width = 0.6,
-    },
-    -- Smart path display like telescope
-    sources = {
-      files = {
-        follow = true,
-      },
-      buffers = {
-        sort_lastused = true,
-        ignore_current_buffer = true,
-      },
-      grep = {
-        case_mode = "smart_case",
-      },
-      diagnostics = {
-        severity_limit = vim.diagnostic.severity.HINT,
-      },
-    },
-    -- Configure window layout to match your telescope ivy theme for some pickers
     win = {
       input = {
         keys = {
-          ["<C-k>"] = "move_up",
-          ["<C-j>"] = "move_down",
-          ["<C-h>"] = "help",
           ["<ESC>"] = { "close", mode = { "n", "i" } },
-        },
-      },
-      list = {
-        keys = {
-          ["<C-k>"] = "move_up",
-          ["<C-j>"] = "move_down",
-          ["<C-x>"] = "delete_buffer", -- Match your telescope buffer delete key
-        },
-      },
-    },
-    -- Match your telescope behavior for different sources
-    config = {
-      buffers = {
-        layout = {
-          height = 0.55,
-          position = "center",
-        },
-      },
-      diagnostics = {
-        layout = {
-          height = 0.55,
-          preview = false,
-        },
-      },
-      lsp_references = {
-        layout = {
-          height = 0.55,
-          position = "center",
-        },
-      },
-      lsp_definitions = {
-        layout = {
-          height = 0.55,
-          position = "center",
-        },
-      },
-      lsp_implementations = {
-        layout = {
-          height = 0.55,
-          position = "center",
         },
       },
     },
