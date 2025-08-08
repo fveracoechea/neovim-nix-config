@@ -7,13 +7,13 @@ snacks.setup {
     sections = {
       { section = "header" },
       { section = "keys", gap = 1, padding = 1 },
-      { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+      { icon = " ", title = "Recent Files", section = "recent_files", height = 16, indent = 2, padding = 1 },
       {
         section = "terminal",
         cmd = "zeitfetch --no-logo;",
         pane = 2,
-        indent = 4,
-        height = 16,
+        indent = 2,
+        height = 18,
       },
       {
         section = "terminal",
@@ -29,6 +29,7 @@ snacks.setup {
       },
     },
   },
+
   preset = {
     keys = {
       { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
