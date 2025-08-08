@@ -3,8 +3,6 @@ inputs: {
   pkgs,
   ...
 }: {
-  home.packages = [pkgs.lazygit];
-
   # Enable management of XDG base directories
   xdg.enable = lib.mkDefault true;
   xdg.configFile."nvim/lua/lsp-servers.lua".source = ./lua/lsp-servers.lua;
@@ -149,9 +147,6 @@ inputs: {
         nvim-lsp-file-operations
         lazydev-nvim
         trouble-nvim
-
-        ## Git Integration
-        lazygit-nvim
 
         ## Status Line
         lualine-lsp-progress
