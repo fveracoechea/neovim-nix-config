@@ -16,19 +16,7 @@ snacks.setup {
         height = 30,
       },
       function()
-        local in_git = Snacks.git.get_root() ~= nil
         local cmds = {
-          {
-            title = "Notifications",
-            cmd = "gh notify -s -a -n5",
-            action = function()
-              vim.ui.open "https://github.com/notifications"
-            end,
-            key = "n",
-            icon = " ",
-            height = 10,
-            enabled = true,
-          },
           {
             icon = " ",
             title = "Open PRs",
@@ -37,23 +25,23 @@ snacks.setup {
             action = function()
               vim.fn.jobstart("gh pr list --web", { detach = true })
             end,
-            height = 10,
+            height = 5,
           },
           {
             icon = " ",
             title = "Git Status",
             cmd = "git --no-pager diff --stat -B -M -C",
-            height = 10,
+            height = 5,
           },
         }
         return vim.tbl_map(function(cmd)
           return vim.tbl_extend("force", {
             pane = 2,
-            section = "terminal",
-            enabled = in_git,
+            indent = 2,
             padding = 1,
             ttl = 5 * 60,
-            indent = 3,
+            section = "terminal",
+            enabled = Snacks.git.get_root() ~= nil,
           }, cmd)
         end, cmds)
       end,
