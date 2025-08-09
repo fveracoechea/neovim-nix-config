@@ -1,5 +1,5 @@
 local cmp = require "cmp"
-local minikind_format = require("cmp-minikind").cmp_format
+local minikind_format = require("cmp-minikind").cmp_format()
 local tailwind_format = require("tailwind-tools.cmp").lspkind_format
 
 require("copilot").setup {
