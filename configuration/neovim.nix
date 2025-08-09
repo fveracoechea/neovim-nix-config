@@ -114,6 +114,10 @@ inputs: {
         nui-nvim
         which-key-nvim
 
+        # Statusline
+        lualine-nvim
+        lualine-lsp-progress
+
         ## Completion System
         nvim-cmp
         cmp-path
