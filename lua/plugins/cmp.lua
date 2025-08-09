@@ -21,7 +21,7 @@ local function border(hl_name)
   }
 end
 
-cmp.register_source("mini_snippets", require("cmp_mini_snippets").new())
+cmp.register_source("mini_snippets", require("utils.cmp_mini_snippets").new())
 
 cmp.setup {
   window = {

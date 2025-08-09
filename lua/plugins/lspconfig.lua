@@ -11,4 +11,4 @@ vim.diagnostic.config {
   float = { border = "single" },
 }
 
-require "lsp-servers"
+require "utils.lsp-servers"

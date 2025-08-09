@@ -7,10 +7,15 @@ inputs: {
 
   # Enable management of XDG base directories
   xdg.enable = lib.mkDefault true;
+
   xdg.configFile."nvim/lua/options.lua".source = ../lua/options.lua;
   xdg.configFile."nvim/lua/keymaps.lua".source = ../lua/keymaps.lua;
-  xdg.configFile."nvim/lua/lsp-servers.lua".source = ../lua/lsp-servers.lua;
-  xdg.configFile."nvim/lua/lsp-settings.lua".source = ../lua/lsp-settings.lua;
+
+  xdg.configFile."nvim/lua/utils" = {
+    recursive = true;
+    source = ../lua/utils;
+  };
+
   xdg.configFile."nvim/lua/plugins" = {
     recursive = true;
     source = ../lua/plugins;
@@ -22,28 +27,7 @@ inputs: {
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-
-    extraLuaConfig =
-      # lua
-      ''
-        require "options";
-        require "keymaps";
-
-        require "plugins.mini";
-        require "plugins.snacks";
-        require "plugins.yazi";
-        require "plugins.catppuccin";
-        require "plugins.noice";
-        require "plugins.conform";
-        require "plugins.lint";
-        require "plugins.none-ls";
-        require "plugins.codesnap";
-        require "plugins.treesitter";
-        require "plugins.lspconfig";
-        require "plugins.cmp";
-        require "plugins.hover";
-        require "plugins.tailwind-tools";
-      '';
+    extraLuaConfig = lib.fileContents ../lua/init.lua;
 
     extraPackages = with pkgs; [
       ## System Tools
@@ -77,26 +61,6 @@ inputs: {
     ];
 
     plugins = let
-      cmp-mini-snippets = pkgs.vimUtils.buildVimPlugin {
-        name = "cmp_mini_snippets";
-        src = pkgs.fetchFromGitHub {
-          owner = "abeldekat";
-          repo = "cmp-mini-snippets";
-          rev = "582aea215ce2e65b880e0d23585c20863fbb7604";
-          hash = "sha256-gSvhxrjz6PZBgqbb4eBAwWEWSdefM4qL3nb75qGPaFA=";
-        };
-      };
-
-      import-cost-nvim = pkgs.vimUtils.buildVimPlugin {
-        name = "import-cost";
-        src = pkgs.fetchFromGitHub {
-          owner = "barrett-ruth";
-          repo = "import-cost.nvim";
-          rev = "332b9870c7b22dcfb297a0be7d7a87c148181694";
-          hash = "sha256-/P3Eoqb/udYKIR+hgmKM+8wxbhWDv4ecTghZ//Y4Q+Y=";
-        };
-      };
-
       # Tree-sitter grammars configuration
       treeSitterGrammars = p: [
         # Core languages
@@ -204,7 +168,6 @@ inputs: {
 
         ## Syntax Highlighting
         (nvim-treesitter.withPlugins treeSitterGrammars)
-        import-cost-nvim
       ];
   };
 }
