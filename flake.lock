@@ -3,16 +3,20 @@
     "cmp-mini-snippets": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-EDutOGVCGzL1CeNJLXZ4dB4N4jJ6woZHXK7O7YnETLI=",
-        "type": "file",
-        "url": "https://github.com/abeldekat/cmp-mini-snippets"
+        "lastModified": 1737885976,
+        "narHash": "sha256-gSvhxrjz6PZBgqbb4eBAwWEWSdefM4qL3nb75qGPaFA=",
+        "owner": "abeldekat",
+        "repo": "cmp-mini-snippets",
+        "rev": "582aea215ce2e65b880e0d23585c20863fbb7604",
+        "type": "github"
       },
       "original": {
-        "type": "file",
-        "url": "https://github.com/abeldekat/cmp-mini-snippets"
+        "owner": "abeldekat",
+        "repo": "cmp-mini-snippets",
+        "type": "github"
       }
     },
-    "import_cost-nvim": {
+    "import-cost-nvim": {
       "flake": false,
       "locked": {
         "lastModified": 1714772241,
@@ -47,7 +51,7 @@
     "root": {
       "inputs": {
         "cmp-mini-snippets": "cmp-mini-snippets",
-        "import_cost-nvim": "import_cost-nvim",
+        "import-cost-nvim": "import-cost-nvim",
         "nixpkgs": "nixpkgs",
         "tree-sitter-nginx": "tree-sitter-nginx"
       }

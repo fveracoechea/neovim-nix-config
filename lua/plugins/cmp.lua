@@ -8,8 +8,6 @@ require("copilot").setup {
 
 require("copilot_cmp").setup()
 
-cmp.register_source("mini_snippets", require("cmp_mini_snippets").new())
-
 local function border(hl_name)
   return {
     { "╭", hl_name },
@@ -22,6 +20,8 @@ local function border(hl_name)
     { "│", hl_name },
   }
 end
+
+cmp.register_source("mini_snippets", require("cmp_mini_snippets").new())
 
 cmp.setup {
   window = {
