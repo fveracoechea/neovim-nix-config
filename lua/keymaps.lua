@@ -37,80 +37,69 @@ map("v", "<leader>cs", "<CMD>CodeSnapSave<CR>", { desc = "Save selected code sna
 -- SNACKS PLUGIN MAPPINGS
 -- ============================================================================
 
-local snacks = require "snacks"
+local Snacks = require "snacks"
 
 -- Dashboard
 map("n", "<leader>;", function()
-  snacks.dashboard()
+  Snacks.dashboard()
 end, { desc = "Dashboard" })
 
 -- File and text finding
 map("n", "<leader>ff", function()
-  snacks.picker.files()
+  Snacks.picker.files()
 end, { desc = "Find files in cwd" })
 map("n", "<leader>fr", function()
-  snacks.picker.recent()
+  Snacks.picker.recent()
 end, { desc = "Find recent files" })
 map("n", "<leader>fs", function()
-  snacks.picker.grep()
+  Snacks.picker.grep()
 end, { desc = "Find string in cwd" })
 map("n", "<leader>fc", function()
-  snacks.picker.grep_buffers()
+  Snacks.picker.grep_buffers()
 end, { desc = "Find in current buffer" })
 map("n", "<leader>fw", function()
-  snacks.picker.grep_word()
+  Snacks.picker.grep_word()
 end, { desc = "Find string under cursor in Workspace" })
-map("n", "<leader>b", function()
-  snacks.picker.buffers()
-end, { desc = "Find open buffers" })
-map("n", "<leader>fa", function()
-  snacks.picker.files { hidden = true, no_ignore = true }
-end, { desc = "Find all files" })
 
--- LSP pickers (buffer-local maps set in lsp-settings.lua)
--- Global LSP keymaps for reference:
--- <leader>lr - LSP references
--- gd - LSP definitions
--- <leader>li - LSP implementations
--- <leader>lt - LSP type definitions
--- <leader>ca - Code actions
--- <leader>rn - Smart rename
--- <leader>d - Buffer diagnostics
--- <leader>D - All diagnostics
--- [d - Previous diagnostic
--- ]d - Next diagnostic
+map("n", "<leader>b", function()
+  Snacks.picker.buffers { layout = { preset = "ivy_split" } }
+end, { desc = "Find open buffers" })
+
+map("n", "<leader>fa", function()
+  Snacks.picker.files { hidden = true, no_ignore = true }
+end, { desc = "Find all files" })
 
 -- Buffer management
 map("n", "<leader>bd", function()
-  snacks.bufdelete()
+  Snacks.bufdelete()
 end, { desc = "Delete Buffer" })
 map("n", "<leader>bo", function()
-  snacks.bufdelete.other()
+  Snacks.bufdelete.other()
 end, { desc = "Delete Other Buffers" })
 
 -- Git integration
 map("n", "<leader>gb", function()
-  snacks.git.blame_line()
+  Snacks.git.blame_line()
 end, { desc = "Git Blame Line" })
 map("n", "<leader>gB", function()
-  snacks.gitbrowse()
+  Snacks.gitbrowse()
 end, { desc = "Git Browse" })
 map("n", "<leader>gf", function()
-  snacks.lazygit.log_file()
+  Snacks.lazygit.log_file()
 end, { desc = "Lazygit Current File History" })
 map("n", "<leader>lg", function()
-  snacks.lazygit()
+  Snacks.lazygit()
 end, { desc = "Open Lazygit" })
 map("n", "<leader>gl", function()
-  snacks.lazygit.log()
+  Snacks.lazygit.log()
 end, { desc = "Lazygit Log (cwd)" })
 
 -- Notifications
 map("n", "<leader>n", function()
-  snacks.notifier.show_history()
+  Snacks.notifier.show_history()
 end, { desc = "Notification History" })
 map("n", "<leader>nd", function()
-  snacks.notifier.hide()
+  Snacks.notifier.hide()
 end, { desc = "Dismiss All Notifications" })
 
 -- LSP rename (buffer-local map set in lsp-settings.lua)
@@ -118,50 +107,50 @@ end, { desc = "Dismiss All Notifications" })
 
 -- Terminal
 map("n", "<c-/>", function()
-  snacks.terminal()
+  Snacks.terminal()
 end, { desc = "Toggle Terminal" })
 map("n", "<c-_>", function()
-  snacks.terminal()
+  Snacks.terminal()
 end, { desc = "Toggle Terminal (which-key workaround)" })
 map("t", "<c-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 map("t", "<c-_>", "<cmd>close<cr>", { desc = "Hide Terminal (which-key workaround)" })
 
 -- Word references
 map("n", "]]", function()
-  snacks.words.jump(vim.v.count1)
+  Snacks.words.jump(vim.v.count1)
 end, { desc = "Next Reference" })
 map("n", "[[", function()
-  snacks.words.jump(-vim.v.count1)
+  Snacks.words.jump(-vim.v.count1)
 end, { desc = "Prev Reference" })
 
 -- Zen mode
 map("n", "<leader>z", function()
-  snacks.zen()
+  Snacks.zen()
 end, { desc = "Toggle Zen Mode" })
 map("n", "<leader>Z", function()
-  snacks.zen.zoom()
+  Snacks.zen.zoom()
 end, { desc = "Toggle Zoom" })
 
 -- Scratch buffer
 map("n", "<leader>.", function()
-  snacks.scratch()
+  Snacks.scratch()
 end, { desc = "Toggle Scratch Buffer" })
 map("n", "<leader>S", function()
-  snacks.scratch.select()
+  Snacks.scratch.select()
 end, { desc = "Select Scratch Buffer" })
 
 -- Toggle utilities
 map("n", "<leader>ul", function()
-  snacks.toggle.line_number()
+  Snacks.toggle.line_number()
 end, { desc = "Toggle Line Numbers" })
 map("n", "<leader>uL", function()
-  snacks.toggle.option("relativenumber", { name = "Relative Numbers" })
+  Snacks.toggle.option("relativenumber", { name = "Relative Numbers" })
 end, { desc = "Toggle Relative Numbers" })
 map("n", "<leader>uw", function()
-  snacks.toggle.option("wrap", { name = "Wrap" })
+  Snacks.toggle.option("wrap", { name = "Wrap" })
 end, { desc = "Toggle Line Wrap" })
 map("n", "<leader>us", function()
-  snacks.toggle.option("spell", { name = "Spelling" })
+  Snacks.toggle.option("spell", { name = "Spelling" })
 end, { desc = "Toggle Spelling" })
 
 -- ============================================================================
