@@ -29,26 +29,25 @@ local function get_buffer_count()
   return " " .. count
 end
 
-local get_mode = function()
-  local noice_mode = noice_mode()
-  local mode, mode_hl = MiniStatusline.section_mode { trunc_width = 40 }
-
-  if noice_mode then
-    return noice_mode, mode_hl
+local function get_macro_recording()
+  local recording_register = vim.fn.reg_recording()
+  if recording_register ~= "" then
+    return " @" .. recording_register
   else
-    return mode, mode_hl
+    return ""
   end
 end
 
 MiniStatusline.setup {
   active = function()
     local mode, mode_hl = get_mode()
+    local macro = get_macro_recording()
     local git = MiniStatusline.section_git { trunc_width = 40 }
     local diff = MiniStatusline.section_diff { trunc_width = 75 }
     local diagnostics = MiniStatusline.section_diagnostics { trunc_width = 75 }
     local lsp = MiniStatusline.section_lsp { trunc_width = 75 }
-    local filename = "%f%m%r"
-    local fileinfo = MiniStatusline.section_fileinfo { trunc_width = 120 }
+    local filename = MiniStatusline.section_filename { trunc_width = 100 }
+    local fileinfo = MiniStatusline.section_fileinfo { trunc_width = 100 }
     local location = MiniStatusline.section_location { trunc_width = 75 }
     local search = MiniStatusline.section_searchcount { trunc_width = 75 }
 
@@ -58,7 +57,7 @@ MiniStatusline.setup {
       "%<", -- Mark general truncate point
       { hl = "MiniStatuslineFilename", strings = { filename } },
       "%=", -- End left alignment
-      { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
+      { hl = "MiniStatuslineFileinfo", strings = { macro, fileinfo } },
       { hl = mode_hl, strings = { search, location } },
     }
   end,
