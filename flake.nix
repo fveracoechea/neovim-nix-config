@@ -5,16 +5,6 @@
     # NixOS official package sources
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    import-cost-nvim = {
-      url = "github:barrett-ruth/import-cost.nvim";
-      flake = false;
-    };
-
-    cmp-mini-snippets = {
-      url = "github:abeldekat/cmp-mini-snippets";
-      flake = false;
-    };
-
     tree-sitter-nginx = {
       url = "gitlab:joncoole/tree-sitter-nginx";
       flake = false;

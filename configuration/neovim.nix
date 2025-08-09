@@ -79,11 +79,22 @@ inputs: {
     plugins = let
       cmp-mini-snippets = pkgs.vimUtils.buildVimPlugin {
         name = "cmp_mini_snippets";
-        src = inputs.cmp-mini-snippets;
+        src = pkgs.fetchFromGitHub {
+          owner = "abeldekat";
+          repo = "cmp-mini-snippets";
+          rev = "582aea215ce2e65b880e0d23585c20863fbb7604";
+          hash = "sha256-gSvhxrjz6PZBgqbb4eBAwWEWSdefM4qL3nb75qGPaFA=";
+        };
       };
+
       import-cost-nvim = pkgs.vimUtils.buildVimPlugin {
         name = "import-cost";
-        src = inputs.import-cost-nvim;
+        src = pkgs.fetchFromGitHub {
+          owner = "barrett-ruth";
+          repo = "import-cost.nvim";
+          rev = "332b9870c7b22dcfb297a0be7d7a87c148181694";
+          hash = "sha256-/P3Eoqb/udYKIR+hgmKM+8wxbhWDv4ecTghZ//Y4Q+Y=";
+        };
       };
 
       # Tree-sitter grammars configuration

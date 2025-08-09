@@ -1,37 +1,5 @@
 {
   "nodes": {
-    "cmp-mini-snippets": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1737885976,
-        "narHash": "sha256-gSvhxrjz6PZBgqbb4eBAwWEWSdefM4qL3nb75qGPaFA=",
-        "owner": "abeldekat",
-        "repo": "cmp-mini-snippets",
-        "rev": "582aea215ce2e65b880e0d23585c20863fbb7604",
-        "type": "github"
-      },
-      "original": {
-        "owner": "abeldekat",
-        "repo": "cmp-mini-snippets",
-        "type": "github"
-      }
-    },
-    "import-cost-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1714772241,
-        "narHash": "sha256-/P3Eoqb/udYKIR+hgmKM+8wxbhWDv4ecTghZ//Y4Q+Y=",
-        "owner": "barrett-ruth",
-        "repo": "import-cost.nvim",
-        "rev": "332b9870c7b22dcfb297a0be7d7a87c148181694",
-        "type": "github"
-      },
-      "original": {
-        "owner": "barrett-ruth",
-        "repo": "import-cost.nvim",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1754498491,
@@ -50,8 +18,6 @@
     },
     "root": {
       "inputs": {
-        "cmp-mini-snippets": "cmp-mini-snippets",
-        "import-cost-nvim": "import-cost-nvim",
         "nixpkgs": "nixpkgs",
         "tree-sitter-nginx": "tree-sitter-nginx"
       }
