@@ -2,8 +2,7 @@
 -- Each module is independent and can be configured separately
 
 require("mini.sessions").setup {
-  directory = vim.fn.stdpath "data" .. "/sessions",
-  file = "",
+  directory = "~/.config/nvim",
 }
 
 require("mini.pairs").setup {}
