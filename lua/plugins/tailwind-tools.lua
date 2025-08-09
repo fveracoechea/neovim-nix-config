@@ -1,8 +1,5 @@
----@type TailwindTools.Option
-local tailwind_config = {
+require("tailwind-tools").setup {
   server = {
     override = false,
   },
 }
-
-require("tailwind-tools").setup(tailwind_config)

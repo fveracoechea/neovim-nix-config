@@ -1,4 +1,4 @@
-local settings = require "lsp-settings"
+local settings = require "utils.lsp-settings"
 local lspconfig = require "lspconfig"
 
 -- appropriately highlight codefences returned from denols
