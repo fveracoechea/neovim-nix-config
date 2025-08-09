@@ -55,18 +55,39 @@ snacks.setup {
       explorer = {
         layout = {
           preset = "sidebar",
-          position = "right",
+          layout = {
+            position = "right",
+          },
         },
       },
       buffers = {
         layout = {
           preset = "ivy",
-          height = 0.5,
+          layout = {
+            height = 0.5,
+          },
+        },
+      },
+      diagnostics = {
+        layout = {
+          preset = "select",
+          layout = {
+            height = 0.85,
+          },
+        },
+      },
+      diagnostics_buffer = {
+        layout = {
+          preset = "select",
+          layout = {
+            height = 0.85,
+          },
         },
       },
     },
   },
 
+  chunk = { enabled = true },
   notifier = { enabled = true },
   bigfile = { enabled = true },
   animate = { enabled = true },
