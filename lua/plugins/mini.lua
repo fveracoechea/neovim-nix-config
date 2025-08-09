@@ -10,8 +10,60 @@ require("mini.sessions").setup {
 require("mini.pairs").setup {}
 require("mini.surround").setup {}
 require("mini.comment").setup {}
-require("mini.statusline").setup {}
 require("mini.diff").setup {}
+
+local MiniStatusline = require "mini.statusline"
+
+-- Function to get the number of open buffers using the :ls command
+local function get_buffer_count()
+  local buffers = vim.fn.execute "ls"
+  local count = 0
+
+  -- Match only lines that represent buffers, typically starting with a number followed by a space
+  for line in string.gmatch(buffers, "[^\r\n]+") do
+    if string.match(line, "^%s*%d+") then
+      count = count + 1
+    end
+  end
+
+  return " " .. count
+end
+
+-- Integrates Nocice notifications with lua line mode
+local get_mode = function()
+  local mode = noice_mode()
+
+  if mode then
+    return mode
+  else
+    return lualine_mode()
+  end
+end
+
+MiniStatusline.setup {
+  active = function()
+    local mode = get_mode()
+    local _mode, mode_hl = MiniStatusline.section_mode { trunc_width = 120 }
+    local git = MiniStatusline.section_git { trunc_width = 40 }
+    local diff = MiniStatusline.section_diff { trunc_width = 75 }
+    local diagnostics = MiniStatusline.section_diagnostics { trunc_width = 75 }
+    local lsp = MiniStatusline.section_lsp { trunc_width = 75 }
+    local filename = MiniStatusline.section_filename { trunc_width = 140 }
+    local fileinfo = MiniStatusline.section_fileinfo { trunc_width = 120 }
+    local location = MiniStatusline.section_location { trunc_width = 75 }
+    local search = MiniStatusline.section_searchcount { trunc_width = 75 }
+
+    return MiniStatusline.combine_groups {
+      { hl = mode_hl, strings = { mode } },
+      { hl = "MiniStatuslineDevinfo", strings = { git, diff, diagnostics, lsp } },
+      "%<", -- Mark general truncate point
+      { hl = "MiniStatuslineFilename", strings = { filename } },
+      "%=", -- End left alignment
+      { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
+      { hl = mode_hl, strings = { search, location } },
+    }
+  end,
+}
 
 local gen_loader = require("mini.snippets").gen_loader
 
