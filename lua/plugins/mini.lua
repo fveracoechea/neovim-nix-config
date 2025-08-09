@@ -3,6 +3,7 @@
 
 require("mini.sessions").setup {
   file = "",
+  autowrite = true,
   directory = "~/.config/nvim",
 }
 
