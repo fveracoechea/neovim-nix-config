@@ -29,26 +29,25 @@ local function get_buffer_count()
   return " " .. count
 end
 
--- Integrates Nocice notifications with lua line mode
 local get_mode = function()
-  local mode = noice_mode()
+  local noice_mode = noice_mode()
+  local mode, mode_hl = MiniStatusline.section_mode { trunc_width = 40 }
 
-  if mode then
-    return mode
+  if noice_mode then
+    return noice_mode, mode_hl
   else
-    return lualine_mode()
+    return mode, mode_hl
   end
 end
 
 MiniStatusline.setup {
   active = function()
-    local mode = get_mode()
-    local _mode, mode_hl = MiniStatusline.section_mode { trunc_width = 120 }
+    local mode, mode_hl = get_mode()
     local git = MiniStatusline.section_git { trunc_width = 40 }
     local diff = MiniStatusline.section_diff { trunc_width = 75 }
     local diagnostics = MiniStatusline.section_diagnostics { trunc_width = 75 }
     local lsp = MiniStatusline.section_lsp { trunc_width = 75 }
-    local filename = MiniStatusline.section_filename { trunc_width = 140 }
+    local filename = "%f%m%r"
     local fileinfo = MiniStatusline.section_fileinfo { trunc_width = 120 }
     local location = MiniStatusline.section_location { trunc_width = 75 }
     local search = MiniStatusline.section_searchcount { trunc_width = 75 }

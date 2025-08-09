@@ -7,6 +7,7 @@ require("noice").setup {
   --     ["cmp.entry.get_documentation"] = true,
   --   },
   -- },
+  --
 
   -- Route notifications to snacks.notifier instead of noice's built-in notifier
   routes = {
