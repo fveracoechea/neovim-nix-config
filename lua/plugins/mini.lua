@@ -2,6 +2,7 @@
 -- Each module is independent and can be configured separately
 
 require("mini.sessions").setup {
+  file = "",
   directory = "~/.config/nvim",
 }
 

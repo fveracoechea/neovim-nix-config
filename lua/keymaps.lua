@@ -170,13 +170,18 @@ end, { desc = "Toggle Spelling" })
 
 -- Session management
 map("n", "<leader>wr", function()
-  require("mini.sessions").read()
+  local cwd = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+  require("mini.sessions").read(cwd)
 end, { desc = "Read session" })
+
 map("n", "<leader>ws", function()
-  require("mini.sessions").write()
+  local cwd = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+  require("mini.sessions").write(cwd)
 end, { desc = "Write session" })
+
 map("n", "<leader>wd", function()
-  require("mini.sessions").delete()
+  local cwd = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+  require("mini.sessions").delete(cwd)
 end, { desc = "Delete session" })
 
 -- Mini.diff keymaps

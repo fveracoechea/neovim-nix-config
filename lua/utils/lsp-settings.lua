@@ -33,13 +33,8 @@ M.on_attach = function(_, bufnr)
     Snacks.picker.lsp_type_definitions()
   end, opts "Type definition")
 
-  -- Code Actions
   map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts "Code Actions")
-
-  -- Rename
-  map("n", "<leader>rn", function()
-    Snacks.rename()
-  end, opts "Smart Rename")
+  map("n", "<leader>rn", vim.lsp.buf.rename, opts "Smart Rename")
 
   -- Updated to use snacks.picker for diagnostics
   map("n", "<leader>d", function()
