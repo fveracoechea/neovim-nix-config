@@ -76,8 +76,8 @@ cmp.setup {
 
   formatting = {
     format = function(entry, vim_item)
-      vim_item = tailwind_format(entry, vim_item)
       vim_item = minikind_format(entry, vim_item)
+      vim_item = tailwind_format(entry, vim_item)
       return vim_item
     end,
   },
