@@ -62,7 +62,7 @@ map("n", "<leader>fw", function()
 end, { desc = "Find string under cursor in Workspace" })
 
 map("n", "<leader>b", function()
-  Snacks.picker.buffers { layout = { preset = "ivy_split" } }
+  Snacks.picker.buffers { layout = { preset = "ivy" } }
 end, { desc = "Find open buffers" })
 
 map("n", "<leader>fa", function()
