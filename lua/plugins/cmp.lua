@@ -8,6 +8,8 @@ require("copilot").setup {
 
 require("copilot_cmp").setup()
 
+cmp.register_source("mini_snippets", require("cmp_mini_snippets").new())
+
 local function border(hl_name)
   return {
     { "╭", hl_name },
@@ -61,7 +63,7 @@ cmp.setup {
   -- sources for autocompletion
   sources = cmp.config.sources {
     { name = "nvim_lsp" },
-    { name = "cmp_mini_snippets" },
+    { name = "mini_snippets" },
     { name = "copilot" },
     { name = "buffer" }, -- text within current buffer
     { name = "path" }, -- file system paths
