@@ -1,5 +1,6 @@
 local cmp = require "cmp"
-local lspkind = require "lspkind"
+local minikind_format = require("cmp-minikind").cmp_format
+local tailwind_format = require("tailwind-tools.cmp").lspkind_format
 
 require("copilot").setup {
   suggestion = { enabled = false },
@@ -73,57 +74,11 @@ cmp.setup {
     priority_weight = 2,
   },
 
-  -- configure lspkind for vs-code like pictograms in completion menu
   formatting = {
-    expandable_indicator = true,
-    fields = { "kind", "abbr", "menu" },
-    format = lspkind.cmp_format {
-      maxwidth = 50,
-      ellipsis_char = "...",
-      symbol_map = {
-        Namespace = "󰌗",
-        Text = "󰉿",
-        Method = "󰆧",
-        Function = "󰆧",
-        Constructor = "",
-        Field = "󰜢",
-        Variable = "󰀫",
-        Class = "󰠱",
-        Interface = "",
-        Module = "",
-        Property = "󰜢",
-        Unit = "󰑭",
-        Value = "󰎠",
-        Enum = "",
-        Keyword = "󰌋",
-        Snippet = "",
-        Color = "󰏘",
-        File = "󰈚",
-        Reference = "󰈇",
-        Folder = "󰉋",
-        EnumMember = "",
-        Constant = "󰏿",
-        Struct = "󰙅",
-        Event = "",
-        Operator = "󰆕",
-        TypeParameter = "󰊄",
-        Table = "",
-        Object = "󰅩",
-        Tag = "",
-        Array = "[]",
-        Boolean = "",
-        Number = "",
-        Null = "󰟢",
-        Supermaven = "",
-        String = "󰉿",
-        Calendar = "",
-        Watch = "󰥔",
-        Package = "",
-        Copilot = "",
-        Codeium = "",
-        TabNine = "",
-      },
-    },
+    format = function(entry, vim_item)
+      local item = tailwind_format(entry, vim_item)
+      return minikind_format(entry, item)
+    end,
   },
 }
 

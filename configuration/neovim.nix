@@ -61,6 +61,16 @@ inputs: {
     ];
 
     plugins = let
+      cmp-minikind = pkgs.vimUtils.buildVimPlugin {
+        name = "cmp-minikind";
+        src = pkgs.fetchFromGitHub {
+          owner = "tranzystorekk";
+          repo = "cmp-minikind.nvim";
+          rev = "935ee02cd415ee218787a8549930a3443f1e127b";
+          hash = "sha256-kYZX+JCogqibliL9wIbw8Ya+LZSOoQDVINMUMbFQNVA=";
+        };
+      };
+
       # Tree-sitter grammars configuration
       treeSitterGrammars = p: [
         # Core languages
@@ -123,7 +133,8 @@ inputs: {
         cmp-path
         cmp-buffer
         cmp-nvim-lsp
-        lspkind-nvim
+        cmp-minikind
+        # lspkind-nvim
         copilot-lua
         copilot-cmp
 
