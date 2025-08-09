@@ -1,5 +1,4 @@
 local cmp = require "cmp"
-local luasnip = require "luasnip"
 local lspkind = require "lspkind"
 
 require("copilot").setup {
@@ -62,10 +61,10 @@ cmp.setup {
   -- sources for autocompletion
   sources = cmp.config.sources {
     { name = "nvim_lsp" },
+    { name = "mini_snippets" },
     { name = "copilot" },
     { name = "buffer" }, -- text within current buffer
     { name = "path" }, -- file system paths
-    { name = "lazydev" },
   },
 
   sorting = {

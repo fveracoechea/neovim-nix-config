@@ -15,6 +15,9 @@ require("mini.diff").setup {}
 local gen_loader = require("mini.snippets").gen_loader
 
 require("mini.snippets").setup {
+  mappings = {
+    expand = "", -- disable default <C-j> to avoid conflict with cmp navigation
+  },
   snippets = {
     --   Load custom file with global snippets first (adjust for Windows)
     gen_loader.from_file "~/.config/nvim/snippets/global.json",

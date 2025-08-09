@@ -140,6 +140,7 @@ inputs: {
         which-key-nvim
 
         ## Completion System
+        nvim-cmp
         cmp-path
         cmp-buffer
         cmp-nvim-lsp
@@ -147,6 +148,7 @@ inputs: {
         lspkind-nvim
         copilot-lua
         copilot-cmp
+        friendly-snippets
 
         ## Navigation & Movement
         vim-tmux-navigator
