@@ -3,7 +3,12 @@ inputs: {
   pkgs,
   ...
 }: {
-  home.packages = [pkgs.lazygit pkgs.gh pkgs.fzf];
+  home.packages = with pkgs; [
+    lazygit
+    gh
+    fzf
+    graphql-language-service-cli
+  ];
 
   # Enable management of XDG base directories
   xdg.enable = lib.mkDefault true;
@@ -132,7 +137,6 @@ inputs: {
         cmp-buffer
         cmp-nvim-lsp
         cmp-minikind
-        # lspkind-nvim
         copilot-lua
         copilot-cmp
 
