@@ -56,8 +56,6 @@ inputs: {
       pylint
       pyright
       eslint_d
-      proselint # Prose
-      codespell # Spell check
     ];
 
     plugins = let
