@@ -148,7 +148,6 @@ inputs: {
         lspkind-nvim
         copilot-lua
         copilot-cmp
-        friendly-snippets
 
         ## Navigation & Movement
         vim-tmux-navigator
