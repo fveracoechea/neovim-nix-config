@@ -1,5 +1,6 @@
 -- Mini.nvim configuration - consolidate multiple plugins into mini modules
 -- Each module is independent and can be configured separately
+local noice_mode = require("noice").api.statusline.mode.get
 
 require("mini.sessions").setup {
   file = "",
@@ -30,9 +31,10 @@ local function get_buffer_count()
 end
 
 local function get_macro_recording()
-  local recording_register = vim.fn.reg_recording()
-  if recording_register ~= "" then
-    return " @" .. recording_register
+  local macro = noice_mode()
+
+  if macro then
+    return macro
   else
     return ""
   end
