@@ -61,7 +61,7 @@ cmp.setup {
   -- sources for autocompletion
   sources = cmp.config.sources {
     { name = "nvim_lsp" },
-    { name = "mini_snippets" },
+    { name = "cmp_mini_snippets" },
     { name = "copilot" },
     { name = "buffer" }, -- text within current buffer
     { name = "path" }, -- file system paths
