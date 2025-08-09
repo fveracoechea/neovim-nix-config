@@ -49,7 +49,24 @@ snacks.setup {
     char = "┊",
   },
 
-  picker = { enabled = true },
+  picker = {
+    enabled = true,
+    sources = {
+      explorer = {
+        layout = {
+          preset = "sidebar",
+          position = "right",
+        },
+      },
+      buffers = {
+        layout = {
+          preset = "ivy",
+          height = 0.5,
+        },
+      },
+    },
+  },
+
   notifier = { enabled = true },
   bigfile = { enabled = true },
   animate = { enabled = true },
