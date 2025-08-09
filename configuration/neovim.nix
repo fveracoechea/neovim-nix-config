@@ -119,7 +119,6 @@ inputs: {
         cmp-path
         cmp-buffer
         cmp-nvim-lsp
-        cmp-mini-snippets
         lspkind-nvim
         copilot-lua
         copilot-cmp
