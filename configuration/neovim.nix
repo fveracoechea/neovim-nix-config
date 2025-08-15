@@ -34,34 +34,35 @@ inputs: {
     vimdiffAlias = true;
     extraLuaConfig = lib.fileContents ../lua/init.lua;
 
-    extraPackages = with pkgs; [
-      ## System Tools
-      xclip
-      wl-clipboard
+    extraPackages = with pkgs;
+      lib.optionals pkgs.stdenv.isLinux [
+        xclip
+        wl-clipboard
+      ]
+      ++ [
+        ## Language Servers
+        nil # Nix LSP
+        lua-language-server
+        typescript
+        typescript-language-server
+        vscode-langservers-extracted # HTML, CSS, JSON, ESLint
+        tailwindcss-language-server
+        graphql-language-service-cli
+        nginx-language-server
+        bash-language-server
 
-      ## Language Servers
-      nil # Nix LSP
-      lua-language-server
-      typescript
-      typescript-language-server
-      vscode-langservers-extracted # HTML, CSS, JSON, ESLint
-      tailwindcss-language-server
-      graphql-language-service-cli
-      nginx-language-server
-      bash-language-server
+        ## Formatters
+        stylua # Lua
+        alejandra # Nix
+        shfmt # Shell
+        isort # Python imports
+        black # Python
 
-      ## Formatters
-      stylua # Lua
-      alejandra # Nix
-      shfmt # Shell
-      isort # Python imports
-      black # Python
-
-      ## Linters & Static Analysis
-      pylint
-      pyright
-      eslint_d
-    ];
+        ## Linters & Static Analysis
+        pylint
+        pyright
+        eslint_d
+      ];
 
     plugins = let
       cmp-minikind = pkgs.vimUtils.buildVimPlugin {
