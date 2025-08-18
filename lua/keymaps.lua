@@ -23,11 +23,6 @@ map("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
 map("n", "<C-n>", "<CMD>Yazi cwd<CR>", { desc = "Open the file manager in nvim's working directory" })
 map("n", "<C-y>", "<CMD>Yazi<CR>", { desc = "Open yazi at the current file" })
 
--- Hover documentation
-local hover = require "hover"
-map("n", "K", hover.hover, { desc = "Hover" })
-map("n", "gK", hover.hover_select, { desc = "hover.nvim (select)" })
-
 -- CodeSnap screenshots
 map("v", "<leader>cc", "<CMD>CodeSnap<CR>", { desc = "Save selected code snapshot into clipboard" })
 map("v", "<leader>cs", "<CMD>CodeSnapSave<CR>", { desc = "Save selected code snapshot in ~/Pictures" })

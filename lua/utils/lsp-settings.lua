@@ -16,6 +16,10 @@ M.on_attach = function(_, bufnr)
 
   local map = vim.keymap.set
 
+  -- Hover info
+  map("n", "K", vim.lps.buf.hover, opts "Hover information")
+  map("n", "<C-k>", vim.lsp.buf.signature_help, opts "Signature help")
+
   -- LSP information
   map("n", "<leader>lr", function()
     Snacks.picker.lsp_references()
