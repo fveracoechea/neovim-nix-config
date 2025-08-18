@@ -27,15 +27,19 @@ vim.opt.incsearch = true -- Show matches as you type
 -- Visual settings
 vim.opt.termguicolors = true -- Enable 24-bit colors
 vim.opt.signcolumn = "yes" -- Always show sign column
+-- vim.opt.colorcolumn = "100" -- Show column at 100 characters
 vim.opt.showmatch = true -- Highlight matching brackets
 vim.opt.matchtime = 2 -- How long to show matching bracket
 vim.opt.cmdheight = 1 -- Command line height
 vim.opt.completeopt = "menuone,noinsert,noselect" -- Completion options
 vim.opt.showmode = false -- Don't show mode in command line
+vim.opt.pumheight = 10 -- Popup menu height
+vim.opt.pumblend = 10 -- Popup menu transparency
+vim.opt.winblend = 0 -- Floating window transparency
 vim.opt.conceallevel = 0 -- Don't hide markup
 vim.opt.concealcursor = "" -- Don't hide cursor line markup
 vim.opt.synmaxcol = 300 -- Syntax highlighting limit
-vim.o.winborder = "rounded" -- Window border style
+vim.opt.winborder = "rounded" -- Window border style
 
 -- File handling
 vim.opt.backup = false -- Don't create backup files
