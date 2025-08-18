@@ -8,8 +8,8 @@ require("catppuccin").setup {
   integrations = {
     cmp = true,
     telescope = { enabled = false },
-    which_key = true,
-    lsp_trouble = true,
+    which_key = false,
+    lsp_trouble = false,
     nvim_surround = false,
     notify = false,
     noice = true,
@@ -18,7 +18,7 @@ require("catppuccin").setup {
     },
     mini = {
       enabled = true,
-      indentscope_color = "",
+      indentscope_color = "lavender",
     },
     snacks = {
       enabled = true,

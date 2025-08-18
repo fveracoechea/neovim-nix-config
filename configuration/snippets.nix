@@ -10,5 +10,25 @@
       body = ["const $1 = ($2) => {" "  $3" "}"];
       description = "Arrow function";
     };
+    "async function" = {
+      prefix = "asf";
+      body = ["async function $1() {\n" "  $2" "\n}"];
+      description = "Async arrow function";
+    };
+    "react component" = {
+      prefix = "rc";
+      description = "React functional component";
+      body = [
+        "function $1(props: {}) => {"
+        "  return ("
+        "    <div>"
+        "      $2"
+        "    </div>"
+        "  );"
+        "};"
+        ""
+        "export default $1;"
+      ];
+    };
   };
 }
