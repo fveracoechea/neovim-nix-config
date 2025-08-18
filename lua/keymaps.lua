@@ -128,6 +128,7 @@ end, { desc = "Prev Reference" })
 map("n", "<leader>z", function()
   Snacks.zen()
 end, { desc = "Toggle Zen Mode" })
+
 map("n", "<leader>Z", function()
   Snacks.zen.zoom()
 end, { desc = "Toggle Zoom" })
