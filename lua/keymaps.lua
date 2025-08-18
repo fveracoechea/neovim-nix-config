@@ -33,6 +33,8 @@ map("v", "<leader>cs", "<CMD>CodeSnapSave<CR>", { desc = "Save selected code sna
 
 local Snacks = require "snacks"
 
+map("n", "<leader>lsp", ":LspRestart<CR>", { desc = "Resart LSP Servers" })
+
 -- Dashboard
 
 map("n", "<leader>;", function()
