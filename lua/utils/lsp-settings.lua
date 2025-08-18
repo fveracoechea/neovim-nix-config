@@ -22,6 +22,35 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts "Code Actions")
     map("n", "<leader>rn", vim.lsp.buf.rename, opts "Smart Rename")
+
+    -- LSP information
+    map("n", "<leader>lr", function()
+      Snacks.picker.lsp_references()
+    end, opts "References")
+
+    map("n", "gd", function()
+      Snacks.picker.lsp_definitions()
+    end, opts "Definition")
+
+    map("n", "<leader>li", function()
+      Snacks.picker.lsp_implementations()
+    end, opts "Implementation")
+
+    map("n", "<leader>lt", function()
+      Snacks.picker.lsp_type_definitions()
+    end, opts "Type definition")
+
+    -- Updated to use snacks.picker for diagnostics
+    map("n", "<leader>d", function()
+      Snacks.picker.diagnostics_buffer()
+    end, opts "Show buffer diagnostics")
+
+    map("n", "<leader>D", function()
+      Snacks.picker.diagnostics()
+    end, opts "Show diagnostics (all buffers)")
+
+    map("n", "<leader>dp", vim.diagnostic.goto_prev, opts "Go to previous diagnostic")
+    map("n", "<leader>dn", vim.diagnostic.goto_next, opts "Go to next diagnostic")
   end,
 })
 
@@ -33,42 +62,7 @@ M.on_init = function(client, _)
 end
 
 -- Callback invoked when attaching a buffer to a language server.
-M.on_attach = function(_, bufnr)
-  local map = vim.keymap.set
-
-  local function opts(desc)
-    return { buffer = bufnr, silent = true, desc = "LSP - " .. desc }
-  end
-
-  -- LSP information
-  map("n", "<leader>lr", function()
-    Snacks.picker.lsp_references()
-  end, opts "References")
-
-  map("n", "gd", function()
-    Snacks.picker.lsp_definitions()
-  end, opts "Definition")
-
-  map("n", "<leader>li", function()
-    Snacks.picker.lsp_implementations()
-  end, opts "Implementation")
-
-  map("n", "<leader>lt", function()
-    Snacks.picker.lsp_type_definitions()
-  end, opts "Type definition")
-
-  -- Updated to use snacks.picker for diagnostics
-  map("n", "<leader>d", function()
-    Snacks.picker.diagnostics_buffer()
-  end, opts "Show buffer diagnostics")
-
-  map("n", "<leader>D", function()
-    Snacks.picker.diagnostics()
-  end, opts "Show diagnostics (all buffers)")
-
-  map("n", "<leader>dp", vim.diagnostic.goto_prev, opts "Go to previous diagnostic")
-  map("n", "<leader>dn", vim.diagnostic.goto_next, opts "Go to next diagnostic")
-end
+M.on_attach = function(_, bufnr) end
 
 M.capabilities = vim.tbl_deep_extend(
   "force",
