@@ -1,14 +1,3 @@
-local opt = vim.opt
-local o = vim.o
-local g = vim.g
-
--- enable mdx
-vim.filetype.add {
-  extension = {
-    mdx = "markdown",
-  },
-}
-
 -- Key mappings
 vim.g.mapleader = " " -- Set leader key to space
 vim.g.maplocalleader = " " -- Set local leader key (NEW)
@@ -76,11 +65,18 @@ vim.opt.selection = "exclusive" -- Selection behavior
 vim.opt.clipboard:append "unnamedplus" -- Use system clipboard
 vim.opt.modifiable = true -- Allow buffer modifications
 vim.opt.encoding = "UTF-8" -- Set encoding
-g.loaded_netrw = 1 -- disable netrw
-g.loaded_netrwPlugin = 1 -- disable netrw
-o.mouse = "" -- mouse mode (disabled)
-opt.splitright = true -- split vertical window to the right
-opt.splitbelow = true -- split horizontal window to the bottom
+vim.g.loaded_netrw = 1 -- disable netrw
+vim.g.loaded_netrwPlugin = 1 -- disable netrw
+vim.opt.mouse = "" -- mouse mode (disabled)
+vim.opt.splitright = true -- split vertical window to the right
+vim.opt.splitbelow = true -- split horizontal window to the bottom
 
 -- lazygit
 vim.g.lazygit_floating_window_scaling_factor = 0.85 -- scaling factor for floating window
+
+-- enable mdx
+vim.filetype.add {
+  extension = {
+    mdx = "markdown",
+  },
+}
