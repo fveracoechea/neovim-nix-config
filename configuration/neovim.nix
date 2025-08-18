@@ -2,7 +2,7 @@ inputs: {
   lib,
   pkgs,
   ...
-} @ args: {
+}: {
   home.packages = with pkgs; [
     lazygit
     gh
@@ -65,7 +65,6 @@ inputs: {
       ];
 
     plugins = let
-      treeSitterGrammars = import ./tree-sitter.nix args;
       cmp-minikind = pkgs.vimUtils.buildVimPlugin {
         name = "cmp-minikind";
         src = pkgs.fetchFromGitHub {
@@ -77,10 +76,12 @@ inputs: {
       };
     in
       with pkgs.vimPlugins; [
+        ## Syntax Highlighting
+        (nvim-treesitter.withPlugins (import ./tree-sitter.nix {inherit pkgs inputs;}))
+
         ## Core Dependencies
         plenary-nvim
         nui-nvim
-        # which-key-nvim
 
         # Statusline
         lualine-nvim
@@ -136,9 +137,6 @@ inputs: {
 
         ## Screenshots
         codesnap-nvim
-
-        ## Syntax Highlighting
-        (nvim-treesitter.withPlugins treeSitterGrammars)
       ];
   };
 }
