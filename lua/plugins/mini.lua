@@ -31,6 +31,12 @@ require("mini.icons").setup {
 local MiniClue = require "mini.clue"
 
 MiniClue.setup {
+  window = {
+    delay = 500,
+    config = {
+      width = 50,
+    },
+  },
   triggers = {
     -- Leader triggers
     { mode = "n", keys = "<Leader>" },
