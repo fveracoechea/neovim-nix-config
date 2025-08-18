@@ -60,9 +60,6 @@ M.on_init = function(client, _)
   end
 end
 
--- Callback invoked when attaching a buffer to a language server.
-M.on_attach = function(_, bufnr) end
-
 M.capabilities = vim.tbl_deep_extend(
   "force",
   vim.lsp.protocol.make_client_capabilities(),
