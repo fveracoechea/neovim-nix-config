@@ -2,6 +2,7 @@
 local M = {}
 
 -- General LSP Keymaps with LspAttach Autocommand
+--
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = function(args)
@@ -65,8 +66,8 @@ M.on_attach = function(_, bufnr)
     Snacks.picker.diagnostics()
   end, opts "Show diagnostics (all buffers)")
 
-  map("n", "[d", vim.diagnostic.goto_prev, opts "Go to previous diagnostic")
-  map("n", "]d", vim.diagnostic.goto_next, opts "Go to next diagnostic")
+  map("n", "<leader>dp", vim.diagnostic.goto_prev, opts "Go to previous diagnostic")
+  map("n", "<leader>dn", vim.diagnostic.goto_next, opts "Go to next diagnostic")
 end
 
 M.capabilities = vim.tbl_deep_extend(
