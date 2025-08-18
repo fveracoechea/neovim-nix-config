@@ -38,7 +38,7 @@ cmp.setup {
   },
 
   completion = {
-    completeopt = "menuone,preview,noselect",
+    completeopt = "menuone,preview,noinsert,noselect",
   },
 
   -- configure how nvim-cmp interacts with snippet engine
