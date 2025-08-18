@@ -61,6 +61,8 @@ snacks.setup {
         },
       },
       buffers = {
+        current = false,
+        sort_lastused = true,
         layout = {
           preset = "ivy",
           layout = {
