@@ -8,12 +8,10 @@ require("noice").setup {
   --   },
   -- },
   --
-
-  -- Route notifications to snacks.notifier instead of noice's built-in notifier
-  routes = {
-    {
-      view = "notify_send",
-      filter = { event = "notify" },
-    },
+  notify = {
+    enabled = false,
+  },
+  presets = {
+    lsp_doc_border = true, -- add a border to hover docs and signature help
   },
 }
