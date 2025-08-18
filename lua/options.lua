@@ -35,7 +35,7 @@ vim.opt.showmode = false -- Don't show mode in command line
 vim.opt.conceallevel = 0 -- Don't hide markup
 vim.opt.concealcursor = "" -- Don't hide cursor line markup
 vim.opt.synmaxcol = 300 -- Syntax highlighting limit
-vim.opt.winborder = "rounded" -- Window border style
+vim.o.winborder = "rounded" -- Window border style
 
 -- File handling
 vim.opt.backup = false -- Don't create backup files
