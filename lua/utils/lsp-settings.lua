@@ -18,7 +18,7 @@ M.on_attach = function(_, bufnr)
 
   -- Hover info
   map("n", "K", function()
-    vim.lsp.buf.hover { border = "rounded", max_height = 25, max_width = 120 }
+    vim.lsp.buf.hover { border = "single", max_height = 25, max_width = 120 }
   end, opts "Hover information")
 
   map("n", "<C-k>", function()
