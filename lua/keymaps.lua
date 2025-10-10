@@ -101,10 +101,6 @@ map("n", "<leader>gf", function()
   Snacks.lazygit.log_file()
 end, { desc = "Lazygit Current File History" })
 
-map("n", "<leader>lg", function()
-  Snacks.lazygit()
-end, { desc = "Open Lazygit" })
-
 map("n", "<leader>gl", function()
   Snacks.lazygit.log()
 end, { desc = "Lazygit Log (cwd)" })

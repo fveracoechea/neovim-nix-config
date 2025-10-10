@@ -39,17 +39,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
       Snacks.picker.lsp_type_definitions()
     end, opts "Type definition")
 
-    -- Updated to use snacks.picker for diagnostics
-    map("n", "<leader>d", function()
+    map("n", "<leader>sd", function()
       Snacks.picker.diagnostics_buffer()
-    end, opts "Show buffer diagnostics")
+    end, opts "Show Buffer Diagnostics")
 
-    map("n", "<leader>D", function()
+    map("n", "<leader>sD", function()
       Snacks.picker.diagnostics()
     end, opts "Show diagnostics (all buffers)")
 
-    map("n", "<leader>dp", vim.diagnostic.goto_prev, opts "Go to previous diagnostic")
-    map("n", "<leader>dn", vim.diagnostic.goto_next, opts "Go to next diagnostic")
+    map("n", "<leader>Dp", vim.diagnostic.goto_prev, opts "Go to previous diagnostic")
+    map("n", "<leader>Dn", vim.diagnostic.goto_next, opts "Go to next diagnostic")
   end,
 })
 
