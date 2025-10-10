@@ -69,10 +69,10 @@ end, { desc = "Find all files" })
 
 -- Tailwind
 
-map("n", "<leader>twc", ":TailwindConcealToggle<CR>", { desc = "Tailwind conceal toggle" })
-map("n", "<leader>tws", ":TailwindSort<CR>", { desc = "Tailwind sorts all classes in the current buffer" })
-map("n", "<leader>twn", ":TailwindNextClass<CR>", { desc = "Tailwind moves to the NEXT class" })
-map("n", "<leader>twp", ":TailwindNextClass<CR>", { desc = "Tailwind moves to the PREVIOUS class" })
+-- map("n", "<leader>twc", ":TailwindConcealToggle<CR>", { desc = "Tailwind conceal toggle" })
+-- map("n", "<leader>tws", ":TailwindSort<CR>", { desc = "Tailwind sorts all classes in the current buffer" })
+-- map("n", "<leader>twn", ":TailwindNextClass<CR>", { desc = "Tailwind moves to the NEXT class" })
+-- map("n", "<leader>twp", ":TailwindNextClass<CR>", { desc = "Tailwind moves to the PREVIOUS class" })
 
 -- Explorer
 
