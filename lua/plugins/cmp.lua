@@ -1,6 +1,6 @@
 local cmp = require "cmp"
 local minikind_format = require("cmp-minikind").cmp_format()
--- local tailwind_format = require("tailwind-tools.cmp").lspkind_format
+local tailwind_format = require("tailwind-tools.cmp").lspkind_format
 
 require("copilot").setup {
   suggestion = { enabled = false },
@@ -76,8 +76,8 @@ cmp.setup {
 
   formatting = {
     format = function(entry, vim_item)
-      -- local item = tailwind_format(entry, vim_item)
-      return minikind_format(entry, vim_item)
+      local item = tailwind_format(entry, vim_item)
+      return minikind_format(entry, item)
     end,
   },
 }
