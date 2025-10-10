@@ -73,6 +73,12 @@ return {
       },
     },
   },
+  root_dir = function(_, on_dir)
+    local root_dir = vim.fs.root(0, { "deno.json", "deno.jsonc" })
+    if root_dir then
+      on_dir(root_dir)
+    end
+  end,
   handlers = {
     ["textDocument/definition"] = denols_handler,
     ["textDocument/typeDefinition"] = denols_handler,

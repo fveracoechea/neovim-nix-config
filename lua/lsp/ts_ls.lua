@@ -13,19 +13,13 @@ return {
     "typescriptreact",
     "typescript.tsx",
   },
-  root_dir = function(bufnr, on_dir)
-    -- The project root is where the LSP can be started from
-    -- As stated in the documentation above, this LSP supports monorepos and simple projects.
-    -- We select then from the project root, which is identified by the presence of a package
-    -- manager lock file.
-    local root_markers = { "package-lock.json", "yarn.lock", "pnpm-lock.yaml", "bun.lockb", "bun.lock" }
-    -- Give the root markers equal priority by wrapping them in a table
-    root_markers = vim.fn.has "nvim-0.11.3" == 1 and { root_markers, { ".git" } }
-      or vim.list_extend(root_markers, { ".git" })
-    -- We fallback to the current working directory if no project root is found
-    local project_root = vim.fs.root(bufnr, root_markers) or vim.fn.getcwd()
+  root_dir = function(_, on_dir)
+    local deno_dir = vim.fs.root(0, { "deno.json", "deno.jsonc" })
+    local root_dir = vim.fs.root(0, { "tsconfig.json", "jsconfig.json", "package.json" })
 
-    on_dir(project_root)
+    if root_dir and deno_dir == nil then
+      on_dir(root_dir)
+    end
   end,
   handlers = {
     -- handle rename request for certain code actions like extracting functions / types
