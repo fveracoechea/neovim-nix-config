@@ -1,3 +1,14 @@
+local cmp = require "cmp"
+local minikind_format = require("cmp-minikind").cmp_format()
+local tailwind_format = require("tailwind-tools.cmp").lspkind_format
+
+require("copilot").setup {
+  suggestion = { enabled = false },
+  panel = { enabled = false },
+}
+
+require("copilot_cmp").setup()
+
 local function border(hl_name)
   return {
     { "╭", hl_name },
@@ -11,14 +22,7 @@ local function border(hl_name)
   }
 end
 
-local cmp = require "cmp"
-
-local luasnip = require "luasnip"
-
-local lspkind = require "lspkind"
-
--- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
-require("luasnip.loaders.from_vscode").lazy_load()
+cmp.register_source("mini_snippets", require("utils.cmp-mini-snippets").new())
 
 cmp.setup {
   window = {
@@ -34,13 +38,16 @@ cmp.setup {
   },
 
   completion = {
-    completeopt = "menu,menuone,preview,noselect",
+    completeopt = "menuone,preview,noinsert,noselect",
   },
 
   -- configure how nvim-cmp interacts with snippet engine
   snippet = {
     expand = function(args)
-      luasnip.lsp_expand(args.body)
+      local insert = MiniSnippets.config.expand.insert or MiniSnippets.default_insert
+      insert { body = args.body } -- Insert at cursor
+      cmp.resubscribe { "TextChangedI", "TextChangedP" }
+      require("cmp.config").set_onetime { sources = {} }
     end,
   },
 
@@ -57,73 +64,21 @@ cmp.setup {
   -- sources for autocompletion
   sources = cmp.config.sources {
     { name = "nvim_lsp" },
+    { name = "mini_snippets" },
     { name = "copilot" },
-    { name = "luasnip" }, -- snippets
     { name = "buffer" }, -- text within current buffer
     { name = "path" }, -- file system paths
-    { name = "otter" },
-    {
-      name = "lazydev",
-      -- set group index to 0 to skip loading LuaLS completions
-      group_index = 0,
-    },
   },
 
   sorting = {
     priority_weight = 2,
   },
 
-  -- configure lspkind for vs-code like pictograms in completion menu
   formatting = {
-    expandable_indicator = true,
-    fields = { "kind", "abbr", "menu" },
-    format = lspkind.cmp_format {
-      maxwidth = 50,
-      ellipsis_char = "...",
-      symbol_map = {
-        Namespace = "󰌗",
-        Text = "󰉿",
-        Method = "󰆧",
-        Function = "󰆧",
-        Constructor = "",
-        Field = "󰜢",
-        Variable = "󰀫",
-        Class = "󰠱",
-        Interface = "",
-        Module = "",
-        Property = "󰜢",
-        Unit = "󰑭",
-        Value = "󰎠",
-        Enum = "",
-        Keyword = "󰌋",
-        Snippet = "",
-        Color = "󰏘",
-        File = "󰈚",
-        Reference = "󰈇",
-        Folder = "󰉋",
-        EnumMember = "",
-        Constant = "󰏿",
-        Struct = "󰙅",
-        Event = "",
-        Operator = "󰆕",
-        TypeParameter = "󰊄",
-        Table = "",
-        Object = "󰅩",
-        Tag = "",
-        Array = "[]",
-        Boolean = "",
-        Number = "",
-        Null = "󰟢",
-        Supermaven = "",
-        String = "󰉿",
-        Calendar = "",
-        Watch = "󰥔",
-        Package = "",
-        Copilot = "",
-        Codeium = "",
-        TabNine = "",
-      },
-    },
+    format = function(entry, vim_item)
+      local item = tailwind_format(entry, vim_item)
+      return minikind_format(entry, item)
+    end,
   },
 }
 

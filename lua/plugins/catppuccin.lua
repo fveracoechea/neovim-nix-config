@@ -6,19 +6,23 @@ require("catppuccin").setup {
     solid = true,
   },
   integrations = {
-    telescope = {
-      enabled = true,
-      style = "nvchad",
-    },
-    which_key = true,
-    lsp_trouble = true,
-    nvim_surround = true,
-    notify = true,
+    cmp = true,
+    telescope = { enabled = false },
+    which_key = false,
+    lsp_trouble = false,
+    nvim_surround = false,
+    notify = false,
     noice = true,
     indent_blankline = {
+      enabled = false, -- Disabled since we use snacks.indent
+    },
+    mini = {
       enabled = true,
-      scope_color = "lavender",
-      colored_indent_levels = true,
+      indentscope_color = "lavender",
+    },
+    snacks = {
+      enabled = true,
+      indentscope_color = "lavender",
     },
   },
 }

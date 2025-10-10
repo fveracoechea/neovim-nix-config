@@ -1,30 +1,35 @@
 # AGENTS.md - Neovim Nix Config
 
 ## Build/Lint/Test Commands
-- Format Lua: `stylua .`
-- Check flake: `nix flake check`
-- Build config: `nix build`
-- Update flake inputs: `nix flake update`
+- **Format code**: `stylua .` (formats all Lua files)
+- **Check flake**: `nix flake check` (validates Nix configuration)
+- **Build config**: `nix build` (builds the Neovim configuration)
+- **Update dependencies**: `nix flake update` (updates flake inputs)
+- **Test locally**: `home-manager switch --flake .` (applies config to current user)
+- **Single file format**: `stylua path/to/file.lua`
 
 ## Code Style Guidelines
 
-### Lua
-- Use 2-space indentation (configured in .stylua.toml)
-- Column width: 120 characters
-- Quote style: prefer double quotes with auto-selection
-- No call parentheses when not needed
-- Local variables at top of function/block: `local map = vim.keymap.set`
-- Use descriptive variable names: `js_formatters`, `conform`
+### Lua Configuration
+- **Indentation**: 2 spaces (enforced by .stylua.toml)
+- **Line length**: 120 characters max
+- **Quotes**: Double quotes preferred (`"string"`)
+- **Function calls**: No parentheses when possible (`require "module"`)
+- **Module imports**: Place at top of file (`require "options"`, `require "keymaps"`)
+- **Variables**: Descriptive names, locals at function start (`local map = vim.keymap.set`)
+- **Vim globals**: Use `vim.g` for global settings (`vim.g.mapleader = " "`)
 
-### Nix
-- Use 2-space indentation
-- Place inputs/outputs on separate lines
-- Use `lib.fileContents` for external Lua configs
-- Structure: plain plugins list + withConfig list
+### Nix Configuration  
+- **Indentation**: 2 spaces consistently
+- **Structure**: Separate inputs/outputs on new lines
+- **External configs**: Use `lib.fileContents` for Lua files
+- **Plugin organization**: Plain plugins list + withConfig list
+- **Comments**: Document plugin sources and purposes
 
-### Error Handling
-- Use vim.diagnostic.config for LSP diagnostics
-- Configure error signs with proper symbols
-- Set up floating window borders for diagnostics
+### Keymaps
+- **Descriptions**: Always include desc field (`{ desc = "Split window vertically" }`)
+- **Grouping**: Use comment separators for related mappings
+- **Leader keys**: Consistent patterns with space as leader
+- **Local variables**: Define `local map = vim.keymap.set` at top
 
 This is a Neovim configuration managed via Nix flakes and Home Manager.

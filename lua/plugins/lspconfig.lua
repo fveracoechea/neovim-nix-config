@@ -8,7 +8,7 @@ vim.diagnostic.config {
   -- Change the Diagnostic symbols in the sign column (gutter)
   signs = { text = { [x.ERROR] = "󰅙 ", [x.WARN] = " ", [x.INFO] = " ", [x.HINT] = "󰠠 " } },
   underline = true,
-  float = { border = "single" },
+  float = { border = "rounded" },
 }
 
-require "lsp-servers"
+require "utils.lsp-servers"
