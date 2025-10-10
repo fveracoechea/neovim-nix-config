@@ -3,6 +3,16 @@ vim.g.markdown_fenced_languages = {
   "ts=typescript",
 }
 
+-- Sets global diagnostic config
+local x = vim.diagnostic.severity
+vim.diagnostic.config {
+  virtual_text = { prefix = "" },
+  -- Change the Diagnostic symbols in the sign column (gutter)
+  signs = { text = { [x.ERROR] = "󰅙 ", [x.WARN] = " ", [x.INFO] = " ", [x.HINT] = "󰠠 " } },
+  underline = true,
+  float = { border = "rounded" },
+}
+
 -- General LSP Keymaps with LspAttach Autocommand
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -54,6 +64,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
+-- Enable the servers listed here that have been configured in `lua/lsp/*`
 vim.lsp.enable {
   "html",
   "nil_ls",
