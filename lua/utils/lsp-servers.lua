@@ -1,9 +1,16 @@
-local settings = require "utils.lsp-settings"
-local lspconfig = require "lspconfig"
-
--- appropriately highlight codefences returned from denols
-vim.g.markdown_fenced_languages = {
-  "ts=typescript",
+vim.lsp.enable {
+  "html",
+  "nil_ls",
+  "lua_ls",
+  "cssls",
+  "nginx_language_server",
+  "eslint",
+  "graphql",
+  "relay_lsp",
+  "denols",
+  "ts_ls",
+  "jsonls",
+  "tailwindcss",
 }
 
 --LSP configurations
@@ -13,130 +20,36 @@ local servers = {
   -- NIX
   nil_ls = {},
   -- LUA
-  lua_ls = {
-    settings = {
-      Lua = {
-        -- make the language server recognize "vim" global
-        diagnostics = {
-          globals = { "vim" },
-        },
-        completion = {
-          callSnippet = "Replace",
-        },
-      },
-    },
-  },
+  lua_ls = {},
   -- CSS
-  cssls = {
-    settings = {
-      css = {
-        lint = {
-          unknownAtRules = "ignore",
-        },
-      },
-    },
-  },
-  -- NGINX
+  cssls = {},
   nginx_language_server = {},
-  -- ESLint
   eslint = {},
-  -- GRAPHQL
-  graphql = {
-    filetypes = {
-      "graphql",
-      "gql",
-      "svelte",
-      "javascript",
-      "typescript",
-      "typescriptreact",
-      "javascriptreact",
-    },
-  },
-  -- RELAY
-  relay_lsp = {
-    root_dir = lspconfig.util.root_pattern "relay.config.json",
-  },
-  -- DENO
-  denols = {
-    root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-  },
-  -- TYPESCRIPT
-  ts_ls = {
-    on_attach = function(client, bufnr)
-      if lspconfig.util.root_pattern("deno.json", "deno.jsonc")(vim.fn.getcwd()) then
-        if client.name == "ts_ls" then
-          client.stop()
-          return
-        end
-      end
-    end,
-    single_file_support = false,
-    root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "node_modules"),
-    init_options = {
-      preferences = {
-        disableSuggestions = true,
-      },
-    },
-  },
+  graphql = {},
+  relay_lsp = {},
+  denols = {},
+  ts_ls = {},
+  -- ts_ls = {
+  --   on_attach = function(client, bufnr)
+  --     if lspconfig.util.root_pattern("deno.json", "deno.jsonc")(vim.fn.getcwd()) then
+  --       if client.name == "ts_ls" then
+  --         client.stop()
+  --         return
+  --       end
+  --     end
+  --   end,
+  --   single_file_support = false,
+  --   root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "node_modules"),
+  --   init_options = {
+  --     preferences = {
+  --       disableSuggestions = true,
+  --     },
+  --   },
+  -- },
   -- JSON schemas
   -- Schemas https://www.schemastore.org
-  jsonls = {
-    filetypes = { "json", "jsonc" },
-    settings = {
-      json = {
-        schemas = {
-          {
-            fileMatch = { "deno.json", "deno.jsonc" },
-            url = "https://raw.githubusercontent.com/denoland/deno/main/cli/schemas/config-file.v1.json",
-          },
-          {
-            fileMatch = { "package.json" },
-            url = "https://json.schemastore.org/package.json",
-          },
-          {
-            fileMatch = { "tsconfig*.json" },
-            url = "https://json.schemastore.org/tsconfig.json",
-          },
-          {
-            fileMatch = {
-              ".prettierrc",
-              ".prettierrc.json",
-              "prettier.config.json",
-            },
-            url = "https://json.schemastore.org/prettierrc.json",
-          },
-          {
-            fileMatch = {
-              ".eslintrc",
-              ".eslintrc.json",
-              "eslint.config.json",
-            },
-            url = "https://json.schemastore.org/eslintrc.json",
-          },
-          {
-            fileMatch = { ".babelrc", ".babelrc.json", "babel.config.json" },
-            url = "https://json.schemastore.org/babelrc.json",
-          },
-          {
-            fileMatch = { "lerna.json" },
-            url = "https://json.schemastore.org/lerna.json",
-          },
-          {
-            fileMatch = { "now.json", "vercel.json" },
-            url = "https://json.schemastore.org/now.json",
-          },
-          {
-            fileMatch = {
-              ".stylelintrc",
-              ".stylelintrc.json",
-              "stylelint.config.json",
-            },
-            url = "http://json.schemastore.org/stylelintrc.json",
-          },
-        },
-      },
-    },
-  },
+  jsonls = {},
+  tailwindcss = {},
   -- TailwindCSS
   -- tailwindcss = {
   --   settings = {
@@ -184,15 +97,3 @@ local servers = {
   --   },
   -- },
 }
-
-for name, options in pairs(servers) do
-  if not options.on_init then
-    options.on_init = settings.on_init
-  end
-
-  if not options.capabilities then
-    options.capabilities = settings.capabilities
-  end
-
-  lspconfig[name].setup(options)
-end

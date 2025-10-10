@@ -13,17 +13,9 @@ inputs: {
   # Enable management of XDG base directories
   xdg.enable = lib.mkDefault true;
 
-  xdg.configFile."nvim/lua/options.lua".source = ../lua/options.lua;
-  xdg.configFile."nvim/lua/keymaps.lua".source = ../lua/keymaps.lua;
-
-  xdg.configFile."nvim/lua/utils" = {
+  xdg.configFile."nvim/lua" = {
     recursive = true;
-    source = ../lua/utils;
-  };
-
-  xdg.configFile."nvim/lua/plugins" = {
-    recursive = true;
-    source = ../lua/plugins;
+    source = ../lua;
   };
 
   programs.neovim = {

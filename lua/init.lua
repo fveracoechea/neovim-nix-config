@@ -1,5 +1,6 @@
 require "options"
 require "keymaps"
+require "lsp-setup"
 
 require "plugins.mini"
 require "plugins.snacks"
@@ -13,5 +14,4 @@ require "plugins.lspconfig"
 require "plugins.cmp"
 require "plugins.lualine"
 require "plugins.noice"
--- require "plugins.hover"
 require "plugins.tailwind-tools"

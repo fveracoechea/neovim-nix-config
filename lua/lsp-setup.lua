@@ -1,5 +1,7 @@
--- LSP settings for mini.completion integration
-local M = {}
+-- appropriately highlight codefences returned from denols
+vim.g.markdown_fenced_languages = {
+  "ts=typescript",
+}
 
 -- General LSP Keymaps with LspAttach Autocommand
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -52,17 +54,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
--- Disable semanticTokens
-M.on_init = function(client, _)
-  if client.supports_method "textDocument/semanticTokens" then
-    client.server_capabilities.semanticTokensProvider = nil
-  end
-end
-
-M.capabilities = vim.tbl_deep_extend(
-  "force",
-  vim.lsp.protocol.make_client_capabilities(),
-  require("cmp_nvim_lsp").default_capabilities()
-)
-
-return M
+vim.lsp.enable {
+  "html",
+  "nil_ls",
+  "lua_ls",
+  "cssls",
+  "nginx_language_server",
+  "eslint",
+  "graphql",
+  "relay_lsp",
+  "denols",
+  "ts_ls",
+  "jsonls",
+  "tailwindcss",
+}
