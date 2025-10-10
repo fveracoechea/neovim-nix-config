@@ -1,18 +1,3 @@
-vim.lsp.enable {
-  "html",
-  "nil_ls",
-  "lua_ls",
-  "cssls",
-  "nginx_language_server",
-  "eslint",
-  "graphql",
-  "relay_lsp",
-  "denols",
-  "ts_ls",
-  "jsonls",
-  "tailwindcss",
-}
-
 --LSP configurations
 local servers = {
   -- HTML
