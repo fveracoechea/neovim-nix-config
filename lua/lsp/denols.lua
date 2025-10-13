@@ -1,4 +1,5 @@
 local lsp = vim.lsp
+local capabilities = require "utils.lsp-capabilities"
 
 local function virtual_text_document_handler(uri, res, client)
   if not res then
@@ -51,6 +52,7 @@ end
 ---@type vim.lsp.Config
 return {
   cmd = { "deno", "lsp" },
+  capabilities = capabilities,
   cmd_env = { NO_COLOR = true },
   -- Restrict to typical Deno filetypes (avoid claiming jsx/tsx if not needed)
   filetypes = {

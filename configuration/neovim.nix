@@ -35,6 +35,7 @@ inputs: {
         ## Language Servers
         nil # Nix LSP
         lua-language-server
+        deno # Deno runtime (LSP + fmt)
         typescript
         typescript-language-server
         vscode-langservers-extracted # HTML, CSS, JSON, ESLint
