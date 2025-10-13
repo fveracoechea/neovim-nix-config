@@ -43,14 +43,12 @@ inputs: {
         graphql-language-service-cli
         nginx-language-server
         bash-language-server
-
         ## Formatters
         stylua # Lua
         alejandra # Nix
         shfmt # Shell
         isort # Python imports
         black # Python
-
         ## Linters & Static Analysis
         pylint
         pyright
@@ -71,15 +69,11 @@ inputs: {
       with pkgs.vimPlugins; [
         ## Syntax Highlighting
         (nvim-treesitter.withPlugins (import ./tree-sitter.nix {inherit pkgs inputs;}))
-
         ## Core Dependencies
         plenary-nvim
         nui-nvim
-
         # Statusline
         lualine-nvim
-        lualine-lsp-progress
-
         ## Completion System
         nvim-cmp
         cmp-path
@@ -88,46 +82,29 @@ inputs: {
         cmp-minikind
         copilot-lua
         copilot-cmp
-
         ## Navigation & Movement
         vim-tmux-navigator
-
         ## Treesitter Extensions
         nvim-ts-context-commentstring
         nvim-ts-autotag
-
         ## LSP & Development
         nvim-lsp-file-operations
-        lazydev-nvim
         trouble-nvim
-
         ## Plugin Consolidation
-        mini-nvim # Swiss Army knife plugin collection
-        snacks-nvim # Multi-plugin library
-
+        mini-nvim
+        snacks-nvim
         ## File Management
         yazi-nvim
-
         ## UI & Theme
         catppuccin-nvim
-        noice-nvim
-
         ## Language Support & LSP
         nvim-lspconfig
-        hover-nvim
         tailwind-tools-nvim
-
         ## Code Formatting & Linting
         conform-nvim
         nvim-lint
-        none-ls-nvim
-
-        ## Code Analysis & Refactoring
-        refactoring-nvim
-
         ## Git Integration
         gitsigns-nvim
-
         ## Screenshots
         codesnap-nvim
       ];
