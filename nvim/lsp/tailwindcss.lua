@@ -1,6 +1,5 @@
 local util = require "lspconfig.util"
 
----@type vim.lsp.Config
 return {
   cmd = { "tailwindcss-language-server", "--stdio" },
   -- filetypes copied and adjusted from tailwindcss-intellisense

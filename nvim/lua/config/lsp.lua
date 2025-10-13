@@ -5,6 +5,7 @@ vim.g.markdown_fenced_languages = {
 
 -- Sets global diagnostic config
 local x = vim.diagnostic.severity
+
 vim.diagnostic.config {
   virtual_text = { prefix = "" },
   -- Change the Diagnostic symbols in the sign column (gutter)

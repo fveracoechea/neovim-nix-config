@@ -1,6 +1,4 @@
 local lualine = require "lualine"
-local lualine_mode = require("lualine.utils.mode").get_mode
-local noice_mode = require("noice").api.statusline.mode.get
 
 local colors = require "catppuccin.palettes.mocha"
 
@@ -17,17 +15,6 @@ local function get_buffer_count()
   end
 
   return " " .. count
-end
-
--- Integrates Nocice notifications with lua line mode
-local get_mode = function()
-  local mode = noice_mode()
-
-  if mode then
-    return mode
-  else
-    return lualine_mode()
-  end
 end
 
 -- LSP clients attached to buffer
@@ -54,7 +41,7 @@ lualine.setup {
   },
 
   sections = {
-    lualine_a = { get_mode },
+    lualine_a = { "mode" },
     lualine_b = { "branch", "diff", "diagnostics" },
     lualine_c = {
       get_clients_lsp,

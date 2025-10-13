@@ -16,7 +16,6 @@ local eslint_config_files = {
   "eslint.config.cts",
 }
 
----@type vim.lsp.Config
 return {
   cmd = { "vscode-eslint-language-server", "--stdio" },
   filetypes = {

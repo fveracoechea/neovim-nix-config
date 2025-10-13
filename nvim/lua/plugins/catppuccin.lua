@@ -12,7 +12,7 @@ require("catppuccin").setup {
     lsp_trouble = false,
     nvim_surround = false,
     notify = false,
-    noice = true,
+    noice = false,
     indent_blankline = {
       enabled = false, -- Disabled since we use snacks.indent
     },

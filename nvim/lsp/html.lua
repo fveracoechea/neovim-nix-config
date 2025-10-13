@@ -1,6 +1,5 @@
 local capabilities = require "utils.lsp-capabilities"
 
----@type vim.lsp.Config
 return {
   cmd = { "vscode-html-language-server", "--stdio" },
   capabilities = capabilities,
