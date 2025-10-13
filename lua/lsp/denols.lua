@@ -52,16 +52,22 @@ end
 return {
   cmd = { "deno", "lsp" },
   cmd_env = { NO_COLOR = true },
+  -- Restrict to typical Deno filetypes (avoid claiming jsx/tsx if not needed)
   filetypes = {
     "javascript",
     "javascriptreact",
-    "javascript.jsx",
     "typescript",
     "typescriptreact",
     "typescript.tsx",
   },
   workspace_required = true,
   root_markers = { "deno.json", "deno.jsonc" },
+  -- Explicit root_dir to ensure ts_ls never attaches inside a Deno project
+  root_dir = function(fname)
+    local util = require "lspconfig.util"
+    return util.root_pattern("deno.json", "deno.jsonc")(fname)
+  end,
+  single_file_support = false,
   settings = {
     deno = {
       enable = true,

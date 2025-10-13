@@ -13,13 +13,15 @@ return {
     "typescriptreact",
     "typescript.tsx",
   },
-  root_dir = function(_, on_dir)
-    local deno_dir = vim.fs.root(0, { "deno.json", "deno.jsonc" })
-    local root_dir = vim.fs.root(0, { "tsconfig.json", "jsconfig.json", "package.json" })
-    if root_dir and deno_dir == nil then
-      on_dir(root_dir)
+  -- Exclude Deno projects: only attach if no deno.json/deno.jsonc in hierarchy
+  root_dir = function(fname)
+    local util = require "lspconfig.util"
+    if util.root_pattern("deno.json", "deno.jsonc")(fname) then
+      return nil
     end
+    return util.root_pattern("tsconfig.json", "jsconfig.json", "package.json", ".git")(fname)
   end,
+  single_file_support = false,
   handlers = {
     -- handle rename request for certain code actions like extracting functions / types
     ["_typescript.rename"] = function(_, result, ctx)
@@ -62,14 +64,6 @@ return {
     end,
   },
   on_attach = function(client, bufnr)
-    -- Disable ts_ls if deno project detected
-    if util.root_pattern("deno.json", "deno.jsonc")(vim.fn.getcwd()) then
-      if client.name == "ts_ls" then
-        client.stop()
-        return
-      end
-    end
-
     -- ts_ls provides `source.*` code actions that apply to the whole file. These only appear in
     -- `vim.lsp.buf.code_action()` if specified in `context.only`.
     vim.api.nvim_buf_create_user_command(bufnr, "LspTypescriptSourceAction", function()
