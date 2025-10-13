@@ -93,6 +93,7 @@ snacks.setup {
 
   chunk = { enabled = true },
   notifier = { enabled = true },
+  notifier = { enabled = true },
   bigfile = { enabled = true },
   animate = { enabled = true },
   bufdelete = { enabled = true },

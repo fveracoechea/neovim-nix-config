@@ -64,11 +64,6 @@ return {
   },
   workspace_required = true,
   root_markers = { "deno.json", "deno.jsonc" },
-  -- Explicit root_dir to ensure ts_ls never attaches inside a Deno project
-  root_dir = function(fname)
-    local util = require "lspconfig.util"
-    return util.root_pattern("deno.json", "deno.jsonc")(fname)
-  end,
   single_file_support = false,
   settings = {
     deno = {

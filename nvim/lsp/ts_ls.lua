@@ -3,7 +3,6 @@ return {
   init_options = { hostInfo = "neovim" },
   cmd = { "typescript-language-server", "--stdio" },
   workspace_required = true,
-  -- single_file_support = false,
   filetypes = {
     "javascript",
     "javascriptreact",
@@ -13,12 +12,12 @@ return {
     "typescript.tsx",
   },
   -- Exclude Deno projects: only attach if no deno.json/deno.jsonc in hierarchy
-  root_dir = function(fname)
-    local util = require "lspconfig.util"
-    if util.root_pattern("deno.json", "deno.jsonc")(fname) then
-      return nil
+  root_dir = function(_, on_dir)
+    local deno_dir = vim.fs.root(0, { "deno.json", "deno.jsonc" })
+    local root_dir = vim.fs.root(0, { "tsconfig.json", "jsconfig.json", "package.json" })
+    if root_dir and deno_dir == nil then
+      on_dir(root_dir)
     end
-    return util.root_pattern("tsconfig.json", "jsconfig.json", "package.json", ".git")(fname)
   end,
   handlers = {
     -- handle rename request for certain code actions like extracting functions / types
