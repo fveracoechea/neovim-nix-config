@@ -6,9 +6,9 @@ vim.g.markdown_fenced_languages = {
 vim.diagnostic.config {
   underline = true,
   severity_sort = true,
-  virtual_lines = true,
+  virtual_text = false,
+  virtual_lines = { current_line = true },
   update_in_insert = false,
-  virtual_text = { prefix = "" },
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = "󰅙 ",
