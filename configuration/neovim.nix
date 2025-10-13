@@ -24,7 +24,7 @@ inputs: {
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-    extraLuaConfig = lib.fileContents ../lua/init.lua;
+    extraLuaConfig = lib.fileContents ../nvim/init.lua;
 
     extraPackages = with pkgs;
       lib.optionals pkgs.stdenv.isLinux [
