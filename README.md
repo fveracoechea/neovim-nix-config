@@ -1,121 +1,108 @@
-# 🚀 Neovim configuration (nix flake)
-Modern, reproducible Neovim IDE powered by Nix flakes + Home Manager: LSP, Treesitter, formatting, linting, UI polish.
+# Neovim + Nix Flake
+Reproducible, minimal-but-powerful IDE setup fully provisioned by Nix + Home Manager: LSP, Treesitter, completion, formatting, linting, cohesive UI.
 
-## ✨ Features
+## ✨ Features (Single Glance)
+- UX/UI: Catppuccin Mocha (transparent), animated statusline + winbar via Lualine, rich notifications & status column, dashboard, indent & scope guides, zen/zoom, smooth scroll, minimal glyph icon set.
+- Editing Primitives: Treesitter highlighting & incremental selection, smart indentation, surround/pairs/comment, inline diff hunks & navigation, session management, scratch buffers, chunk highlighting.
+- LSP & Language Tooling: Auto enable configured servers (TypeScript / Deno, HTML, CSS, JSON, ESLint, TailwindCSS, GraphQL, Relay, Nix, Lua (sumneko), Nginx, Bash). Custom diagnostics symbols + borders.
+- Completion & Snippets: nvim-cmp with LSP, buffer, path, Copilot (optional), custom mini.snippets + Tailwind class formatting & icon kind formatting chain.
+- Formatting: conform.nvim with per‑ft fallback chain (Prettier | Deno, Stylua, Black + Isort, Alejandra, etc.) format-on-save.
+- Linting: nvim-lint (pylint) auto triggers on enter/write/leave insert, manual <leader>ll.
+- Navigation & Search: Snacks picker (files, grep, recent, buffers, diagnostics, explorer sidebar) replaces Telescope; Yazi TUI file manager (floating or cwd) + explorer view; word reference jumping; buffer & git pickers.
+- Git: Inline diff hunks (mini.diff + gitsigns backend), blame line, browse repo, lazygit integration, file & repo history pickers.
+- Tailwind Enhancements: Conceal long class lists, class sorting & navigation, cmp coloring (tailwind-tools).
+- Visual Utilities: Code screenshots (codesnap), status notifications history, toggle helpers (numbers, wrap, spell), zen & zoom, bigfile optimizations.
+- Pure Nix Provisioning: All plugins, LSP servers, formatters, linters pinned via flake; tree-sitter grammars vendored through nix derivation; zero ad-hoc network downloads at runtime.
 
-### 🎨 UI
-- Catppuccin Mocha (transparent)
-- Lualine (with LSP progress + diagnostics)
-- Noice command-line / messages
-- Which-key dynamic keymap hints
-- Alpha dashboard (recent projects, shortcuts)
+## 📦 Plugin Stack
+Core/runtime: plenary, nui
+UI/Experience: catppuccin, lualine, snacks (dashboard, picker, notifier, indent, scope, zen, etc.), mini (icons, clue, sessions, pairs, surround, comment, diff, snippets)
+Editing/Language: nvim-treesitter (+ autotag, context-commentstring), nvim-lspconfig, tailwind-tools, nvim-lsp-file-operations
+Completion: nvim-cmp, cmp-nvim-lsp, cmp-buffer, cmp-path, cmp-minikind, copilot.lua, copilot-cmp
+Files & Navigation: yazi-nvim
+Git: gitsigns, snacks git/lazygit helpers
+Code Quality: conform, nvim-lint
+Utility/Misc: codesnap
 
-### 🧠 Editing
-- 10+ LSP servers (web, nix, lua, python, bash, etc.)
-- Treesitter for 20+ grammars
-- nvim-cmp completion w/ snippets
-- Surround, autopairs, commenting utilities
-- Optional: GitHub Copilot (enable token manually)
-
-### 🔍 Navigation
-- Telescope fuzzy finding (files, grep, buffers, symbols)
-- Yazi TUI file manager integration
-- Session management
-- Gitsigns inline hunks & blame
-
-### 🛠 Tooling
-- Conform format-on-save (Prettier, Stylua, Black, etc.)
-- nvim-lint async diagnostics
-- Refactoring helpers
-- CodeSnap screenshots
-- Todo-comments navigation
-
-### 📦 Languages
-Web (TS/JS/HTML/CSS/React/Vue/Svelte) · Nix · Lua · Python · Bash · C · JSON · YAML · Markdown · GraphQL · Dockerfile · Nginx
-
-## 🏗️ Layout
-
+## 🗂 Layout
 ```
 neovim-nix-config/
-├── flake.nix
-├── flake.lock
+├── flake.nix / flake.lock          # Inputs + outputs
 ├── configuration/
-│   ├── default.nix          # Aggregate module(s)
-│   ├── neovim.nix           # Neovim package + plugin wiring
-│   ├── snippets.nix         # Mini snippet definitions
-│   └── tree-sitter.nix      # Grammar pinning
+│   ├── neovim.nix                  # Program + plugins + LSP tools
+│   ├── tree-sitter.nix             # Grammar pin set
+│   ├── snippets.nix                # Inline snippet definitions
+│   └── default.nix                 # Aggregate HM module
 ├── nvim/
-│   ├── init.lua
-│   ├── lua/
-│   │   ├── config/
-│   │   │   ├── options.lua
-│   │   │   ├── keymaps.lua
-│   │   │   ├── lsp.lua
-│   │   │   └── autocmds.lua
-│   │   ├── plugins/         # Individual plugin configs
-│   │   │   ├── cmp.lua
-│   │   │   ├── lualine.lua
-│   │   │   ├── treesitter.lua
-│   │   │   ├── conform.lua
-│   │   │   ├── lint.lua
-│   │   │   ├── tailwind-tools.lua
-│   │   │   └── ...
-│   │   └── utils/
-│   │       ├── cmp-mini-snippets.lua
-│   │       └── lsp-capabilities.lua
-│   └── lsp/                 # Per-server overrides
-│       ├── ts_ls.lua
-│       ├── tailwindcss.lua
-│       ├── cssls.lua
-│       ├── jsonls.lua
-│       ├── lua_ls.lua
-│       └── ...
-├── AGENTS.md
-├── LICENSE
+│   ├── init.lua                    # Entry (requires ordered configs)
+│   ├── lua/config/                 # options, keymaps, lsp, autocmds
+│   ├── lua/plugins/                # per-plugin setup (mini, snacks...)
+│   ├── lua/utils/                  # helper utilities
+│   └── lsp/                        # server-specific overrides
+├── AGENTS.md                       # Dev workflow guide
 └── README.md
 ```
 
 ## 🚀 Install
+Requirements: Nix (flakes), Home Manager, Nerd Font (icons).
 
-### Requirements
-- Nix (flakes enabled)
-- Home Manager
-- (Optional) Nerd Font for icons (e.g. JetBrainsMono Nerd Font)
-
-
+Add input in your flake:
 ```nix
-# flake.nix
 {
   inputs.neovim-config.url = "github:fveracoechea/neovim-nix-config";
-  outputs = { ... } @ inputs: {
-    # ...
-  };
+  outputs = { ... }@inputs: { /* ... */ };
 }
 ```
-
-Then in your Home Manager config:
+Then import the Home Manager module:
 ```nix
-imports = [ inputs.neovim-config.homeManagerModules.default ];
+{ config, pkgs, inputs, ... }:
+{
+  imports = [ inputs.neovim-config.homeManagerModules.default ];
+}
+```
+Rebuild:
+```sh
+home-manager switch --flake .
 ```
 
-## ⚡ Keybindings (Essentials)
+## ⌨ Key Highlights
+Leader <Space>
+- <C-n> Yazi (cwd)
+- <C-y> Yazi (file)
+- <leader>ff Files  | <leader>fs Grep | <leader>fr Recent | <leader>fa All (hidden)
+- <leader>b Buffers | <leader>x Close | <leader>xo Close others
+- LSP: K hover | gd def | <leader>lr refs | <leader>li impl | <leader>lt type | <leader>rn rename | <leader>ca actions
+- Diagnostics: <leader>sd buffer | <leader>sD all | <leader>Dp / <leader>Dn prev/next
+- Git: <leader>gb blame | <leader>gB browse | <leader>gf file log | <leader>gl repo log
+- Tailwind: <leader>twc conceal | <leader>tws sort | <leader>twn / <leader>twp next/prev class
+- Sessions: <leader>ws write | <leader>wr read | <leader>wd delete
+- Diff hunks: ]h / [h navigate
+- CodeSnap: Visual select then <leader>cc (clipboard) / <leader>cs (save)
+- Toggles: <leader>ul numbers | <leader>uL relative | <leader>uw wrap | <leader>us spell
+- Zen: <leader>z toggle | <leader>Z zoom
+- Snippets/Completion: <Tab>/<S-Tab> navigate or expand; <C-j>/<C-k> cycle
 
-| Mapping | Action |
-|---------|--------|
-| <Space> | Leader |
-| <C-n>   | Yazi file manager (cwd) |
-| <leader>e | Yazi at current file |
-| <leader>ff | Find files |
-| <leader>fs | Live grep |
-| <leader>b  | Buffer list |
-| <leader>lg | Lazygit |
-| <C-s>      | Save |
+## ⚙ Customization Notes
+- Enable/disable any snacks feature inside `plugins/snacks.lua`.
+- Add/override LSP servers: `lua/config/lsp.lua` + `configuration/neovim.nix` (extraPackages).
+- Adjust formatters in `plugins/conform.lua`.
+- Snippets live in external JSON loaded through mini.snippets (see mini.lua) or Nix snippet module.
 
-LSP: K hover · gd def · gr refs · <leader>rn rename · <leader>ca actions
+## 🧪 Dev / Maintenance
+Run formatting & flake checks before committing:
+```sh
+stylua .
+nix flake check
+nvim --headless '+quit'
+```
+Update inputs:
+```sh
+nix flake update
+```
 
-## 📚 Resources
+## 📚 References
+- Neovim https://neovim.io
+- Nix Manual https://nixos.org/manual/nix/stable
+- Home Manager https://nix-community.github.io/home-manager
+- Catppuccin https://github.com/catppuccin/nvim
 
-- Neovim: https://neovim.io/doc/
-- Nix Manual: https://nixos.org/manual/nix/stable/
-- Home Manager Options: https://nix-community.github.io/home-manager/options.html
-- Catppuccin: https://github.com/catppuccin/nvim
