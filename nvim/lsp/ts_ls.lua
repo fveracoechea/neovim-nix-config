@@ -1,10 +1,9 @@
-local util = require "lspconfig.util"
-
 ---@type vim.lsp.Config
 return {
   init_options = { hostInfo = "neovim" },
   cmd = { "typescript-language-server", "--stdio" },
   workspace_required = true,
+  -- single_file_support = false,
   filetypes = {
     "javascript",
     "javascriptreact",
@@ -21,7 +20,6 @@ return {
     end
     return util.root_pattern("tsconfig.json", "jsconfig.json", "package.json", ".git")(fname)
   end,
-  single_file_support = false,
   handlers = {
     -- handle rename request for certain code actions like extracting functions / types
     ["_typescript.rename"] = function(_, result, ctx)
