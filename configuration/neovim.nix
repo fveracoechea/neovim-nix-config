@@ -32,24 +32,21 @@ inputs: {
         wl-clipboard
       ]
       ++ [
-        ## Language Servers
-        nil # Nix LSP
+        nil
         lua-language-server
-        deno # Deno runtime (LSP + fmt)
+        deno
         typescript
         typescript-language-server
-        vscode-langservers-extracted # HTML, CSS, JSON, ESLint
+        vscode-langservers-extracted
         tailwindcss-language-server
         graphql-language-service-cli
         nginx-language-server
         bash-language-server
-        ## Formatters
-        stylua # Lua
-        alejandra # Nix
-        shfmt # Shell
-        isort # Python imports
-        black # Python
-        ## Linters & Static Analysis
+        stylua
+        alejandra
+        shfmt
+        isort
+        black
         pylint
         pyright
         eslint_d
@@ -67,14 +64,10 @@ inputs: {
       };
     in
       with pkgs.vimPlugins; [
-        ## Syntax Highlighting
         (nvim-treesitter.withPlugins (import ./tree-sitter.nix {inherit pkgs inputs;}))
-        ## Core Dependencies
         plenary-nvim
         nui-nvim
-        # Statusline
         lualine-nvim
-        ## Completion System
         nvim-cmp
         cmp-path
         cmp-buffer
@@ -82,31 +75,22 @@ inputs: {
         cmp-minikind
         copilot-lua
         copilot-cmp
-        ## Navigation & Movement
         vim-tmux-navigator
-        ## Treesitter Extensions
         nvim-ts-context-commentstring
         nvim-ts-autotag
-        ## LSP & Development
         nvim-lsp-file-operations
         trouble-nvim
-        ## Plugin Consolidation
         mini-nvim
         snacks-nvim
-        ## File Management
         yazi-nvim
-        ## UI & Theme
         catppuccin-nvim
-        ## Language Support & LSP
         nvim-lspconfig
         tailwind-tools-nvim
-        ## Code Formatting & Linting
         conform-nvim
         nvim-lint
-        ## Git Integration
         gitsigns-nvim
-        ## Screenshots
         codesnap-nvim
+        opencode-nvim
       ];
   };
 }
