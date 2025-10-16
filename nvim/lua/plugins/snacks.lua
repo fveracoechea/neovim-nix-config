@@ -53,6 +53,8 @@ snacks.setup {
     enabled = true,
     sources = {
       explorer = {
+        hidden = true,
+        ignored = false,
         layout = {
           preset = "sidebar",
           layout = {
