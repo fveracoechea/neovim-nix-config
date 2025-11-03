@@ -52,7 +52,6 @@ cmp.setup {
   },
 
   mapping = cmp.mapping.preset.insert {
-    ["<CR>"] = cmp.mapping.confirm { select = true },
     ["<C-b>"] = cmp.mapping.scroll_docs(-1),
     ["<C-f>"] = cmp.mapping.scroll_docs(5),
     ["<C-c>"] = cmp.mapping.complete(),
