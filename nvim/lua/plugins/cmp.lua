@@ -45,9 +45,7 @@ cmp.setup {
   snippet = {
     expand = function(args)
       local insert = MiniSnippets.config.expand.insert or MiniSnippets.default_insert
-      insert { body = args.body } -- Insert at cursor
-      cmp.resubscribe { "TextChangedI", "TextChangedP" }
-      require("cmp.config").set_onetime { sources = {} }
+      insert { body = args.body }
     end,
   },
 
@@ -61,10 +59,10 @@ cmp.setup {
   -- sources for autocompletion
   sources = cmp.config.sources {
     { name = "nvim_lsp" },
-    { name = "mini_snippets" },
+    { name = "mini.snippets", option = { only_show_in_line_start = true } },
     { name = "copilot" },
-    { name = "buffer" }, -- text within current buffer
-    { name = "path" }, -- file system paths
+    { name = "buffer" },
+    { name = "path" },
   },
 
   sorting = {

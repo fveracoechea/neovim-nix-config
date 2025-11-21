@@ -9,8 +9,18 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 --
---- Advanced LSP Progress
+--- Advanced LSP Progress (optimized for memory efficiency)
 local progress = vim.defaulttable()
+local progress_timer = nil
+
+-- Debounce progress updates to reduce notify calls
+local function update_progress()
+  if progress_timer then
+    progress_timer:stop()
+    progress_timer = nil
+  end
+end
+
 vim.api.nvim_create_autocmd("LspProgress", {
   callback = function(ev)
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
@@ -40,14 +50,25 @@ vim.api.nvim_create_autocmd("LspProgress", {
       return table.insert(msg, v.msg) or not v.done
     end, p)
 
-    local spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
-    vim.notify(table.concat(msg, "\n"), "info", {
-      id = "lsp_progress",
-      title = client.name,
-      opts = function(notif)
-        notif.icon = #progress[client.id] == 0 and " "
-          or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
-      end,
-    })
+    -- Clean up completed client progress to prevent memory leak
+    if #progress[client.id] == 0 then
+      progress[client.id] = nil
+    end
+
+    -- Debounce notifications to reduce overhead
+    update_progress()
+    progress_timer = vim.defer_fn(function()
+      local spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
+      vim.notify(table.concat(msg, "\n"), "info", {
+        id = "lsp_progress",
+        title = client.name,
+        opts = function(notif)
+          local client_progress = progress[client.id]
+          notif.icon = (not client_progress or #client_progress == 0) and " "
+            or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
+        end,
+      })
+      progress_timer = nil
+    end, 100)
   end,
 })

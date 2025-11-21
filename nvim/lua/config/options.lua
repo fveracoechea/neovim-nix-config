@@ -54,6 +54,10 @@ vim.opt.ttimeoutlen = 0 -- Key code timeout
 vim.opt.autoread = true -- Auto reload files changed outside vim
 vim.opt.autowrite = false -- Don't auto save
 
+-- Performance optimizations
+vim.opt.lazyredraw = true -- Don't redraw during macros/scripts
+vim.opt.redrawtime = 1500 -- Time in ms for redrawing (default 2000)
+
 -- Behavior settings
 vim.opt.hidden = true -- Allow hidden buffers
 vim.opt.errorbells = false -- No error bells
