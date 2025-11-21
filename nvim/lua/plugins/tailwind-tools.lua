@@ -4,6 +4,6 @@ require("tailwind-tools").setup {
   },
   conceal = {
     enabled = true, -- can be toggled by commands
-    min_length = 30, -- only conceal classes exceeding the provided length
+    min_length = 60, -- only conceal classes exceeding the provided length
   },
 }
