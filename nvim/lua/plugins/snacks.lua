@@ -20,7 +20,7 @@ snacks.setup {
       },
       {
         section = "terminal",
-        cmd = "zeitfetch --no-logo;",
+        cmd = "zeitfetch --no-logo",
         pane = 2,
         indent = 2,
         height = 18,
