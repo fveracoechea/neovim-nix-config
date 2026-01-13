@@ -10,6 +10,7 @@
   grammars.tree-sitter-bash
   grammars.tree-sitter-lua
   grammars.tree-sitter-c
+  grammars.tree-sitter-astro
 
   # Web technologies
   grammars.tree-sitter-javascript
@@ -41,10 +42,9 @@
   grammars.tree-sitter-query
   grammars.tree-sitter-vimdoc
 
-  # Custom grammar
   (pkgs.tree-sitter.buildGrammar {
     language = "nginx";
-    version = "unstable-2024-10-04";
+    version = "unstable-01-12-2026";
     src = inputs.tree-sitter-nginx;
   })
 ]

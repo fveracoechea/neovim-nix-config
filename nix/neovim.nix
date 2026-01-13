@@ -3,13 +3,6 @@ inputs: {
   pkgs,
   ...
 }: {
-  home.packages = with pkgs; [
-    lazygit
-    gh
-    fzf
-    graphql-language-service-cli
-  ];
-
   # Enable management of XDG base directories
   xdg.enable = lib.mkDefault true;
 
@@ -64,7 +57,7 @@ inputs: {
       };
     in
       with pkgs.vimPlugins; [
-        (nvim-treesitter.withPlugins (import ./tree-sitter.nix {inherit pkgs inputs;}))
+        nvim-treesitter.withAllGrammars
         plenary-nvim
         nui-nvim
         lualine-nvim

@@ -1,14 +1,8 @@
-local treesitter = require "nvim-treesitter.configs"
-
-treesitter.setup {
-  -- parsers are installed by nix
+require("nvim-treesitter").setup {
   ensure_installed = {},
   auto_install = false,
-  -- enable syntax highlighting
   highlight = { enable = true },
-  -- enable indentation
   indent = { enable = true },
-  -- enable autotagging (w/ nvim-ts-autotag plugin)
   autotag = { enable = true },
   incremental_selection = {
     enable = true,
