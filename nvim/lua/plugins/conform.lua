@@ -1,6 +1,6 @@
 local conform = require "conform"
 
-local js_formatters = { "prettier", "deno_fmt", stop_after_first = true }
+local js_formatters = { "prettier", "biome", "deno_fmt", stop_after_first = true }
 
 conform.setup {
   formatters = {
@@ -33,6 +33,6 @@ conform.setup {
   },
   format_on_save = {
     lsp_format = "fallback",
-    timeout_ms = 1000,
+    timeout_ms = 1200,
   },
 }

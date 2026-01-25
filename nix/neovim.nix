@@ -25,7 +25,9 @@ inputs: {
         wl-clipboard
       ]
       ++ [
-        nil
+        # nil
+        nixd
+        biome
         lua-language-server
         deno
         typescript
