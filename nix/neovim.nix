@@ -56,6 +56,8 @@ inputs: {
           rev = "582aea215ce2e65b880e0d23585c20863fbb7604";
           hash = "sha256-gSvhxrjz6PZBgqbb4eBAwWEWSdefM4qL3nb75qGPaFA=";
         };
+        nvimRequireCheck = "cmp_mini_snippets";
+        dependencies = [pkgs.vimPlugins.nvim-cmp];
       };
     in
       with pkgs.vimPlugins; [
