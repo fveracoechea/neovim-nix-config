@@ -17,7 +17,7 @@ inputs: {
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-    extraLuaConfig = lib.fileContents ../nvim/init.lua;
+    initLua = lib.fileContents ../nvim/init.lua;
 
     extraPackages = with pkgs;
       lib.optionals pkgs.stdenv.isLinux [
@@ -48,18 +48,19 @@ inputs: {
       ];
 
     plugins = let
-      cmp-minikind = pkgs.vimUtils.buildVimPlugin {
-        name = "cmp-minikind";
-        src = pkgs.fetchFromGitHub {
-          owner = "tranzystorekk";
-          repo = "cmp-minikind.nvim";
-          rev = "935ee02cd415ee218787a8549930a3443f1e127b";
-          hash = "sha256-kYZX+JCogqibliL9wIbw8Ya+LZSOoQDVINMUMbFQNVA=";
+      cmp-mini-snippets = pkgs.vimUtils.buildVimPlugin {
+        name = "cmp-mini-snippets";
+        src = fetchFromGitHub {
+          owner = "abeldekat";
+          repo = "cmp-mini-snippets";
+          rev = "582aea215ce2e65b880e0d23585c20863fbb7604";
+          hash = "sha256-gSvhxrjz6PZBgqbb4eBAwWEWSdefM4qL3nb75qGPaFA=";
         };
       };
     in
       with pkgs.vimPlugins; [
         nvim-treesitter.withAllGrammars
+        todo-comments-nvim
         plenary-nvim
         nui-nvim
         lualine-nvim
@@ -67,7 +68,7 @@ inputs: {
         cmp-path
         cmp-buffer
         cmp-nvim-lsp
-        cmp-minikind
+        cmp-mini-snippets
         copilot-lua
         copilot-cmp
         vim-tmux-navigator

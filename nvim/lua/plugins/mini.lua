@@ -40,6 +40,10 @@ require("mini.snippets").setup {
 
 require("mini.icons").setup {
   style = "glyph",
+  lsp = {
+    ellipsis_char = { glyph = "…", hl = "MiniIconsRed" },
+    copilot = { glyph = "", hl = "MiniIconsGreen" },
+  },
 }
 
 local MiniClue = require "mini.clue"

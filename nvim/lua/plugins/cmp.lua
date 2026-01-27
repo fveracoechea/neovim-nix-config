@@ -1,51 +1,21 @@
 local cmp = require "cmp"
-local minikind_format = require("cmp-minikind").cmp_format()
-local tailwind_format = require("tailwind-tools.cmp").lspkind_format
-
-require("copilot").setup {
-  suggestion = { enabled = false },
-  panel = { enabled = false },
-}
-
-require("copilot_cmp").setup()
-
-local function border(hl_name)
-  return {
-    { "╭", hl_name },
-    { "─", hl_name },
-    { "╮", hl_name },
-    { "│", hl_name },
-    { "╯", hl_name },
-    { "─", hl_name },
-    { "╰", hl_name },
-    { "│", hl_name },
-  }
-end
-
-cmp.register_source("mini_snippets", require("utils.cmp-mini-snippets").new())
 
 cmp.setup {
   window = {
-    completion = {
-      side_padding = 1,
-      border = border "CmpBorder",
-      scrollbar = true,
-    },
-    documentation = {
-      border = border "CmpDocBorder",
-      scrollbar = true,
-    },
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
   },
 
   completion = {
     completeopt = "menuone,preview,noinsert,noselect",
   },
 
-  -- configure how nvim-cmp interacts with snippet engine
   snippet = {
     expand = function(args)
       local insert = MiniSnippets.config.expand.insert or MiniSnippets.default_insert
       insert { body = args.body }
+      cmp.resubscribe { "TextChangedI", "TextChangedP" }
+      require("cmp.config").set_onetime { sources = {} }
     end,
   },
 
@@ -56,10 +26,9 @@ cmp.setup {
     ["<C-e>"] = cmp.mapping.abort(),
   },
 
-  -- sources for autocompletion
   sources = cmp.config.sources {
     { name = "nvim_lsp" },
-    { name = "mini.snippets", option = { only_show_in_line_start = true } },
+    { name = "mini_snippets" },
     { name = "copilot" },
     { name = "buffer" },
     { name = "path" },
@@ -71,10 +40,10 @@ cmp.setup {
 
   formatting = {
     format = function(entry, vim_item)
-      local item = tailwind_format(entry, vim_item)
-      return minikind_format(entry, item)
+      local icon, hl = MiniIcons.get("lsp", vim_item.kind)
+      vim_item.kind = icon .. " " .. vim_item.kind
+      vim_item.kind_hl_group = hl
+      return vim_item
     end,
   },
 }
-
-vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#A6E3A1" })

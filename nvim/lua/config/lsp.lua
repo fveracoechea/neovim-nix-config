@@ -80,16 +80,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- Enable the servers listed here that have been configured in `lua/lsp/*`
 vim.lsp.enable {
-  "html",
-  "nil_ls",
-  "lua_ls",
+  "biome",
   "cssls",
-  "nginx_language_server",
+  "denols",
   "eslint",
   "graphql",
-  "relay_lsp",
-  "denols",
-  "ts_ls",
+  "html",
   "jsonls",
+  "lua_ls",
+  "nixd",
+  "relay_lsp",
   "tailwindcss",
+  "ts_ls",
 }

@@ -1,6 +1,4 @@
-local codesnap = require "codesnap"
-
-codesnap.setup {
+require("codesnap").setup {
   save_path = "~/Pictures/Codesnap",
   has_breadcrumbs = true,
   bg_x_padding = 40,

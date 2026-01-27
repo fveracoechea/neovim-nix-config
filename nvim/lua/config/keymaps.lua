@@ -126,6 +126,7 @@ end, { desc = "Dismiss All Notifications" })
 map("n", "]]", function()
   Snacks.words.jump(vim.v.count1)
 end, { desc = "Next Reference" })
+
 map("n", "[[", function()
   Snacks.words.jump(-vim.v.count1)
 end, { desc = "Prev Reference" })
@@ -149,23 +150,15 @@ map("n", "<leader>S", function()
   Snacks.scratch.select()
 end, { desc = "Select Scratch Buffer" })
 
--- Toggle utilities
+-- Todo comments
 
-map("n", "<leader>ul", function()
-  Snacks.toggle.line_number()
-end, { desc = "Toggle Line Numbers" })
+map("n", "<leader>st", function()
+  Snacks.picker.todo_comments()
+end, { desc = "Show TODO comments" })
 
-map("n", "<leader>uL", function()
-  Snacks.toggle.option("relativenumber", { name = "Relative Numbers" })
-end, { desc = "Toggle Relative Numbers" })
-
-map("n", "<leader>uw", function()
-  Snacks.toggle.option("wrap", { name = "Wrap" })
-end, { desc = "Toggle Line Wrap" })
-
-map("n", "<leader>us", function()
-  Snacks.toggle.option("spell", { name = "Spelling" })
-end, { desc = "Toggle Spelling" })
+map("n", "<leader>sT", function()
+  Snacks.picker.todo_comments { keywords = { "TODO", "FIX", "FIXME" } }
+end, { desc = "TODO/FIX/FIXME" })
 
 -- ============================================================================
 -- MINI PLUGIN MAPPINGS

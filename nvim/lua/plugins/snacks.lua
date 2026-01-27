@@ -1,7 +1,4 @@
-local snacks = require "snacks"
-
-snacks.setup {
-
+require("snacks").setup {
   dashboard = {
     enabled = true,
     sections = {
@@ -61,6 +58,16 @@ snacks.setup {
             position = "right",
           },
         },
+        win = {
+          list = {
+            keys = {
+              ["<C-h>"] = nil,
+              ["<C-j>"] = nil,
+              ["<C-k>"] = nil,
+              ["<C-l>"] = nil,
+            },
+          },
+        },
       },
       buffers = {
         current = false,
@@ -110,5 +117,3 @@ snacks.setup {
   toggle = { enabled = true },
   words = { enabled = true },
 }
-
--- Note: Keymaps are now centralized in lua/keymaps.lua
