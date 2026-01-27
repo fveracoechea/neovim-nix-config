@@ -10,7 +10,6 @@ Build/Lint/Test:
 
 Code Style (Lua):
 7. Indent 2 spaces; max line 120; prefer double quotes; omit parens for simple require/use.
-8. Top-order: options, keymaps, plugins, lsp setup; group requires first.
 9. Local helpers at top (local map = vim.keymap.set); avoid polluting _G; use vim.g for globals.
 10. Descriptive lower_snake_case locals; CamelCase only for external modules; constants UPPER_SNAKE.
 11. Keymaps include desc; group with clear comment banners.

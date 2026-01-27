@@ -23,7 +23,7 @@ vim.diagnostic.config {
   },
   float = {
     border = "rounded",
-    souce = true,
+    source = true,
   },
 }
 
@@ -31,6 +31,8 @@ vim.diagnostic.config {
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = function(args)
+    local Snacks = require "snacks"
+
     local map = vim.keymap.set
     local bufnr = args.buf
     local function opts(desc)

@@ -12,6 +12,7 @@ cmp.setup {
 
   snippet = {
     expand = function(args)
+      local MiniSnippets = require "mini.snippets"
       local insert = MiniSnippets.config.expand.insert or MiniSnippets.default_insert
       insert { body = args.body }
       cmp.resubscribe { "TextChangedI", "TextChangedP" }
@@ -40,6 +41,7 @@ cmp.setup {
 
   formatting = {
     format = function(entry, vim_item)
+      local MiniIcons = require "mini.icons"
       local icon, hl = MiniIcons.get("lsp", vim_item.kind)
       vim_item.kind = icon .. " " .. vim_item.kind
       vim_item.kind_hl_group = hl

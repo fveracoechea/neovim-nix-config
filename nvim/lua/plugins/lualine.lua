@@ -17,21 +17,6 @@ local function get_buffer_count()
   return " " .. count
 end
 
--- LSP clients attached to buffer
-local get_clients_lsp = function()
-  local bufnr = vim.api.nvim_get_current_buf()
-  local clients = vim.lsp.get_clients(bufnr)
-  if next(clients) == nil then
-    return ""
-  end
-
-  local c = {}
-  for _, client in pairs(clients) do
-    table.insert(c, client.name)
-  end
-  return table.concat(c, "  ")
-end
-
 lualine.setup {
   options = {
     theme = "catppuccin",
@@ -42,30 +27,21 @@ lualine.setup {
 
   sections = {
     lualine_a = { "mode" },
-    lualine_b = { "branch", "diff", "diagnostics" },
+    lualine_b = { "branch", "diff" },
     lualine_c = {
-      get_clients_lsp,
-      {
-        "lsp_progress",
-        display_components = { "lsp_client_name", { "title", "percentage" } },
-      },
+      "lsp_status",
+      "searchcount",
     },
-    lualine_x = { "encoding", "fileformat" },
-    lualine_y = { "filesize" },
+    lualine_x = { "selectioncount", "filesize", "encoding" },
+    lualine_y = { "filetype" },
     lualine_z = { "location" },
   },
 
   winbar = {
-    lualine_a = {},
-    lualine_b = {
+    lualine_a = {
       get_buffer_count,
     },
-    lualine_c = {
-      {
-
-        "filetype",
-        color = { fg = colors.rosewater },
-      },
+    lualine_b = {
       {
         "filename",
         file_status = true,
@@ -73,6 +49,9 @@ lualine.setup {
         path = 1,
         color = { fg = colors.rosewater },
       },
+    },
+    lualine_c = {
+      "diagnostics",
     },
     lualine_x = {},
     lualine_y = {},
