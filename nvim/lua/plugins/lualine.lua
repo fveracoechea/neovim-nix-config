@@ -22,7 +22,7 @@ lualine.setup {
     theme = "catppuccin",
     globalstatus = true,
     section_separators = { left = "", right = "" },
-    disabled_filetypes = { winbar = { "NvimTree", "alpha" } },
+    disabled_filetypes = { winbar = { "NvimTree", "alpha", "snacks_explorer" } },
   },
 
   sections = {
