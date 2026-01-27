@@ -17,7 +17,7 @@ inputs: {
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-    initLua = lib.fileContents ../nvim/init.lua;
+    initLua = lib.mkBefore lib.fileContents ../nvim/init.lua;
 
     extraPackages = with pkgs;
       lib.optionals pkgs.stdenv.isLinux [
