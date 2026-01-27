@@ -49,7 +49,7 @@ inputs: {
 
     plugins = let
       cmp-mini-snippets = pkgs.vimUtils.buildVimPlugin {
-        name = "cmp-mini-snippets";
+        name = "cmp_mini_snippets";
         src = pkgs.fetchFromGitHub {
           owner = "abeldekat";
           repo = "cmp-mini-snippets";

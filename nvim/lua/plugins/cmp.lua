@@ -1,5 +1,7 @@
 local cmp = require "cmp"
 
+require("cmp").register_source("mini_snippets", require("cmp_mini_snippets").new())
+
 cmp.setup {
   window = {
     completion = cmp.config.window.bordered(),
