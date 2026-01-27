@@ -28,11 +28,8 @@ lualine.setup {
   sections = {
     lualine_a = { "mode" },
     lualine_b = { "branch", "diff" },
-    lualine_c = {
-      "lsp_status",
-      "searchcount",
-    },
-    lualine_x = { "selectioncount", "filesize", "encoding" },
+    lualine_c = { "lsp_status" },
+    lualine_x = { "filesize", "encoding" },
     lualine_y = { "filetype" },
     lualine_z = { "location" },
   },
@@ -47,10 +44,7 @@ lualine.setup {
         file_status = true,
         newfile_status = true,
         path = 1,
-        color = { fg = colors.rosewater },
       },
-    },
-    lualine_c = {
       "diagnostics",
     },
     lualine_x = {},
