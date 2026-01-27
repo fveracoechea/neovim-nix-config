@@ -41,8 +41,10 @@ require("mini.snippets").setup {
 require("mini.icons").setup {
   style = "glyph",
   lsp = {
-    ellipsis_char = { glyph = "…", hl = "MiniIconsRed" },
+    ellipsis_char = { glyph = "…", hl = "MiniIconsOrange" },
     copilot = { glyph = "", hl = "MiniIconsGreen" },
+    ["function"] = { glyph = "󰊕", hl = "MiniIconsBlue" },
+    snippet = { glyph = "", hl = "MiniIconsYellow" },
   },
 }
 
