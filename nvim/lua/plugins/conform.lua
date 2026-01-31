@@ -1,15 +1,16 @@
 local conform = require "conform"
 
-local js_formatters = { "prettier", "biome", "deno_fmt", stop_after_first = true }
+local js_formatters = { "biome", "prettier", "deno_fmt", stop_after_first = true }
 
 conform.setup {
   formatters = {
     deno_fmt = {
-      -- When cwd is not found, don't run the formatter (default false)
       require_cwd = true,
     },
     prettier = {
-      -- When cwd is not found, don't run the formatter (default false)
+      require_cwd = true,
+    },
+    biome = {
       require_cwd = true,
     },
   },
