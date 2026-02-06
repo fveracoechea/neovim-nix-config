@@ -87,8 +87,21 @@ return {
         templ = "html",
       },
       experimental = {
+        -- https://github.com/paolotiu/tailwind-intellisense-regex-list
         classRegex = {
-          { "(`.*?`)", '(".*?")', "('.*?')" },
+          { "cva\\(([^;]*)[\\);]", "[`'\"`]([^'\"`;]*)[`'\"`]" },
+          { "cn\\(((?:[^()]|\\([^()]*\\))*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+          { "cx\\(((?:[^()]|\\([^()]*\\))*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+          { "tv\\({([^]*?)}\\)", "[\"'`]([^\"'`]*)[\"'`]" },
+          { "classnames\\(([^)]*)\\)", "[\"'`]([^\"'`]*)[\"'`]" },
+          -- Plain Javascript Object
+          { ":\\s*?[\"'`]([^\"'`]*).*?," },
+          -- JavaScript string variable with keywords
+          {
+            "(?:\\b(?:const|let|var)\\s+)?[\\w$_]*(?:[Ss]tyles|[Cc]lasses|[Cc]lassnames)[\\w\\d]*\\s*(?:=|\\+=)\\s*['\"]([^'\"]*)['\"]",
+          },
+          -- classList
+          { "classList={{([^;]*)}}", "\\s*?[\"'`]([^\"'`]*).*?:" },
         },
       },
     },
