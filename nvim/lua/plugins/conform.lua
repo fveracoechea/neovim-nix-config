@@ -1,6 +1,6 @@
 local conform = require "conform"
 
-local js_formatters = { "biome", "prettier", "deno_fmt", stop_after_first = true }
+local js_formatters = { "biome-check", "prettier", "deno_fmt", stop_after_first = true }
 
 conform.setup {
   formatters = {
@@ -25,8 +25,10 @@ conform.setup {
     jsonc = js_formatters,
     yaml = js_formatters,
     markdown = js_formatters,
-    svelte = { "prettier" },
-    graphql = { "prettier" },
+    astro = js_formatters,
+    vue = js_formatters,
+    svelte = js_formatters,
+    graphql = js_formatters,
     liquid = { "prettier" },
     lua = { "stylua" },
     python = { "isort", "black" },
