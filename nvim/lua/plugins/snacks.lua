@@ -56,6 +56,7 @@ require("snacks").setup {
           preset = "sidebar",
           layout = {
             position = "right",
+            min_width = 50,
           },
         },
         win = {
