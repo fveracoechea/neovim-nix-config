@@ -54,8 +54,11 @@ require("snacks").setup {
         ignored = true,
         layout = {
           preset = "sidebar",
+          width = 50,
+          min_width = 50,
           layout = {
             position = "right",
+            width = 50,
             min_width = 50,
           },
         },
