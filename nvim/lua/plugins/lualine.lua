@@ -19,9 +19,9 @@ end
 
 lualine.setup {
   options = {
-    theme = "catppuccin",
+    theme = "catppuccin-nvim",
     globalstatus = true,
-    section_separators = { left = "", right = "" },
+    -- section_separators = { left = "", right = "" },
     disabled_filetypes = { winbar = { "NvimTree", "alpha", "snacks_explorer" } },
   },
 
