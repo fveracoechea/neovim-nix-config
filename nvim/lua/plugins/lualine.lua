@@ -25,18 +25,20 @@ lualine.setup {
 
   sections = {
     lualine_a = { "mode" },
-    lualine_b = {
+    lualine_b = { "location", "filesize" },
+    lualine_c = {
+
       {
         "filename",
         file_status = true,
         newfile_status = true,
         path = 1,
       },
+      "diagnostics",
     },
-    lualine_c = { "diagnostics" },
 
-    lualine_x = { "lsp_status", "filesize", "encoding" },
-    lualine_y = { "location" },
+    lualine_x = { "lsp_status" },
+    lualine_y = { "encoding" },
     lualine_z = { get_buffer_count },
   },
 }
