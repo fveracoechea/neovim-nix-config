@@ -17,7 +17,7 @@ require("snacks").setup {
       },
       {
         section = "terminal",
-        cmd = "zeitfetch --no-logo",
+        cmd = "fastfetch  -l none",
         pane = 2,
         indent = 2,
         height = 18,
